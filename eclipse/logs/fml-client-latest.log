@@ -1,0 +1,759 @@
+[12:50:01] [main/DEBUG] [FML/]: Injecting tracing printstreams for STDOUT/STDERR.
+[12:50:01] [main/INFO] [FML/]: Forge Mod Loader version 8.99.124.1450 for Minecraft 1.8 loading
+[12:50:01] [main/INFO] [FML/]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.7.0_65, running on Windows 7:amd64:6.1, installed at C:\Program Files\Java\jdk1.7.0_65\jre
+[12:50:01] [main/DEBUG] [FML/]: Java classpath at launch is C:\Program Files\Java\jdk1.7.0_65\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\jce.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\jfxrt.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\resources.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\rt.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\zipfs.jar;C:\Users\Samuel\Desktop\Forge\MinecraftGUI-Mod\build\classes\main;C:\Users\Samuel\Desktop\Forge\MinecraftGUI-Mod\build\resources\main;C:\Users\Samuel\.gradle\caches\minecraft\net\minecraftforge\forge\1.8-11.14.3.1450\snapshot\20141130\forgeSrc-1.8-11.14.3.1450.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.minecraft\launchwrapper\1.11\9c0592c6e1e9ea296a70948081bd4cc84dda1289\launchwrapper-1.11.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-debug-all\5.0.3\f9e364ae2a66ce2a543012a4668856e84e5dab74\asm-debug-all-5.0.3.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.typesafe.akka\akka-actor_2.11\2.3.3\ed62e9fc709ca0f2ff1a3220daa8b70a2870078e\akka-actor_2.11-2.3.3.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.typesafe\config\1.2.1\f771f71fdae3df231bcd54d5ca2d57f0bf93f467\config-1.2.1.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-actors-migration_2.11\1.1.0\dfa8bc42b181d5b9f1a5dd147f8ae308b893eb6f\scala-actors-migration_2.11-1.1.0.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-compiler\2.11.1\56ea2e6c025e0821f28d73ca271218b8dd04926a\scala-compiler-2.11.1.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang.plugins\scala-continuations-library_2.11\1.0.2\e517c53a7e9acd6b1668c5a35eccbaa3bab9aac\scala-continuations-library_2.11-1.0.2.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang.plugins\scala-continuations-plugin_2.11.1\1.0.2\f361a3283452c57fa30c1ee69448995de23c60f7\scala-continuations-plugin_2.11.1-1.0.2.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-library\2.11.1\e11da23da3eabab9f4777b9220e60d44c1aab6a\scala-library-2.11.1.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-parser-combinators_2.11\1.0.1\f05d7345bf5a58924f2837c6c1f4d73a938e1ff0\scala-parser-combinators_2.11-1.0.1.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-reflect\2.11.1\6580347e61cc7f8e802941e7fde40fa83b8badeb\scala-reflect-2.11.1.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-swing_2.11\1.0.1\b1cdd92bd47b1e1837139c1c53020e86bb9112ae\scala-swing_2.11-1.0.1.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-xml_2.11\1.0.2\820fbca7e524b530fdadc594c39d49a21ea0337e\scala-xml_2.11-1.0.2.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\lzma\lzma\0.0.1\521616dc7487b42bef0e803bd2fa3faf668101d7\lzma-0.0.1.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\java3d\vecmath\1.5.2\79846ba34cbd89e2422d74d53752f993dcc2ccaf\vecmath-1.5.2.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.sf.trove4j\trove4j\3.0.3\42ccaf4761f0dfdfa805c9e340d99a755907e2dd\trove4j-3.0.3.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.ibm.icu\icu4j-core-mojang\51.2\63d216a9311cca6be337c1e458e587f99d382b84\icu4j-core-mojang-51.2.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.sf.jopt-simple\jopt-simple\4.6\306816fb57cf94f108a43c95731b08934dcae15c\jopt-simple-4.6.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.paulscode\codecjorbis\20101023\c73b5636faf089d9f00e8732a829577de25237ee\codecjorbis-20101023.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.paulscode\codecwav\20101023\12f031cfe88fef5c1dd36c563c0a3a69bd7261da\codecwav-20101023.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.paulscode\libraryjavasound\20101123\5c5e304366f75f9eaa2e8cca546a1fb6109348b3\libraryjavasound-20101123.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.paulscode\librarylwjglopenal\20100824\73e80d0794c39665aec3f62eee88ca91676674ef\librarylwjglopenal-20100824.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.paulscode\soundsystem\20120107\419c05fe9be71f792b2d76cfc9b67f1ed0fec7f6\soundsystem-20120107.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\io.netty\netty-all\4.0.15.Final\85cad5eb4fc8ae2ecc990dc7c411771a091ded5\netty-all-4.0.15.Final.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\17.0\9c6ef172e8de35fd8d4d8783e4821e57cdef7445\guava-17.0.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.4\b1b6ea3b7e4aa4f492509a4952029cd8e48019ad\commons-io-2.4.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.9\9ce04e34240f674bc72680f8b843b1457383161a\commons-codec-1.9.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput\2.0.5\39c7796b469a600f72380316f6b1f11db6c2c7c4\jinput-2.0.5.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.java.jutils\jutils\1.0.0\e12fe1fda814bd348c1579329c86943d2cd3c6a6\jutils-1.0.0.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.mojang\authlib\1.5.17\893a8c553c0cfc9b6fbdff023747e30152ab09ec\authlib-1.5.17.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.mojang\realms\1.6.1\5655f6fb44aece10e5b3ad7cfee3e6936031c068\realms-1.6.1.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-compress\1.8.1\a698750c16740fd5b3871425f4cb3bbaa87f529d\commons-compress-1.8.1.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.3.3\18f4247ff4572a074444572cee34647c43e7c9c7\httpclient-4.3.3.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.1.3\f6f66e966c70a83ffbdb6f17a0919eaf7c8aca7f\commons-logging-1.1.3.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.3.2\31fbbff1ddbf98f3aa7377c94d33b0447c646b6e\httpcore-4.3.2.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.0-beta9\1dd66e68cccd907880229f9e2de1314bd13ff785\log4j-api-2.0-beta9.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-core\2.0-beta9\678861ba1b2e1fccb594bb0ca03114bb05da9695\log4j-core-2.0-beta9.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl\2.9.1\f58c5aabcef0e41718a564be9f8e412fff8db847\lwjgl-2.9.1.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl_util\2.9.1\290d7ba8a1bd9566f5ddf16ad06f09af5ec9b20e\lwjgl_util-2.9.1.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch\6.5\320a2dfd18513a5f41b4e75729df684488cbd925\twitch-6.5.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-actors\2.11.0\8ccfb6541de179bb1c4d45cf414acee069b7f78b\scala-actors-2.11.0.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\7ff832a6eb9ab6a767f1ade2b548092d0fa64795\jinput-platform-2.0.5-natives-linux.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\385ee093e01f587f30ee1c8a2ee7d408fd732e16\jinput-platform-2.0.5-natives-windows.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\53f9c919f34d2ca9de8c51fc4e1e8282029a9232\jinput-platform-2.0.5-natives-osx.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\206c4ccaecdbcfd2a1631150c69a97bbc9c20c11\twitch-platform-6.5-natives-windows-32.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\9fdd0fd5aed0817063dcf95b69349a171f447ebd\twitch-platform-6.5-natives-windows-64.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\5f9d1ee26257b3a33f0ca06fed335ef462af659f\twitch-platform-6.5-natives-osx.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-external-platform\4.5\18215140f010c05b9f86ef6f0f8871954d2ccebf\twitch-external-platform-4.5-natives-windows-32.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-external-platform\4.5\c3cde57891b935d41b6680a9c5e1502eeab76d86\twitch-external-platform-4.5-natives-windows-64.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\4c517eca808522457dd95ee8fc1fbcdbb602efbe\lwjgl-platform-2.9.1-natives-windows.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\aa9aae879af8eb378e22cfc64db56ec2ca9a44d1\lwjgl-platform-2.9.1-natives-linux.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\2d12c83fdfbc04ecabf02c7bc8cc54d034f0daac\lwjgl-platform-2.9.1-natives-osx.jar;C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\2.0.1\516c03b21d50a644d538de0f0369c620989cd8f0\jsr305-2.0.1.jar;C:\Users\Samuel\.gradle\caches\minecraft\net\minecraftforge\forge\1.8-11.14.3.1450\start;C:\Users\Samuel\.m2\repository\org\slick2d\slick2d-core\1.0.1\slick2d-core-1.0.1.jar;C:\Users\Samuel\.m2\repository\org\lwjgl\lwjgl\lwjgl\2.9.1\lwjgl-2.9.1.jar;C:\Users\Samuel\.m2\repository\org\lwjgl\lwjgl\lwjgl-platform\2.9.1\lwjgl-platform-2.9.1-natives-windows.jar;C:\Users\Samuel\.m2\repository\org\lwjgl\lwjgl\lwjgl-platform\2.9.1\lwjgl-platform-2.9.1-natives-linux.jar;C:\Users\Samuel\.m2\repository\org\lwjgl\lwjgl\lwjgl-platform\2.9.1\lwjgl-platform-2.9.1-natives-osx.jar;C:\Users\Samuel\.m2\repository\net\java\jinput\jinput\2.0.5\jinput-2.0.5.jar;C:\Users\Samuel\.m2\repository\net\java\jutils\jutils\1.0.0\jutils-1.0.0.jar;C:\Users\Samuel\.m2\repository\net\java\jinput\jinput-platform\2.0.5\jinput-platform-2.0.5-natives-linux.jar;C:\Users\Samuel\.m2\repository\net\java\jinput\jinput-platform\2.0.5\jinput-platform-2.0.5-natives-windows.jar;C:\Users\Samuel\.m2\repository\net\java\jinput\jinput-platform\2.0.5\jinput-platform-2.0.5-natives-osx.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 14.1.4\jre\jre\lib\javaws.jar;C:\Users\Samuel\.m2\repository\org\jcraft\jorbis\0.0.17\jorbis-0.0.17.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 14.1.4\lib\idea_rt.jar
+[12:50:01] [main/DEBUG] [FML/]: Java library path at launch is C:\Program Files\Java\jdk1.7.0_65\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\program files\apache-maven-3.3.3\bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files\Java\jdk1.7.0_65\bin;C:\Program Files\Java\jre7\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;.;C:/Users/Samuel/.gradle/caches/minecraft/net/minecraft/minecraft_natives/1.8
+[12:50:01] [main/INFO] [FML/]: Managed to load a deobfuscated Minecraft name- we are in a deobfuscated environment. Skipping runtime deobfuscation
+[12:50:01] [main/DEBUG] [FML/]: Instantiating coremod class FMLCorePlugin
+[12:50:01] [main/DEBUG] [FML/]: Added access transformer class net.minecraftforge.fml.common.asm.transformers.AccessTransformer to enqueued access transformers
+[12:50:01] [main/DEBUG] [FML/]: Enqueued coremod FMLCorePlugin
+[12:50:01] [main/DEBUG] [FML/]: Instantiating coremod class FMLForgePlugin
+[12:50:01] [main/DEBUG] [FML/]: Added access transformer class net.minecraftforge.transformers.ForgeAccessTransformer to enqueued access transformers
+[12:50:01] [main/DEBUG] [FML/]: Enqueued coremod FMLForgePlugin
+[12:50:01] [main/DEBUG] [FML/]: All fundamental core mods are successfully located
+[12:50:01] [main/DEBUG] [FML/]: Attempting to load commandline specified mods, relative to C:\Users\Samuel\Desktop\Forge\MinecraftGUI-Mod\eclipse\.
+[12:50:01] [main/DEBUG] [FML/]: Discovering coremods
+[12:50:01] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.gradle.tweakers.CoremodTweaker
+[12:50:01] [main/INFO] [GradleStart/]: Injecting location in coremod net.minecraftforge.fml.relauncher.FMLCorePlugin
+[12:50:01] [main/INFO] [GradleStart/]: Injecting location in coremod net.minecraftforge.classloading.FMLForgePlugin
+[12:50:01] [main/INFO] [LaunchWrapper/]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[12:50:01] [main/INFO] [LaunchWrapper/]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[12:50:01] [main/INFO] [LaunchWrapper/]: Loading tweak class name net.minecraftforge.gradle.tweakers.AccessTransformerTweaker
+[12:50:01] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[12:50:01] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[12:50:01] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[12:50:01] [main/DEBUG] [FML/]: Injecting coremod FMLCorePlugin {net.minecraftforge.fml.relauncher.FMLCorePlugin} class transformers
+[12:50:01] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
+[12:50:01] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.MarkerTransformer
+[12:50:01] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.SideTransformer
+[12:50:01] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.EventSubscriptionTransformer
+[12:50:01] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.EventSubscriberTransformer
+[12:50:01] [main/DEBUG] [FML/]: Injection complete
+[12:50:01] [main/DEBUG] [FML/]: Running coremod plugin for FMLCorePlugin {net.minecraftforge.fml.relauncher.FMLCorePlugin}
+[12:50:01] [main/DEBUG] [FML/]: Running coremod plugin FMLCorePlugin
+[12:50:01] [main/ERROR] [FML/]: The binary patch set is missing. Either you are in a development environment, or things are not going to work!
+[12:50:02] [main/ERROR] [FML/]: FML appears to be missing any signature data. This is not a good thing
+[12:50:02] [main/DEBUG] [FML/]: Coremod plugin class FMLCorePlugin run successfully
+[12:50:02] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[12:50:02] [main/DEBUG] [FML/]: Injecting coremod FMLForgePlugin {net.minecraftforge.classloading.FMLForgePlugin} class transformers
+[12:50:02] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.classloading.FluidIdTransformer
+[12:50:02] [main/DEBUG] [FML/]: Injection complete
+[12:50:02] [main/DEBUG] [FML/]: Running coremod plugin for FMLForgePlugin {net.minecraftforge.classloading.FMLForgePlugin}
+[12:50:02] [main/DEBUG] [FML/]: Running coremod plugin FMLForgePlugin
+[12:50:02] [main/DEBUG] [FML/]: Coremod plugin class FMLForgePlugin run successfully
+[12:50:02] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[12:50:02] [main/DEBUG] [FML/]: Loaded 60 rules from AccessTransformer config file fml_at.cfg
+[12:50:02] [main/DEBUG] [FML/]: Loaded 120 rules from AccessTransformer config file forge_at.cfg
+[12:50:02] [main/DEBUG] [FML/]: Validating minecraft
+[12:50:03] [main/DEBUG] [FML/]: Minecraft validated, launching...
+[12:50:03] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.gradle.tweakers.AccessTransformerTweaker
+[12:50:03] [main/INFO] [LaunchWrapper/]: Loading tweak class name net.minecraftforge.fml.common.launcher.TerminalTweaker
+[12:50:03] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.common.launcher.TerminalTweaker
+[12:50:03] [main/INFO] [LaunchWrapper/]: Launching wrapped minecraft {net.minecraft.client.main.Main}
+[12:50:05] [Client thread/INFO] [FML/]: Could not load splash.properties, will create a default one
+[12:50:05] [Client thread/ERROR] [FML/]: Could not save the splash.properties file
+java.io.FileNotFoundException: .\config\splash.properties (The system cannot find the path specified)
+	at java.io.FileOutputStream.open(Native Method) ~[?:1.7.0_65]
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221) ~[?:1.7.0_65]
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:171) ~[?:1.7.0_65]
+	at java.io.FileWriter.<init>(FileWriter.java:90) ~[?:1.7.0_65]
+	at net.minecraftforge.fml.client.SplashProgress.start(SplashProgress.java:198) [SplashProgress.class:?]
+	at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:198) [FMLClientHandler.class:?]
+	at net.minecraft.client.Minecraft.startGame(Minecraft.java:447) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:356) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(Main.java:117) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_65]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.11.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.11.jar:?]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source) [start/:?]
+	at GradleStart.main(Unknown Source) [start/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_65]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140) [idea_rt.jar:?]
+[12:50:05] [Client thread/INFO] [STDOUT/]: [net.minecraftforge.fml.client.SplashProgress:start:235]: ---- Minecraft Crash Report ----
+// You're mean.
+
+Time: 15-11-13 12:50
+Description: Loading screen debug info
+
+This is just a prompt for computer specs to be printed. THIS IS NOT A ERROR
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8
+	Operating System: Windows 7 (amd64) version 6.1
+	Java Version: 1.7.0_65, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 726878344 bytes (693 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: 
+	Loaded coremods (and transformers): 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.5.0 NVIDIA 358.50' Renderer: 'GeForce GTX 770/PCIe/SSE2'
+[12:50:05] [Client thread/INFO] [MinecraftForge/]: Attempting early MinecraftForge initialization
+[12:50:05] [Client thread/INFO] [FML/]: MinecraftForge v11.14.3.1450 Initialized
+[12:50:06] [Client thread/INFO] [FML/]: Replaced 204 ore recipies
+[12:50:06] [Client thread/INFO] [MinecraftForge/]: Completed early MinecraftForge initialization
+[12:50:06] [Client thread/DEBUG] [FML/]: No config directory found, creating one: C:\Users\Samuel\Desktop\Forge\MinecraftGUI-Mod\eclipse\config
+[12:50:06] [Client thread/INFO] [FML/]: Config directory created successfully
+[12:50:06] [Client thread/DEBUG] [FML/]: File C:\Users\Samuel\Desktop\Forge\MinecraftGUI-Mod\eclipse\config\injectedDependencies.json not found. No dependencies injected
+[12:50:06] [Client thread/DEBUG] [FML/]: Building injected Mod Containers [net.minecraftforge.fml.common.FMLContainer, net.minecraftforge.common.ForgeModContainer]
+[12:50:06] [Client thread/DEBUG] [FML/]: Attempting to load mods contained in the minecraft jar file and associated classes
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\charsets.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\deploy.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\javaws.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\jce.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\jfr.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\jfxrt.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\jsse.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\management-agent.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\plugin.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\resources.jar, examining for mod candidates
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Program Files\Java\jdk1.7.0_65\jre\lib\rt.jar
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\access-bridge-64.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\dnsns.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\jaccess.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\localedata.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\sunec.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\sunjce_provider.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\sunmscapi.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files\Java\jdk1.7.0_65\jre\lib\ext\zipfs.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related directory at C:\Users\Samuel\Desktop\Forge\MinecraftGUI-Mod\build\classes\main, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related directory at C:\Users\Samuel\Desktop\Forge\MinecraftGUI-Mod\build\resources\main, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\Samuel\.gradle\caches\minecraft\net\minecraftforge\forge\1.8-11.14.3.1450\snapshot\20141130\forgeSrc-1.8-11.14.3.1450.jar, examining for mod candidates
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.minecraft\launchwrapper\1.11\9c0592c6e1e9ea296a70948081bd4cc84dda1289\launchwrapper-1.11.jar
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-debug-all\5.0.3\f9e364ae2a66ce2a543012a4668856e84e5dab74\asm-debug-all-5.0.3.jar, examining for mod candidates
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.typesafe.akka\akka-actor_2.11\2.3.3\ed62e9fc709ca0f2ff1a3220daa8b70a2870078e\akka-actor_2.11-2.3.3.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.typesafe\config\1.2.1\f771f71fdae3df231bcd54d5ca2d57f0bf93f467\config-1.2.1.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-actors-migration_2.11\1.1.0\dfa8bc42b181d5b9f1a5dd147f8ae308b893eb6f\scala-actors-migration_2.11-1.1.0.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-compiler\2.11.1\56ea2e6c025e0821f28d73ca271218b8dd04926a\scala-compiler-2.11.1.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang.plugins\scala-continuations-library_2.11\1.0.2\e517c53a7e9acd6b1668c5a35eccbaa3bab9aac\scala-continuations-library_2.11-1.0.2.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang.plugins\scala-continuations-plugin_2.11.1\1.0.2\f361a3283452c57fa30c1ee69448995de23c60f7\scala-continuations-plugin_2.11.1-1.0.2.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-library\2.11.1\e11da23da3eabab9f4777b9220e60d44c1aab6a\scala-library-2.11.1.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-parser-combinators_2.11\1.0.1\f05d7345bf5a58924f2837c6c1f4d73a938e1ff0\scala-parser-combinators_2.11-1.0.1.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-reflect\2.11.1\6580347e61cc7f8e802941e7fde40fa83b8badeb\scala-reflect-2.11.1.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-swing_2.11\1.0.1\b1cdd92bd47b1e1837139c1c53020e86bb9112ae\scala-swing_2.11-1.0.1.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-xml_2.11\1.0.2\820fbca7e524b530fdadc594c39d49a21ea0337e\scala-xml_2.11-1.0.2.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\lzma\lzma\0.0.1\521616dc7487b42bef0e803bd2fa3faf668101d7\lzma-0.0.1.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\java3d\vecmath\1.5.2\79846ba34cbd89e2422d74d53752f993dcc2ccaf\vecmath-1.5.2.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.sf.trove4j\trove4j\3.0.3\42ccaf4761f0dfdfa805c9e340d99a755907e2dd\trove4j-3.0.3.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.ibm.icu\icu4j-core-mojang\51.2\63d216a9311cca6be337c1e458e587f99d382b84\icu4j-core-mojang-51.2.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.sf.jopt-simple\jopt-simple\4.6\306816fb57cf94f108a43c95731b08934dcae15c\jopt-simple-4.6.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.paulscode\codecjorbis\20101023\c73b5636faf089d9f00e8732a829577de25237ee\codecjorbis-20101023.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.paulscode\codecwav\20101023\12f031cfe88fef5c1dd36c563c0a3a69bd7261da\codecwav-20101023.jar
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.paulscode\libraryjavasound\20101123\5c5e304366f75f9eaa2e8cca546a1fb6109348b3\libraryjavasound-20101123.jar, examining for mod candidates
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.paulscode\librarylwjglopenal\20100824\73e80d0794c39665aec3f62eee88ca91676674ef\librarylwjglopenal-20100824.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.paulscode\soundsystem\20120107\419c05fe9be71f792b2d76cfc9b67f1ed0fec7f6\soundsystem-20120107.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\io.netty\netty-all\4.0.15.Final\85cad5eb4fc8ae2ecc990dc7c411771a091ded5\netty-all-4.0.15.Final.jar
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\17.0\9c6ef172e8de35fd8d4d8783e4821e57cdef7445\guava-17.0.jar, examining for mod candidates
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.4\b1b6ea3b7e4aa4f492509a4952029cd8e48019ad\commons-io-2.4.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.9\9ce04e34240f674bc72680f8b843b1457383161a\commons-codec-1.9.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput\2.0.5\39c7796b469a600f72380316f6b1f11db6c2c7c4\jinput-2.0.5.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.java.jutils\jutils\1.0.0\e12fe1fda814bd348c1579329c86943d2cd3c6a6\jutils-1.0.0.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.mojang\authlib\1.5.17\893a8c553c0cfc9b6fbdff023747e30152ab09ec\authlib-1.5.17.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.mojang\realms\1.6.1\5655f6fb44aece10e5b3ad7cfee3e6936031c068\realms-1.6.1.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-compress\1.8.1\a698750c16740fd5b3871425f4cb3bbaa87f529d\commons-compress-1.8.1.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.3.3\18f4247ff4572a074444572cee34647c43e7c9c7\httpclient-4.3.3.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.1.3\f6f66e966c70a83ffbdb6f17a0919eaf7c8aca7f\commons-logging-1.1.3.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.3.2\31fbbff1ddbf98f3aa7377c94d33b0447c646b6e\httpcore-4.3.2.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.0-beta9\1dd66e68cccd907880229f9e2de1314bd13ff785\log4j-api-2.0-beta9.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-core\2.0-beta9\678861ba1b2e1fccb594bb0ca03114bb05da9695\log4j-core-2.0-beta9.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl\2.9.1\f58c5aabcef0e41718a564be9f8e412fff8db847\lwjgl-2.9.1.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl_util\2.9.1\290d7ba8a1bd9566f5ddf16ad06f09af5ec9b20e\lwjgl_util-2.9.1.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch\6.5\320a2dfd18513a5f41b4e75729df684488cbd925\twitch-6.5.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-actors\2.11.0\8ccfb6541de179bb1c4d45cf414acee069b7f78b\scala-actors-2.11.0.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\7ff832a6eb9ab6a767f1ade2b548092d0fa64795\jinput-platform-2.0.5-natives-linux.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\385ee093e01f587f30ee1c8a2ee7d408fd732e16\jinput-platform-2.0.5-natives-windows.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\53f9c919f34d2ca9de8c51fc4e1e8282029a9232\jinput-platform-2.0.5-natives-osx.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\206c4ccaecdbcfd2a1631150c69a97bbc9c20c11\twitch-platform-6.5-natives-windows-32.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\9fdd0fd5aed0817063dcf95b69349a171f447ebd\twitch-platform-6.5-natives-windows-64.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\5f9d1ee26257b3a33f0ca06fed335ef462af659f\twitch-platform-6.5-natives-osx.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-external-platform\4.5\18215140f010c05b9f86ef6f0f8871954d2ccebf\twitch-external-platform-4.5-natives-windows-32.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-external-platform\4.5\c3cde57891b935d41b6680a9c5e1502eeab76d86\twitch-external-platform-4.5-natives-windows-64.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\4c517eca808522457dd95ee8fc1fbcdbb602efbe\lwjgl-platform-2.9.1-natives-windows.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\aa9aae879af8eb378e22cfc64db56ec2ca9a44d1\lwjgl-platform-2.9.1-natives-linux.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\2d12c83fdfbc04ecabf02c7bc8cc54d034f0daac\lwjgl-platform-2.9.1-natives-osx.jar
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\Samuel\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\2.0.1\516c03b21d50a644d538de0f0369c620989cd8f0\jsr305-2.0.1.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related directory at C:\Users\Samuel\.gradle\caches\minecraft\net\minecraftforge\forge\1.8-11.14.3.1450\start, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\Samuel\.m2\repository\org\slick2d\slick2d-core\1.0.1\slick2d-core-1.0.1.jar, examining for mod candidates
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.m2\repository\org\lwjgl\lwjgl\lwjgl\2.9.1\lwjgl-2.9.1.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.m2\repository\org\lwjgl\lwjgl\lwjgl-platform\2.9.1\lwjgl-platform-2.9.1-natives-windows.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.m2\repository\org\lwjgl\lwjgl\lwjgl-platform\2.9.1\lwjgl-platform-2.9.1-natives-linux.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.m2\repository\org\lwjgl\lwjgl\lwjgl-platform\2.9.1\lwjgl-platform-2.9.1-natives-osx.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.m2\repository\net\java\jinput\jinput\2.0.5\jinput-2.0.5.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.m2\repository\net\java\jutils\jutils\1.0.0\jutils-1.0.0.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.m2\repository\net\java\jinput\jinput-platform\2.0.5\jinput-platform-2.0.5-natives-linux.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.m2\repository\net\java\jinput\jinput-platform\2.0.5\jinput-platform-2.0.5-natives-windows.jar
+[12:50:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\Samuel\.m2\repository\net\java\jinput\jinput-platform\2.0.5\jinput-platform-2.0.5-natives-osx.jar
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 14.1.4\jre\jre\lib\javaws.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\Samuel\.m2\repository\org\jcraft\jorbis\0.0.17\jorbis-0.0.17.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 14.1.4\lib\idea_rt.jar, examining for mod candidates
+[12:50:06] [Client thread/DEBUG] [FML/]: Minecraft jar mods loaded successfully
+[12:50:06] [Client thread/INFO] [FML/]: Found 0 mods from the command line. Injecting into mod discoverer
+[12:50:06] [Client thread/INFO] [FML/]: Searching C:\Users\Samuel\Desktop\Forge\MinecraftGUI-Mod\eclipse\mods for mods
+[12:50:06] [Client thread/DEBUG] [FML/]: Examining file charsets.jar for potential mods
+[12:50:06] [Client thread/DEBUG] [FML/]: The mod container charsets.jar appears to be missing an mcmod.info file
+[12:50:06] [Client thread/DEBUG] [FML/]: Examining file deploy.jar for potential mods
+[12:50:06] [Client thread/DEBUG] [FML/]: The mod container deploy.jar appears to be missing an mcmod.info file
+[12:50:06] [Client thread/DEBUG] [FML/]: Examining file javaws.jar for potential mods
+[12:50:06] [Client thread/DEBUG] [FML/]: The mod container javaws.jar appears to be missing an mcmod.info file
+[12:50:06] [Client thread/DEBUG] [FML/]: Examining file jce.jar for potential mods
+[12:50:06] [Client thread/DEBUG] [FML/]: The mod container jce.jar appears to be missing an mcmod.info file
+[12:50:06] [Client thread/DEBUG] [FML/]: Examining file jfr.jar for potential mods
+[12:50:06] [Client thread/DEBUG] [FML/]: The mod container jfr.jar appears to be missing an mcmod.info file
+[12:50:06] [Client thread/DEBUG] [FML/]: Examining file jfxrt.jar for potential mods
+[12:50:06] [Client thread/DEBUG] [FML/]: The mod container jfxrt.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file jsse.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container jsse.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file management-agent.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container management-agent.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file plugin.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container plugin.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file resources.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container resources.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file access-bridge-64.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container access-bridge-64.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file dnsns.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container dnsns.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file jaccess.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container jaccess.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file localedata.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container localedata.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file sunec.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container sunec.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file sunjce_provider.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container sunjce_provider.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file sunmscapi.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container sunmscapi.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file zipfs.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container zipfs.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining directory main for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: No mcmod.info file found in directory main
+[12:50:07] [Client thread/TRACE] [FML/]: Recursing into package minecraftgui
+[12:50:07] [Client thread/TRACE] [FML/]: Recursing into package minecraftgui.controllers
+[12:50:07] [Client thread/TRACE] [FML/]: Recursing into package minecraftgui.models
+[12:50:07] [Client thread/TRACE] [FML/]: Recursing into package minecraftgui.models.attributes
+[12:50:07] [Client thread/TRACE] [FML/]: Recursing into package minecraftgui.models.components
+[12:50:07] [Client thread/TRACE] [FML/]: Recursing into package minecraftgui.models.fonts
+[12:50:07] [Client thread/TRACE] [FML/]: Recursing into package minecraftgui.models.images
+[12:50:07] [Client thread/TRACE] [FML/]: Recursing into package minecraftgui.models.shapes
+[12:50:07] [Client thread/TRACE] [FML/]: Recursing into package minecraftgui.views
+[12:50:07] [Client thread/DEBUG] [FML/]: Identified a mod of type Lnet/minecraftforge/fml/common/Mod; (minecraftgui.views.ModInterface) - loading
+[12:50:07] [Client thread/TRACE] [MinecraftGUI/]: Parsed dependency info : [] [] []
+[12:50:07] [Client thread/INFO] [MinecraftGUI/]: Mod MinecraftGUI is missing the required element 'name'. Substituting MinecraftGUI
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining directory main for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: Found an mcmod.info file in directory main
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file forgeSrc-1.8-11.14.3.1450.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container forgeSrc-1.8-11.14.3.1450.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file asm-debug-all-5.0.3.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container asm-debug-all-5.0.3.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file libraryjavasound-20101123.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container libraryjavasound-20101123.jar appears to be missing an mcmod.info file
+[12:50:07] [Client thread/DEBUG] [FML/]: Examining file guava-17.0.jar for potential mods
+[12:50:07] [Client thread/DEBUG] [FML/]: The mod container guava-17.0.jar appears to be missing an mcmod.info file
+[12:50:08] [Client thread/DEBUG] [FML/]: Examining file jsr305-2.0.1.jar for potential mods
+[12:50:08] [Client thread/DEBUG] [FML/]: The mod container jsr305-2.0.1.jar appears to be missing an mcmod.info file
+[12:50:08] [Client thread/DEBUG] [FML/]: Examining directory start for potential mods
+[12:50:08] [Client thread/DEBUG] [FML/]: No mcmod.info file found in directory start
+[12:50:08] [Client thread/TRACE] [FML/]: Recursing into package net
+[12:50:08] [Client thread/TRACE] [FML/]: Recursing into package net.minecraftforge
+[12:50:08] [Client thread/TRACE] [FML/]: Recursing into package net.minecraftforge.gradle
+[12:50:08] [Client thread/TRACE] [FML/]: Recursing into package net.minecraftforge.gradle.tweakers
+[12:50:08] [Client thread/DEBUG] [FML/]: Examining file slick2d-core-1.0.1.jar for potential mods
+[12:50:08] [Client thread/DEBUG] [FML/]: The mod container slick2d-core-1.0.1.jar appears to be missing an mcmod.info file
+[12:50:08] [Client thread/DEBUG] [FML/]: Examining file javaws.jar for potential mods
+[12:50:08] [Client thread/DEBUG] [FML/]: The mod container javaws.jar appears to be missing an mcmod.info file
+[12:50:08] [Client thread/DEBUG] [FML/]: Examining file jorbis-0.0.17.jar for potential mods
+[12:50:08] [Client thread/DEBUG] [FML/]: The mod container jorbis-0.0.17.jar appears to be missing an mcmod.info file
+[12:50:08] [Client thread/DEBUG] [FML/]: Examining file idea_rt.jar for potential mods
+[12:50:08] [Client thread/DEBUG] [FML/]: The mod container idea_rt.jar appears to be missing an mcmod.info file
+[12:50:08] [Client thread/INFO] [FML/]: Forge Mod Loader has identified 4 mods to load
+[12:50:08] [Client thread/TRACE] [FML/]: Received a system property request ''
+[12:50:08] [Client thread/TRACE] [FML/]: System property request managing the state of 0 mods
+[12:50:08] [Client thread/DEBUG] [FML/]: After merging, found state information for 0 mods
+[12:50:08] [Client thread/DEBUG] [FML/]: Found translations in forgeSrc-1.8-11.14.3.1450.jar [en_US, af_ZA, ar_SA, br_FR, ca_ES, cs_CZ, da_DK, de_DE, el_GR, en_US, es_ES, fa_IR, fi_FI, fr_FR, he_IL, hu_HU, it_IT, ja_JP, ko_KR, lt_LT, nb_NO, nl_NL, nn_NO, no_NO, pl_PL, pt_BR, pt_PT, ro_RO, ru_RU, sl_SI, sr_SP, sv_SE, tr_TR, uk_UA, vi_VN, zh_CN, zh_TW, en_US]
+[12:50:08] [Client thread/DEBUG] [FML/]: Found translations in forgeSrc-1.8-11.14.3.1450.jar [en_US, af_ZA, ar_SA, br_FR, ca_ES, cs_CZ, da_DK, de_DE, el_GR, en_US, es_ES, fa_IR, fi_FI, fr_FR, he_IL, hu_HU, it_IT, ja_JP, ko_KR, lt_LT, nb_NO, nl_NL, nn_NO, no_NO, pl_PL, pt_BR, pt_PT, ro_RO, ru_RU, sl_SI, sr_SP, sv_SE, tr_TR, uk_UA, vi_VN, zh_CN, zh_TW, en_US]
+[12:50:08] [Client thread/DEBUG] [MinecraftGUI/]: Enabling mod MinecraftGUI
+[12:50:08] [Client thread/TRACE] [FML/]: Verifying mod requirements are satisfied
+[12:50:08] [Client thread/TRACE] [FML/]: All mod requirements are satisfied
+[12:50:08] [Client thread/TRACE] [FML/]: Sorting mods into an ordered list
+[12:50:08] [Client thread/TRACE] [FML/]: Mod sorting completed successfully
+[12:50:08] [Client thread/DEBUG] [FML/]: Mod sorting data
+[12:50:08] [Client thread/DEBUG] [FML/]: 	MinecraftGUI(MinecraftGUI:2.0): main ()
+[12:50:08] [Client thread/TRACE] [mcp/mcp]: Sending event FMLConstructionEvent to mod mcp
+[12:50:08] [Client thread/TRACE] [mcp/mcp]: Sent event FMLConstructionEvent to mod mcp
+[12:50:08] [Client thread/TRACE] [FML/FML]: Sending event FMLConstructionEvent to mod FML
+[12:50:08] [Client thread/TRACE] [FML/FML]: Mod FML is using network checker : Invoking method checkModLists
+[12:50:08] [Client thread/TRACE] [FML/FML]: Testing mod FML to verify it accepts its own version in a remote connection
+[12:50:08] [Client thread/TRACE] [FML/FML]: The mod FML accepts its own version (8.0.99.99)
+[12:50:08] [Client thread/INFO] [FML/FML]: Attempting connection with missing mods [mcp, FML, Forge, MinecraftGUI] at CLIENT
+[12:50:08] [Client thread/INFO] [FML/FML]: Attempting connection with missing mods [mcp, FML, Forge, MinecraftGUI] at SERVER
+[12:50:08] [Client thread/TRACE] [FML/FML]: Sent event FMLConstructionEvent to mod FML
+[12:50:08] [Client thread/TRACE] [Forge/Forge]: Sending event FMLConstructionEvent to mod Forge
+[12:50:08] [Client thread/TRACE] [FML/Forge]: Mod Forge is using network checker : No network checking performed
+[12:50:08] [Client thread/TRACE] [FML/Forge]: Testing mod Forge to verify it accepts its own version in a remote connection
+[12:50:08] [Client thread/TRACE] [FML/Forge]: The mod Forge accepts its own version (11.14.3.1450)
+[12:50:08] [Client thread/TRACE] [Forge/Forge]: Sent event FMLConstructionEvent to mod Forge
+[12:50:08] [Client thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sending event FMLConstructionEvent to mod MinecraftGUI
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: java.io.FileNotFoundException: mods\MinecraftGUI\handCursor.png (The system cannot find the path specified)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.io.FileInputStream.open(Native Method)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at minecraftgui.controllers.Mouse.loadCursor(Mouse.java:169)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at minecraftgui.controllers.Mouse.<init>(Mouse.java:62)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at minecraftgui.controllers.MainController.<init>(MainController.java:49)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at minecraftgui.views.ModInterface.<init>(ModInterface.java:48)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.lang.Class.newInstance(Class.java:374)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.common.ILanguageAdapter$JavaAdapter.getNewInstance(ILanguageAdapter.java:174)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.common.FMLModContainer.constructMod(FMLModContainer.java:511)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.common.LoadController.sendEventToModContainer(LoadController.java:212)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.common.LoadController.propogateStateMessage(LoadController.java:190)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.common.LoadController.distributeStateMessage(LoadController.java:119)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.common.Loader.loadMods(Loader.java:507)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:213)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraft.client.Minecraft.startGame(Minecraft.java:447)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraft.client.Minecraft.run(Minecraft.java:356)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraft.client.main.Main.main(Main.java:117)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at GradleStart.main(Unknown Source)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: java.io.FileNotFoundException: mods\MinecraftGUI\textCursor.png (The system cannot find the path specified)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.io.FileInputStream.open(Native Method)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at minecraftgui.controllers.Mouse.loadCursor(Mouse.java:169)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at minecraftgui.controllers.Mouse.<init>(Mouse.java:63)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at minecraftgui.controllers.MainController.<init>(MainController.java:49)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at minecraftgui.views.ModInterface.<init>(ModInterface.java:48)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.lang.Class.newInstance(Class.java:374)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.common.ILanguageAdapter$JavaAdapter.getNewInstance(ILanguageAdapter.java:174)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.common.FMLModContainer.constructMod(FMLModContainer.java:511)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.common.LoadController.sendEventToModContainer(LoadController.java:212)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.common.LoadController.propogateStateMessage(LoadController.java:190)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.common.LoadController.distributeStateMessage(LoadController.java:119)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.common.Loader.loadMods(Loader.java:507)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:213)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraft.client.Minecraft.startGame(Minecraft.java:447)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraft.client.Minecraft.run(Minecraft.java:356)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraft.client.main.Main.main(Main.java:117)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at GradleStart.main(Unknown Source)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[12:50:08] [Client thread/INFO] [STDERR/MinecraftGUI]: [java.lang.Throwable$WrappedPrintStream:println:748]: 	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+[12:50:08] [Client thread/TRACE] [FML/MinecraftGUI]: Mod MinecraftGUI is using network checker : Accepting version 2.0
+[12:50:08] [Client thread/TRACE] [FML/MinecraftGUI]: Testing mod MinecraftGUI to verify it accepts its own version in a remote connection
+[12:50:08] [Client thread/TRACE] [FML/MinecraftGUI]: The mod MinecraftGUI accepts its own version (2.0)
+[12:50:08] [Client thread/DEBUG] [FML/MinecraftGUI]: Attempting to inject @SidedProxy classes into MinecraftGUI
+[12:50:08] [Client thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sent event FMLConstructionEvent to mod MinecraftGUI
+[12:50:08] [Client thread/DEBUG] [FML/]: Mod signature data
+[12:50:08] [Client thread/DEBUG] [FML/]:  	Valid Signatures:
+[12:50:08] [Client thread/DEBUG] [FML/]:  	Missing Signatures:
+[12:50:08] [Client thread/DEBUG] [FML/]: 		mcp	(Minecraft Coder Pack	9.05)	minecraft.jar
+[12:50:08] [Client thread/DEBUG] [FML/]: 		FML	(Forge Mod Loader	8.0.99.99)	forgeSrc-1.8-11.14.3.1450.jar
+[12:50:08] [Client thread/DEBUG] [FML/]: 		Forge	(Minecraft Forge	11.14.3.1450)	forgeSrc-1.8-11.14.3.1450.jar
+[12:50:08] [Client thread/DEBUG] [FML/]: 		MinecraftGUI	(MinecraftGUI	2.0)	main
+[12:50:08] [Client thread/DEBUG] [Forge Mod Loader/]: Mod Forge Mod Loader is missing a pack.mcmeta file, substituting a dummy one
+[12:50:08] [Client thread/DEBUG] [Minecraft Forge/]: Mod Minecraft Forge is missing a pack.mcmeta file, substituting a dummy one
+[12:50:08] [Client thread/DEBUG] [MinecraftGUI/]: Mod MinecraftGUI is missing a pack.mcmeta file, substituting a dummy one
+[12:50:08] [Client thread/INFO] [FML/]: Processing ObjectHolder annotations
+[12:50:08] [Client thread/INFO] [FML/]: Found 384 ObjectHolder annotations
+[12:50:08] [Client thread/INFO] [FML/]: Identifying ItemStackHolder annotations
+[12:50:08] [Client thread/INFO] [FML/]: Found 0 ItemStackHolder annotations
+[12:50:08] [Client thread/TRACE] [mcp/mcp]: Sending event FMLPreInitializationEvent to mod mcp
+[12:50:08] [Client thread/TRACE] [mcp/mcp]: Sent event FMLPreInitializationEvent to mod mcp
+[12:50:08] [Client thread/TRACE] [FML/FML]: Sending event FMLPreInitializationEvent to mod FML
+[12:50:08] [Client thread/TRACE] [FML/FML]: Sent event FMLPreInitializationEvent to mod FML
+[12:50:08] [Client thread/TRACE] [Forge/Forge]: Sending event FMLPreInitializationEvent to mod Forge
+[12:50:08] [Client thread/INFO] [FML/Forge]: Configured a dormant chunk cache size of 0
+[12:50:08] [Client thread/TRACE] [Forge/Forge]: Sent event FMLPreInitializationEvent to mod Forge
+[12:50:08] [Client thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sending event FMLPreInitializationEvent to mod MinecraftGUI
+[12:50:08] [Client thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sent event FMLPreInitializationEvent to mod MinecraftGUI
+[12:50:08] [Client thread/INFO] [FML/]: Applying holder lookups
+[12:50:08] [Client thread/INFO] [FML/]: Holder lookups applied
+[12:50:08] [Client thread/INFO] [FML/]: Injecting itemstacks
+[12:50:08] [Client thread/INFO] [FML/]: Itemstack injection complete
+[12:50:12] [Client thread/TRACE] [mcp/mcp]: Sending event FMLInitializationEvent to mod mcp
+[12:50:12] [Client thread/TRACE] [mcp/mcp]: Sent event FMLInitializationEvent to mod mcp
+[12:50:12] [Client thread/TRACE] [FML/FML]: Sending event FMLInitializationEvent to mod FML
+[12:50:12] [Client thread/TRACE] [FML/FML]: Sent event FMLInitializationEvent to mod FML
+[12:50:12] [Client thread/TRACE] [Forge/Forge]: Sending event FMLInitializationEvent to mod Forge
+[12:50:12] [Client thread/TRACE] [Forge/Forge]: Sent event FMLInitializationEvent to mod Forge
+[12:50:12] [Client thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sending event FMLInitializationEvent to mod MinecraftGUI
+[12:50:12] [Client thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sent event FMLInitializationEvent to mod MinecraftGUI
+[12:50:12] [Client thread/TRACE] [FML/]: Attempting to deliver 0 IMC messages to mod mcp
+[12:50:12] [Client thread/TRACE] [mcp/mcp]: Sending event IMCEvent to mod mcp
+[12:50:12] [Client thread/TRACE] [mcp/mcp]: Sent event IMCEvent to mod mcp
+[12:50:12] [Client thread/TRACE] [FML/]: Attempting to deliver 0 IMC messages to mod FML
+[12:50:12] [Client thread/TRACE] [FML/FML]: Sending event IMCEvent to mod FML
+[12:50:12] [Client thread/TRACE] [FML/FML]: Sent event IMCEvent to mod FML
+[12:50:12] [Client thread/TRACE] [FML/]: Attempting to deliver 0 IMC messages to mod Forge
+[12:50:12] [Client thread/TRACE] [Forge/Forge]: Sending event IMCEvent to mod Forge
+[12:50:12] [Client thread/TRACE] [Forge/Forge]: Sent event IMCEvent to mod Forge
+[12:50:12] [Client thread/TRACE] [FML/]: Attempting to deliver 0 IMC messages to mod MinecraftGUI
+[12:50:12] [Client thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sending event IMCEvent to mod MinecraftGUI
+[12:50:12] [Client thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sent event IMCEvent to mod MinecraftGUI
+[12:50:12] [Client thread/INFO] [FML/]: Injecting itemstacks
+[12:50:12] [Client thread/INFO] [FML/]: Itemstack injection complete
+[12:50:12] [Client thread/TRACE] [mcp/mcp]: Sending event FMLPostInitializationEvent to mod mcp
+[12:50:12] [Client thread/TRACE] [mcp/mcp]: Sent event FMLPostInitializationEvent to mod mcp
+[12:50:12] [Client thread/TRACE] [FML/FML]: Sending event FMLPostInitializationEvent to mod FML
+[12:50:12] [Client thread/TRACE] [FML/FML]: Sent event FMLPostInitializationEvent to mod FML
+[12:50:12] [Client thread/TRACE] [Forge/Forge]: Sending event FMLPostInitializationEvent to mod Forge
+[12:50:12] [Client thread/TRACE] [Forge/Forge]: Sent event FMLPostInitializationEvent to mod Forge
+[12:50:12] [Client thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sending event FMLPostInitializationEvent to mod MinecraftGUI
+[12:50:12] [Client thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sent event FMLPostInitializationEvent to mod MinecraftGUI
+[12:50:12] [Client thread/TRACE] [mcp/mcp]: Sending event FMLLoadCompleteEvent to mod mcp
+[12:50:12] [Client thread/TRACE] [mcp/mcp]: Sent event FMLLoadCompleteEvent to mod mcp
+[12:50:12] [Client thread/TRACE] [FML/FML]: Sending event FMLLoadCompleteEvent to mod FML
+[12:50:12] [Client thread/TRACE] [FML/FML]: Sent event FMLLoadCompleteEvent to mod FML
+[12:50:12] [Client thread/TRACE] [Forge/Forge]: Sending event FMLLoadCompleteEvent to mod Forge
+[12:50:12] [Client thread/DEBUG] [FML/Forge]: Forge RecipeSorter Baking:
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   14: RecipeEntry("Before", UNKNOWN, )
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   13: RecipeEntry("minecraft:shaped", SHAPED, net.minecraft.item.crafting.ShapedRecipes) Before: minecraft:shapeless
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   12: RecipeEntry("minecraft:mapextending", SHAPED, net.minecraft.item.crafting.RecipesMapExtending) Before: minecraft:shapeless After: minecraft:shaped
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   11: RecipeEntry("forge:shapedore", SHAPED, net.minecraftforge.oredict.ShapedOreRecipe) Before: minecraft:shapeless After: minecraft:shaped
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   10: RecipeEntry("minecraft:shapeless", SHAPELESS, net.minecraft.item.crafting.ShapelessRecipes) After: minecraft:shaped
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   9: RecipeEntry("forge:shapelessore", SHAPELESS, net.minecraftforge.oredict.ShapelessOreRecipe) After: minecraft:shapeless
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   8: RecipeEntry("minecraft:pattern_add", SHAPELESS, net.minecraft.item.crafting.RecipesBanners$RecipeAddPattern) After: minecraft:shapeless
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   7: RecipeEntry("minecraft:pattern_dupe", SHAPELESS, net.minecraft.item.crafting.RecipesBanners$RecipeDuplicatePattern) After: minecraft:shapeless
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   6: RecipeEntry("minecraft:armordyes", SHAPELESS, net.minecraft.item.crafting.RecipesArmorDyes) After: minecraft:shapeless
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   5: RecipeEntry("minecraft:bookcloning", SHAPELESS, net.minecraft.item.crafting.RecipeBookCloning) After: minecraft:shapeless
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   4: RecipeEntry("minecraft:mapcloning", SHAPELESS, net.minecraft.item.crafting.RecipesMapCloning) After: minecraft:shapeless
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   3: RecipeEntry("minecraft:repair", SHAPELESS, net.minecraft.item.crafting.RecipeRepairItem) After: minecraft:shapeless
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   2: RecipeEntry("minecraft:fireworks", SHAPELESS, net.minecraft.item.crafting.RecipeFireworks) After: minecraft:shapeless
+[12:50:12] [Client thread/DEBUG] [FML/Forge]:   1: RecipeEntry("After", UNKNOWN, )
+[12:50:12] [Client thread/DEBUG] [FML/Forge]: Sorting recipies
+[12:50:12] [Client thread/TRACE] [Forge/Forge]: Sent event FMLLoadCompleteEvent to mod Forge
+[12:50:12] [Client thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sending event FMLLoadCompleteEvent to mod MinecraftGUI
+[12:50:12] [Client thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sent event FMLLoadCompleteEvent to mod MinecraftGUI
+[12:50:12] [Client thread/DEBUG] [FML/]: Freezing block and item id maps
+[12:50:12] [Client thread/DEBUG] [FML/]: Registry consistency check successful
+[12:50:12] [Client thread/DEBUG] [FML/]: Registry consistency check successful
+[12:50:12] [Client thread/INFO] [FML/]: Forge Mod Loader has successfully loaded 4 mods
+[12:50:14] [Client thread/DEBUG] [Forge Mod Loader/]: Mod Forge Mod Loader is missing a pack.mcmeta file, substituting a dummy one
+[12:50:14] [Client thread/DEBUG] [Minecraft Forge/]: Mod Minecraft Forge is missing a pack.mcmeta file, substituting a dummy one
+[12:50:14] [Client thread/DEBUG] [MinecraftGUI/]: Mod MinecraftGUI is missing a pack.mcmeta file, substituting a dummy one
+[12:50:21] [Client thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
+[12:50:21] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerAboutToStartEvent to mod mcp
+[12:50:21] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerAboutToStartEvent to mod mcp
+[12:50:21] [Server thread/TRACE] [FML/FML]: Sending event FMLServerAboutToStartEvent to mod FML
+[12:50:21] [Server thread/TRACE] [FML/FML]: Sent event FMLServerAboutToStartEvent to mod FML
+[12:50:21] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerAboutToStartEvent to mod Forge
+[12:50:21] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerAboutToStartEvent to mod Forge
+[12:50:21] [Server thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sending event FMLServerAboutToStartEvent to mod MinecraftGUI
+[12:50:21] [Server thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sent event FMLServerAboutToStartEvent to mod MinecraftGUI
+[12:50:21] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
+[12:50:21] [Server thread/INFO] [FML/]: Injecting existing block and item data into this server instance
+[12:50:21] [Server thread/DEBUG] [FML/]: Registry consistency check successful
+[12:50:21] [Server thread/DEBUG] [FML/]: Registry consistency check successful
+[12:50:21] [Server thread/TRACE] [FML/]: Skipping remap event - no remaps occured
+[12:50:21] [Server thread/INFO] [FML/]: Applying holder lookups
+[12:50:21] [Server thread/INFO] [FML/]: Holder lookups applied
+[12:50:21] [Server thread/DEBUG] [FML/]: Loading persistent fluid defaults from world
+[12:50:21] [Server thread/DEBUG] [FML/]: The fluid minecraft:water has been selected as the default fluid for water
+[12:50:21] [Server thread/DEBUG] [FML/]: The fluid minecraft:lava has been selected as the default fluid for lava
+[12:50:21] [Server thread/INFO] [FML/]: Loading dimension 0 (New World) (net.minecraft.server.integrated.IntegratedServer@65659674)
+[12:50:22] [Server thread/INFO] [FML/]: Loading dimension 1 (New World) (net.minecraft.server.integrated.IntegratedServer@65659674)
+[12:50:22] [Server thread/INFO] [FML/]: Loading dimension -1 (New World) (net.minecraft.server.integrated.IntegratedServer@65659674)
+[12:50:25] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStartingEvent to mod mcp
+[12:50:25] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStartingEvent to mod mcp
+[12:50:25] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStartingEvent to mod FML
+[12:50:25] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStartingEvent to mod FML
+[12:50:25] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStartingEvent to mod Forge
+[12:50:25] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStartingEvent to mod Forge
+[12:50:25] [Server thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sending event FMLServerStartingEvent to mod MinecraftGUI
+[12:50:25] [Server thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sent event FMLServerStartingEvent to mod MinecraftGUI
+[12:50:25] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStartedEvent to mod mcp
+[12:50:25] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStartedEvent to mod mcp
+[12:50:25] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStartedEvent to mod FML
+[12:50:25] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStartedEvent to mod FML
+[12:50:25] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStartedEvent to mod Forge
+[12:50:25] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStartedEvent to mod Forge
+[12:50:25] [Server thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sending event FMLServerStartedEvent to mod MinecraftGUI
+[12:50:25] [Server thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sent event FMLServerStartedEvent to mod MinecraftGUI
+[12:50:26] [Netty Local Client IO #0/TRACE] [FML/]: Handshake channel activating
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]: FMLHandshakeClientState: null->FMLHandshakeClientState$1:START
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]:   Next: HELLO
+[12:50:26] [Netty Server IO #1/TRACE] [FML/]: Handshake channel activating
+[12:50:26] [Netty Server IO #1/DEBUG] [FML/]: FMLHandshakeServerState: null->FMLHandshakeServerState$1:START
+[12:50:26] [Netty Server IO #1/DEBUG] [FML/]:   Next: HELLO
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]: Server FML protocol version 2, 4 byte dimension received 0
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]: FMLHandshakeClientState: $ServerHello->FMLHandshakeClientState$2:HELLO
+[12:50:26] [Netty Local Client IO #0/INFO] [FML/]: Server protocol version 2
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]: Received override dimension 0
+[12:50:26] [Netty Server IO #1/DEBUG] [FML/]: FMLHandshakeServerState: $ClientHello->FMLHandshakeServerState$2:HELLO
+[12:50:26] [Netty Server IO #1/INFO] [FML/]: Client protocol version 2
+[12:50:26] [Netty Server IO #1/DEBUG] [FML/]:   Next: HELLO
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]:   Next: WAITINGSERVERDATA
+[12:50:26] [Netty Server IO #1/DEBUG] [FML/]: FMLHandshakeServerState: $ModList:4 mods->FMLHandshakeServerState$2:HELLO
+[12:50:26] [Netty Server IO #1/INFO] [FML/]: Client attempting to join with 4 mods : mcp@9.05,FML@8.0.99.99,Forge@11.14.3.1450,MinecraftGUI@2.0
+[12:50:26] [Netty Server IO #1/DEBUG] [FML/]:   Next: WAITINGCACK
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]: FMLHandshakeClientState: $ModList:4 mods->FMLHandshakeClientState$3:WAITINGSERVERDATA
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]:   Next: PENDINGCOMPLETE
+[12:50:26] [Netty Server IO #1/DEBUG] [FML/]: FMLHandshakeServerState: $HandshakeAck:{2}->FMLHandshakeServerState$3:WAITINGCACK
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]: FMLHandshakeClientState: $HandshakeAck:{2}->FMLHandshakeClientState$5:PENDINGCOMPLETE
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]:   Next: COMPLETE
+[12:50:26] [Netty Server IO #1/DEBUG] [FML/]:   Next: COMPLETE
+[12:50:26] [Netty Server IO #1/DEBUG] [FML/]: FMLHandshakeServerState: $HandshakeAck:{4}->FMLHandshakeServerState$4:COMPLETE
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]: The fluid minecraft:water has been selected as the default fluid for water
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]: The fluid minecraft:lava has been selected as the default fluid for lava
+[12:50:26] [Netty Server IO #1/DEBUG] [FML/]:   Next: DONE
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]: FMLHandshakeClientState: $HandshakeAck:{3}->FMLHandshakeClientState$6:COMPLETE
+[12:50:26] [Netty Local Client IO #0/DEBUG] [FML/]:   Next: DONE
+[12:50:26] [Netty Server IO #1/DEBUG] [FML/]: FMLHandshakeServerState: $HandshakeAck:{5}->FMLHandshakeServerState$5:DONE
+[12:50:26] [Netty Server IO #1/DEBUG] [FML/]:   Next: DONE
+[12:50:26] [Netty Local Client IO #0/INFO] [FML/]: [Netty Local Client IO #0] Client side modded connection established
+[12:50:26] [Server thread/INFO] [FML/]: [Server thread] Server side modded connection established
+[12:50:26] [Client thread/DEBUG] [FML/]: Overriding dimension: using 0
+[12:50:31] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
+[12:50:43] [Client thread/ERROR] [FML/]: Exception caught during firing event net.minecraftforge.client.event.RenderGameOverlayEvent$Text@7704c481:
+java.lang.StringIndexOutOfBoundsException: String index out of range: 9
+	at java.lang.String.substring(String.java:1907) ~[?:1.7.0_65]
+	at minecraftgui.models.components.Input.draw(Input.java:138) ~[Input.class:?]
+	at minecraftgui.controllers.MainController.draw(MainController.java:225) ~[MainController.class:?]
+	at minecraftgui.controllers.MainController.draw(MainController.java:221) ~[MainController.class:?]
+	at minecraftgui.views.ModInterface.update(ModInterface.java:70) ~[ModInterface.class:?]
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_6_ModInterface_update_Text.invoke(.dynamic) ~[?:?]
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:55) ~[ASMEventHandler.class:?]
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:138) [EventBus.class:?]
+	at net.minecraftforge.client.GuiIngameForge.renderHUDText(GuiIngameForge.java:676) [GuiIngameForge.class:?]
+	at net.minecraftforge.client.GuiIngameForge.renderGameOverlay(GuiIngameForge.java:159) [GuiIngameForge.class:?]
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1112) [EntityRenderer.class:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1115) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:376) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(Main.java:117) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_65]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.11.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.11.jar:?]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source) [start/:?]
+	at GradleStart.main(Unknown Source) [start/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_65]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140) [idea_rt.jar:?]
+[12:50:43] [Client thread/ERROR] [FML/]: Index: 1 Listeners:
+[12:50:43] [Client thread/ERROR] [FML/]: 0: NORMAL
+[12:50:43] [Client thread/ERROR] [FML/]: 1: ASM: minecraftgui.views.ModInterface@5f1fd3a5 update(Lnet/minecraftforge/client/event/RenderGameOverlayEvent$Text;)V
+[12:50:43] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStoppingEvent to mod mcp
+[12:50:43] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStoppingEvent to mod mcp
+[12:50:43] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStoppingEvent to mod FML
+[12:50:43] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStoppingEvent to mod FML
+[12:50:43] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStoppingEvent to mod Forge
+[12:50:43] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStoppingEvent to mod Forge
+[12:50:43] [Server thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sending event FMLServerStoppingEvent to mod MinecraftGUI
+[12:50:43] [Server thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sent event FMLServerStoppingEvent to mod MinecraftGUI
+[12:50:43] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
+[12:50:43] [Server thread/INFO] [FML/]: Unloading dimension 0
+[12:50:43] [Server thread/INFO] [FML/]: Unloading dimension -1
+[12:50:43] [Server thread/INFO] [FML/]: Unloading dimension 1
+[12:50:43] [Server thread/DEBUG] [FML/]: Reverting to frozen data state.
+[12:50:43] [Server thread/INFO] [FML/]: Applying holder lookups
+[12:50:43] [Server thread/INFO] [FML/]: Holder lookups applied
+[12:50:43] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStoppedEvent to mod mcp
+[12:50:43] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStoppedEvent to mod mcp
+[12:50:43] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStoppedEvent to mod FML
+[12:50:43] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStoppedEvent to mod FML
+[12:50:43] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStoppedEvent to mod Forge
+[12:50:43] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStoppedEvent to mod Forge
+[12:50:43] [Server thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sending event FMLServerStoppedEvent to mod MinecraftGUI
+[12:50:43] [Server thread/TRACE] [MinecraftGUI/MinecraftGUI]: Sent event FMLServerStoppedEvent to mod MinecraftGUI
+[12:50:44] [Client thread/INFO] [STDOUT/]: [net.minecraft.init.Bootstrap:printToSYSOUT:663]: ---- Minecraft Crash Report ----
+// Daisy, daisy...
+
+Time: 15-11-13 12:50
+Description: Unexpected error
+
+java.lang.StringIndexOutOfBoundsException: String index out of range: 9
+	at java.lang.String.substring(String.java:1907)
+	at minecraftgui.models.components.Input.draw(Input.java:138)
+	at minecraftgui.controllers.MainController.draw(MainController.java:225)
+	at minecraftgui.controllers.MainController.draw(MainController.java:221)
+	at minecraftgui.views.ModInterface.update(ModInterface.java:70)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_6_ModInterface_update_Text.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:55)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:138)
+	at net.minecraftforge.client.GuiIngameForge.renderHUDText(GuiIngameForge.java:676)
+	at net.minecraftforge.client.GuiIngameForge.renderGameOverlay(GuiIngameForge.java:159)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1112)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1115)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:376)
+	at net.minecraft.client.main.Main.main(Main.java:117)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at java.lang.String.substring(String.java:1907)
+	at minecraftgui.models.components.Input.draw(Input.java:138)
+	at minecraftgui.controllers.MainController.draw(MainController.java:225)
+	at minecraftgui.controllers.MainController.draw(MainController.java:221)
+	at minecraftgui.views.ModInterface.update(ModInterface.java:70)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_6_ModInterface_update_Text.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:55)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:138)
+	at net.minecraftforge.client.GuiIngameForge.renderHUDText(GuiIngameForge.java:676)
+	at net.minecraftforge.client.GuiIngameForge.renderGameOverlay(GuiIngameForge.java:159)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player373'/53, l='MpServer', x=-269,50, y=96,00, z=2,50]]
+	Chunk stats: MultiplayerChunkCache: 533, 533
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: -264,00,64,00,9,00 - World: (-264,64,9), Chunk: (at 8,4,9 in -17,0; contains blocks -272,0,0 to -257,255,15), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,0,0 to -1,255,511)
+	Level time: 119 game time, 119 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 123 total; [EntitySkeleton['Skeleton'/59, l='MpServer', x=-261,50, y=28,00, z=-12,50], EntitySkeleton['Skeleton'/58, l='MpServer', x=-262,50, y=28,00, z=-11,50], EntityWitch['Witch'/62, l='MpServer', x=-234,50, y=43,00, z=32,50], EntityWitch['Witch'/61, l='MpServer', x=-228,06, y=43,00, z=31,50], EntityWitch['Witch'/60, l='MpServer', x=-227,38, y=43,00, z=30,34], EntityZombie['Zombie'/68, l='MpServer', x=-324,50, y=35,00, z=-33,50], EntityZombie['Zombie'/69, l='MpServer', x=-323,38, y=35,00, z=-33,84], EntityZombie['Zombie'/67, l='MpServer', x=-325,50, y=35,00, z=-33,50], EntitySquid['Squid'/87, l='MpServer', x=-314,74, y=59,76, z=44,66], EntitySquid['Squid'/93, l='MpServer', x=-222,10, y=52,26, z=-27,20], EntitySquid['Squid'/92, l='MpServer', x=-220,49, y=51,29, z=-29,47], EntitySquid['Squid'/94, l='MpServer', x=-219,55, y=52,58, z=-30,55], EntitySquid['Squid'/89, l='MpServer', x=-311,74, y=59,00, z=37,85], EntitySquid['Squid'/88, l='MpServer', x=-310,94, y=58,63, z=50,04], EntitySquid['Squid'/91, l='MpServer', x=-224,59, y=52,00, z=-24,43], EntitySquid['Squid'/90, l='MpServer', x=-305,62, y=60,19, z=37,19], EntityCreeper['Creeper'/1056, l='MpServer', x=-243,50, y=24,01, z=61,50], EntityCreeper['Creeper'/1078, l='MpServer', x=-291,50, y=42,02, z=-50,50], EntitySquid['Squid'/157, l='MpServer', x=-319,46, y=47,70, z=64,46], EntitySquid['Squid'/163, l='MpServer', x=-297,80, y=60,00, z=-8,47], EntitySquid['Squid'/162, l='MpServer', x=-317,12, y=47,05, z=62,65], EntitySquid['Squid'/161, l='MpServer', x=-319,62, y=48,15, z=67,76], EntitySquid['Squid'/160, l='MpServer', x=-321,68, y=47,06, z=55,25], EntitySquid['Squid'/166, l='MpServer', x=-297,41, y=61,73, z=-11,01], EntitySquid['Squid'/165, l='MpServer', x=-290,59, y=62,16, z=-6,50], EntitySquid['Squid'/164, l='MpServer', x=-289,28, y=62,50, z=-7,49], EntitySquid['Squid'/178, l='MpServer', x=-307,66, y=61,64, z=-52,84], EntitySquid['Squid'/179, l='MpServer', x=-315,86, y=61,66, z=-45,66], EntitySquid['Squid'/176, l='MpServer', x=-322,78, y=62,54, z=-57,37], EntitySquid['Squid'/177, l='MpServer', x=-317,80, y=62,50, z=-56,46], EntitySquid['Squid'/208, l='MpServer', x=-293,41, y=61,97, z=61,67], EntitySquid['Squid'/209, l='MpServer', x=-294,59, y=60,49, z=49,96], EntitySquid['Squid'/210, l='MpServer', x=-291,78, y=60,36, z=53,11], EntitySquid['Squid'/211, l='MpServer', x=-291,93, y=62,43, z=54,81], EntitySquid['Squid'/227, l='MpServer', x=-207,52, y=54,76, z=61,37], EntitySquid['Squid'/224, l='MpServer', x=-212,34, y=57,29, z=66,30], EntitySquid['Squid'/283, l='MpServer', x=-283,66, y=62,02, z=65,39], EntitySquid['Squid'/282, l='MpServer', x=-291,65, y=62,00, z=62,53], EntitySquid['Squid'/281, l='MpServer', x=-282,79, y=62,41, z=63,97], EntitySquid['Squid'/266, l='MpServer', x=-210,79, y=56,89, z=7,25], EntitySquid['Squid'/265, l='MpServer', x=-208,12, y=54,32, z=6,58], EntitySquid['Squid'/305, l='MpServer', x=-233,85, y=55,94, z=-16,36], EntitySquid['Squid'/307, l='MpServer', x=-233,13, y=55,36, z=-9,28], EntitySquid['Squid'/306, l='MpServer', x=-235,92, y=57,49, z=-13,62], EntitySquid['Squid'/308, l='MpServer', x=-229,57, y=56,27, z=-15,27], EntitySquid['Squid'/319, l='MpServer', x=-238,48, y=60,35, z=44,05], EntitySquid['Squid'/296, l='MpServer', x=-253,05, y=57,00, z=-30,40], EntitySquid['Squid'/297, l='MpServer', x=-253,62, y=57,83, z=-24,44], EntitySquid['Squid'/298, l='MpServer', x=-251,83, y=59,13, z=-25,62], EntitySquid['Squid'/299, l='MpServer', x=-253,29, y=57,00, z=-25,90], EntitySquid['Squid'/326, l='MpServer', x=-224,12, y=59,26, z=34,36], EntitySquid['Squid'/324, l='MpServer', x=-219,23, y=57,91, z=41,16], EntitySquid['Squid'/325, l='MpServer', x=-225,19, y=61,47, z=39,75], EntitySquid['Squid'/322, l='MpServer', x=-244,47, y=60,81, z=54,97], EntitySquid['Squid'/323, l='MpServer', x=-221,15, y=61,82, z=41,41], EntityFallingBlock['Falling Block'/2520, l='MpServer', x=-279,50, y=69,67, z=-6,50], EntitySquid['Squid'/320, l='MpServer', x=-245,18, y=62,00, z=41,41], EntitySquid['Squid'/321, l='MpServer', x=-238,39, y=62,39, z=47,45], EntitySkeleton['Skeleton'/410, l='MpServer', x=-226,50, y=20,00, z=-76,50], EntitySkeleton['Skeleton'/411, l='MpServer', x=-224,31, y=20,00, z=-73,09], EntityBat['Bat'/415, l='MpServer', x=-226,92, y=19,75, z=-72,55], EntitySkeleton['Skeleton'/412, l='MpServer', x=-217,35, y=20,76, z=-72,47], EntityPlayerSP['Player373'/53, l='MpServer', x=-269,50, y=96,00, z=2,50], EntitySquid['Squid'/397, l='MpServer', x=-299,10, y=53,84, z=-57,18], EntityZombie['Zombie'/432, l='MpServer', x=-253,50, y=47,00, z=45,50], EntityBat['Bat'/434, l='MpServer', x=-254,25, y=27,13, z=-75,47], EntityBat['Bat'/416, l='MpServer', x=-226,69, y=20,20, z=-73,75], EntityCreeper['Creeper'/476, l='MpServer', x=-247,50, y=27,00, z=56,50], EntityBat['Bat'/522, l='MpServer', x=-235,47, y=20,81, z=-53,97], EntitySkeleton['Skeleton'/535, l='MpServer', x=-194,61, y=33,00, z=-5,63], EntitySkeleton['Skeleton'/534, l='MpServer', x=-193,72, y=33,00, z=-5,47], EntityCreeper['Creeper'/537, l='MpServer', x=-210,50, y=17,00, z=16,50], EntitySkeleton['Skeleton'/536, l='MpServer', x=-194,56, y=34,07, z=-4,31], EntitySkeleton['Skeleton'/610, l='MpServer', x=-222,50, y=34,00, z=-74,50], EntitySkeleton['Skeleton'/609, l='MpServer', x=-224,50, y=34,00, z=-72,50], EntitySkeleton['Skeleton'/582, l='MpServer', x=-224,76, y=20,00, z=-73,88], EntitySpider['Spider'/583, l='MpServer', x=-224,63, y=23,00, z=-73,28], EntityCreeper['Creeper'/1561, l='MpServer', x=-245,50, y=27,02, z=59,50], EntityZombie['Zombie'/1562, l='MpServer', x=-237,44, y=19,00, z=-68,01], EntitySkeleton['Skeleton'/1554, l='MpServer', x=-275,50, y=42,02, z=-45,50], EntityBat['Bat'/685, l='MpServer', x=-269,50, y=24,03, z=39,47], EntitySkeleton['Skeleton'/1766, l='MpServer', x=-240,50, y=32,02, z=-72,50], EntitySkeleton['Skeleton'/681, l='MpServer', x=-242,50, y=12,00, z=11,50], EntitySkeleton['Skeleton'/678, l='MpServer', x=-237,31, y=13,16, z=10,31], EntityZombie['Zombie'/674, l='MpServer', x=-238,41, y=20,00, z=-67,91], EntityZombie['Zombie'/673, l='MpServer', x=-237,50, y=20,00, z=-69,50], EntityZombie['Zombie'/702, l='MpServer', x=-286,50, y=45,00, z=-51,50], EntityCreeper['Creeper'/703, l='MpServer', x=-285,50, y=45,00, z=-50,50], EntityZombie['Zombie'/658, l='MpServer', x=-258,50, y=49,00, z=-26,50], EntityZombie['Zombie'/659, l='MpServer', x=-262,37, y=47,84, z=-21,58], EntityBat['Bat'/762, l='MpServer', x=-221,16, y=24,02, z=-67,64], EntityBat['Bat'/761, l='MpServer', x=-224,04, y=24,36, z=-60,48], EntityBat['Bat'/758, l='MpServer', x=-202,66, y=18,53, z=0,13], EntitySkeleton['Skeleton'/1723, l='MpServer', x=-224,50, y=43,02, z=-58,50], EntitySkeleton['Skeleton'/712, l='MpServer', x=-316,50, y=22,00, z=-10,50], EntityBat['Bat'/719, l='MpServer', x=-322,63, y=20,81, z=-14,69], EntityZombie['Zombie'/711, l='MpServer', x=-309,50, y=22,00, z=-12,50], EntityBat['Bat'/720, l='MpServer', x=-326,53, y=19,06, z=-32,28], EntityZombie['Zombie'/829, l='MpServer', x=-312,50, y=31,00, z=4,50], EntityCreeper['Creeper'/806, l='MpServer', x=-324,50, y=29,00, z=-9,50], EntitySkeleton['Skeleton'/807, l='MpServer', x=-323,50, y=29,00, z=-8,50], EntityCreeper['Creeper'/803, l='MpServer', x=-248,50, y=13,00, z=26,50], EntityCreeper['Creeper'/794, l='MpServer', x=-215,50, y=14,00, z=11,50], EntitySkeleton['Skeleton'/793, l='MpServer', x=-213,50, y=14,00, z=11,50], EntityBat['Bat'/768, l='MpServer', x=-271,25, y=45,56, z=-53,63], EntityBat['Bat'/769, l='MpServer', x=-271,59, y=44,00, z=-51,47], EntityZombie['Zombie'/876, l='MpServer', x=-307,25, y=47,00, z=-21,59], EntityCreeper['Creeper'/1823, l='MpServer', x=-212,50, y=13,02, z=8,50], EntityBat['Bat'/833, l='MpServer', x=-287,97, y=11,22, z=-47,59], EntityZombie['Zombie'/943, l='MpServer', x=-193,44, y=34,00, z=-8,56], EntityZombie['Zombie'/929, l='MpServer', x=-312,50, y=20,00, z=-12,50], EntityZombie['Zombie'/931, l='MpServer', x=-311,50, y=20,00, z=-15,50], EntityZombie['Zombie'/930, l='MpServer', x=-313,50, y=20,00, z=-14,50], EntityFallingBlock['Falling Block'/2826, l='MpServer', x=-279,50, y=72,55, z=-6,50], EntityCreeper['Creeper'/909, l='MpServer', x=-330,50, y=27,00, z=-30,50], EntityEnderman['Enderman'/1021, l='MpServer', x=-225,50, y=24,00, z=-58,50], EntityZombie['Zombie'/1001, l='MpServer', x=-241,50, y=33,00, z=-74,50], EntityCreeper['Creeper'/987, l='MpServer', x=-275,50, y=63,00, z=40,50], EntitySkeleton['Skeleton'/984, l='MpServer', x=-236,31, y=19,00, z=-56,19], EntityZombie['Zombie'/985, l='MpServer', x=-203,50, y=34,00, z=40,50], EntitySkeleton['Skeleton'/982, l='MpServer', x=-236,31, y=19,00, z=-58,84], EntitySkeleton['Skeleton'/983, l='MpServer', x=-237,50, y=19,00, z=-55,50], EntitySpider['Spider'/981, l='MpServer', x=-238,72, y=20,02, z=-58,66]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:392)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2615)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:405)
+	at net.minecraft.client.main.Main.main(Main.java:117)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8
+	Operating System: Windows 7 (amd64) version 6.1
+	Java Version: 1.7.0_65, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 650672064 bytes (620 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 95
+	FML: MCP v9.10 FML v8.0.99.99 Minecraft Forge 11.14.3.1450 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] (forgeSrc-1.8-11.14.3.1450.jar) 
+	UCHIJAAAA	Forge{11.14.3.1450} [Minecraft Forge] (forgeSrc-1.8-11.14.3.1450.jar) 
+	UCHIJAAAA	MinecraftGUI{2.0} [MinecraftGUI] (main) 
+	Loaded coremods (and transformers): 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.5.0 NVIDIA 358.50' Renderer: 'GeForce GTX 770/PCIe/SSE2'
+	Launched Version: 1.8
+	LWJGL: 2.9.1
+	OpenGL: GeForce GTX 770/PCIe/SSE2 GL version 4.5.0 NVIDIA 358.50, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: []
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+[12:50:44] [Client thread/INFO] [STDOUT/]: [net.minecraft.init.Bootstrap:printToSYSOUT:663]: #@!@# Game crashed! Crash report saved to: #@!@# C:\Users\Samuel\Desktop\Forge\MinecraftGUI-Mod\eclipse\.\crash-reports\crash-2015-11-13_12.50.44-client.txt
