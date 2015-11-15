@@ -25,8 +25,8 @@ import java.awt.*;
  */
 public abstract class Font {
 
-    public abstract int getStringWidth(String text, int size, Color color);
-    public abstract int getStringHeight(int size, Color color);
+    public abstract double getStringWidth(String text, int size, Color color);
+    public abstract double getStringHeight(int size, Color color);
     public abstract void drawString(String text, int y, int x, int size, Color color);
 
 }

@@ -28,12 +28,12 @@ import java.awt.*;
 public class MinecraftShadowFont extends Font {
 
     @Override
-    public int getStringWidth(String text, int size, Color color) {
+    public double getStringWidth(String text, int size, Color color) {
         return Minecraft.getMinecraft().fontRendererObj.getStringWidth(text);
     }
 
     @Override
-    public int getStringHeight(int size, Color color) {
+    public double getStringHeight(int size, Color color) {
         return Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
     }
 

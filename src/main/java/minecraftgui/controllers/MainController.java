@@ -68,8 +68,8 @@ public class MainController {
     public void update(){
         if(updateId == Long.MIN_VALUE){
             UnicodeFont font = new UnicodeFont(screen, Font.decode("Arial"));
-            font.generate(15, Color.RED);
-            font.generate(15, Color.BLUE);
+            font.generate(12, Color.RED);
+            font.generate(12, Color.BLUE);
 
             Input div = null;
             try {
@@ -87,16 +87,16 @@ public class MainController {
             div.setxRelative(State.NORMAL, new PositionRelative.XAxis(div, 2, div.getShape().getAttributePadding(Padding.LEFT)));
             div.setyRelative(State.NORMAL, new PositionRelative.YAxis(div, 2));
             div.setFont(State.NORMAL, new AttributeFont(font));
-            div.setFontSize(State.NORMAL, new AttributeDouble(15));
+            div.setFontSize(State.NORMAL, new AttributeDouble(12));
             div.setFontColor(State.NORMAL, new AttributeColor(Color.RED));
             div.setFont(State.HOVER, new AttributeFont(font));
-            div.setFontSize(State.HOVER, new AttributeDouble(15));
+            div.setFontSize(State.HOVER, new AttributeDouble(12));
             div.setFontColor(State.HOVER, new AttributeColor(Color.BLUE));
             div.getShape().setWidth(State.NORMAL, new AttributeDouble(50));
             div.getShape().setHeight(State.NORMAL, new AttributeDouble(50));
             div.getShape().setPadding(State.NORMAL, Padding.LEFT, new AttributeDouble(8));
             div.getShape().setPadding(State.NORMAL, Padding.TOP, new AttributeDouble(8));
-            div.setText("Allo asdjhaskd ajsdh akjsdh");
+            div.setText("Alloasdjhask"+((char) 10)+"dajsdhakjsdh");
             div.getShape().setBorder(State.NORMAL, Border.TOP, new AttributeDouble(50));
             div.getShape().setBackground(State.NORMAL, new AttributeColor(Color.WHITE));
             div.getShape().setBackground(State.FOCUS, new AttributeColor(Color.BLACK));

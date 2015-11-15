@@ -42,21 +42,21 @@ public class UnicodeFont extends Font {
     }
 
     @Override
-    public int getStringWidth(String text, int size, Color color) {
+    public double getStringWidth(String text, int size, Color color) {
         org.newdawn.slick.UnicodeFont unicodeFonts[] = fonts.get(size+"-"+color.getRGB());
 
         if(unicodeFonts != null)
-            return unicodeFonts[screen.getScaleFactor()].getWidth(text)/screen.getScaleFactor();
+            return (double)unicodeFonts[screen.getScaleFactor()].getWidth(text)/(double)screen.getScaleFactor();
         else
             return 0;
     }
 
     @Override
-    public int getStringHeight(int size, Color color) {
+    public double getStringHeight(int size, Color color) {
         org.newdawn.slick.UnicodeFont unicodeFonts[] = fonts.get(size+"-"+color.getRGB());
 
         if(unicodeFonts != null)
-            return unicodeFonts[screen.getScaleFactor()].getLineHeight()/screen.getScaleFactor();
+            return (double)unicodeFonts[screen.getScaleFactor()].getLineHeight()/(double)screen.getScaleFactor();
         else
             return 0;
     }

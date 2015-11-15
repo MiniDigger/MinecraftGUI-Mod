@@ -62,7 +62,7 @@ public class ModInterface {
     }
 
     @SubscribeEvent
-    public void update(RenderGameOverlayEvent.Text event) {
+    public void update(RenderGameOverlayEvent.Post.Text event) {
         update();
         if(Minecraft.getMinecraft().currentScreen == null || Minecraft.getMinecraft().currentScreen instanceof GuiChat || Minecraft.getMinecraft().currentScreen == minecraftGUI.getGui()) {
             controller.setScreen(event.resolution.getScaledWidth(), event.resolution.getScaledHeight(), event.resolution.getScaleFactor());

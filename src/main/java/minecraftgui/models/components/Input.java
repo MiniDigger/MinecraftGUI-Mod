@@ -38,9 +38,9 @@ public class Input extends Paragraph {
 
     private static final long textCursorVisibleTime = 1000;
     private long lastInputOrKeyPressed = System.currentTimeMillis();
+    private int cursorDistanceWithTheEnd = 0;
     private int cursorLine = -1;
     private int cursorXIndex = -1;
-    private boolean isAddInput = false;
 
     public Input(String id, Component parent, Class<? extends Rectangle> shape) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         super(id, parent, shape);
@@ -48,26 +48,19 @@ public class Input extends Paragraph {
     }
 
     @Override
-    public void setText(String value) {
-        if(!isAddInput) {
-            String text = this.text;
+    public void onTextChange(String lastText, String newText){
+        if(cursorDistanceWithTheEnd != 0 && lastText.length() < newText.length())
+            moveCursorLeft();
 
-            super.setText(value);
-
-            if (!text.equals(this.text))
-                moveCursorAtTheEnd();
-        }
-        else {
-            super.setText(value);
-            isAddInput = false;
-        }
+        updateCursor();
     }
 
     @Override
     public void setFocus(boolean focus){
         super.setFocus(focus);
 
-        moveCursorAtTheEnd();
+        cursorDistanceWithTheEnd = 0;
+        updateCursor();
     }
 
     @Override
@@ -83,45 +76,37 @@ public class Input extends Paragraph {
             moveCursorDown();
         if(keyBoard.getKeyListener(Keyboard.KEY_RIGHT).isPressed())
             moveCursorRight();
+        if(keyBoard.getKeyListener(Keyboard.KEY_DELETE).isPressed())
+            textObj.deleteNextChar();
     }
 
-    public void moveCursorAtTheEnd(){
-        cursorLine = lines.size()-1;
-        cursorXIndex = lines.get(lines.size()-1).length();
+    private void moveCursorDown(){
+        textObj.moveCursorDown();
     }
 
-    public void moveCursorDown(){
-        if(cursorLine != lines.size()-1)
-            cursorLine++;
+    private void moveCursorUp() {
+        textObj.moveCursorUp();
     }
 
-    public void moveCursorUp(){
-        if(cursorLine != 0)
-            cursorLine--;
+    private void moveCursorRight(){
+        textObj.moveCursorRight();
     }
 
-    public void moveCursorRight(){
-        String line = lines.get(cursorLine);
-
-        if (cursorXIndex == line.length()) {
-            if(cursorLine != lines.size()-1){
-                cursorLine++;
-                cursorXIndex = 0;
-            }
-        }
-        else
-            cursorXIndex++;
+    private void moveCursorLeft(){
+        textObj.moveCursorLeft();
     }
 
-    public void moveCursorLeft(){
-        if (cursorXIndex == 0) {
-            if(cursorLine != 0){
-                cursorLine--;
-                cursorXIndex = lines.get(cursorLine).length();
-            }
-        }
-        else
-            cursorXIndex--;
+    private void updateCursor(){
+        int i = lines.size();
+        int length = 0;
+
+        do{
+            i--;
+            length += lines.get(i).length();
+        }while (length < cursorDistanceWithTheEnd);
+
+        cursorLine = i;
+        cursorXIndex = length - cursorDistanceWithTheEnd;
     }
 
     @Override
@@ -135,10 +120,8 @@ public class Input extends Paragraph {
 
                 if(lastInputOrKeyPressed+textCursorVisibleTime >= time || time % textCursorVisibleTime*2 <= textCursorVisibleTime) {
                     double height = getFont().getStringHeight(fontSize.getValue().intValue(), fontColor.getValue());
-                    double x = getX() + getFont().getStringWidth(lines.get(cursorLine).substring(0, cursorXIndex), fontSize.getValue().intValue(), fontColor.getValue());
-                    double y =  getY() + cursorLine * height;
 
-                    render.fillRectangle(x, y, .5, height, Color.BLACK);
+                    render.fillRectangle(textObj.getCursorX(), textObj.getCursorY(), .5, height, Color.BLACK);
                 }
             }
         }
@@ -167,21 +150,40 @@ public class Input extends Paragraph {
     public void onInput(char input){
         super.onInput(input);
         lastInputOrKeyPressed = System.currentTimeMillis();
+        String text;
 
         switch(input){
-            case 8: if(getText().length() != 0) setText(getText().substring(0, getText().length() - 1)); break;
-            case 9: addInput("    "); break;
-            case 13: addInput(String.valueOf(input)); break;
-            default: if(input >= 32) addInput(String.valueOf(input)); break;
+            case 8:
+                textObj.deleteChar();
+                if(getText().length() != 0){
+                    /*text = this.text.substring(0, this.text.length()-cursorDistanceWithTheEnd-1)+this.text.substring(this.text.length()-cursorDistanceWithTheEnd);
+
+                    setText(text);*/
+                }
+                break;
+            case 9:
+                textObj.addInput((char) 32);
+                textObj.addInput((char) 32);
+                textObj.addInput((char) 32);
+                textObj.addInput((char) 32);
+                /*text = this.text.substring(0, this.text.length()-cursorDistanceWithTheEnd)+"    "+this.text.substring(this.text.length()-cursorDistanceWithTheEnd);
+
+                setText(text);*/
+                break;
+            case 13:
+                textObj.addInput(input);
+                /*text = this.text.substring(0, this.text.length()-cursorDistanceWithTheEnd)+input+this.text.substring(this.text.length()-cursorDistanceWithTheEnd);
+
+                setText(text);*/
+                break;
+            default:
+                if(input >= 32) {
+                    textObj.addInput(input);
+                    /*text = this.text.substring(0, this.text.length()-cursorDistanceWithTheEnd)+input+this.text.substring(this.text.length()-cursorDistanceWithTheEnd);
+
+                    setText(text);*/
+                }
+                break;
         }
-    }
-
-    private void addInput(String input){
-        isAddInput = true;
-
-        setText(getText()+input);
-
-        for(int i = 0; i <= input.length();i++)
-            moveCursorRight();
     }
 }
