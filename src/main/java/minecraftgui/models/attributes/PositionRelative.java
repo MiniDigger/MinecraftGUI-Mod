@@ -63,7 +63,7 @@ public abstract class PositionRelative extends Attribute<Double> {
         public void update(long updateId) {
             super.update(updateId);
 
-            this.value = component.getParent().getY() + valueRelativeAttribute*percentage + relative;
+            this.value = valueRelativeAttribute*percentage + relative;
         }
     }
 
@@ -77,7 +77,7 @@ public abstract class PositionRelative extends Attribute<Double> {
         public void update(long updateId) {
             super.update(updateId);
 
-            this.value = component.getParent().getX() + valueRelativeAttribute*percentage + relative;
+            this.value = valueRelativeAttribute*percentage + relative;
         }
     }
 
