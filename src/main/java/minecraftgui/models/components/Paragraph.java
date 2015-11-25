@@ -18,8 +18,11 @@
 
 package minecraftgui.models.components;
 
+import minecraftgui.controllers.Mouse;
 import minecraftgui.controllers.Render;
 import minecraftgui.models.attributes.*;
+import minecraftgui.models.components.listeners.OnClickListener;
+import minecraftgui.models.components.listeners.OnCopyListener;
 import minecraftgui.models.fonts.Font;
 import minecraftgui.models.shapes.Rectangle;
 
@@ -29,31 +32,81 @@ import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 
 /**
  * Created by Samuel on 2015-11-04.
  */
-public class Paragraph extends Component implements ClipboardOwner {
+public class Paragraph extends Component implements ClipboardOwner, ComponentText {
 
+    protected final Div buttonLineBefore;
+    protected final Div buttonLineAfter;
     protected AttributeGroupDouble fontSize;
     protected AttributeGroupColor fontColor;
     protected AttributeGroupFont font;
-    protected String text = "";
-    protected double maxLines = Double.MAX_VALUE;
-    protected ArrayList<String> lines = new ArrayList<>();
-    private Font fontLastUpdate = null;
-    private double widthLastUpdate = 0;
-    protected Text textObj;
+    protected Text text;
+    protected int lineIndex = 0;//La première ligne qui va être affiché
+    protected int nbLinesToDisplay = Integer.MAX_VALUE;//La première ligne qui va être affiché
 
-    public void onTextChange(String lastText, String newText){}
+    protected void beforeTextUpdate(){}
+    protected void afterTextUpdate(){}
 
-    public Paragraph(String id, Component parent, Class<? extends Rectangle> shape) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public Paragraph(String id, Component parent, Class<? extends Rectangle> shape, Class<? extends Rectangle> shapeButtonLineBefore, Class<? extends Rectangle> shapeButtonLineAfter) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         super(id, parent, shape);
         fontSize = new AttributeGroupDouble(this);
         fontColor = new AttributeGroupColor(this);
+        buttonLineBefore = new Div("", this, shapeButtonLineBefore);
+        buttonLineAfter = new Div("", this, shapeButtonLineAfter);
         font = new AttributeGroupFont(this);
-        textObj = new Text(this);
+        text = new Text(this, this);
+
+        this.addOnCopyListener(new OnCopyListener() {
+            @Override
+            public void onCopy(Component component) {
+                ClipboardOwner clipboardOwner = (ClipboardOwner) component;
+
+                Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(text.toString()), clipboardOwner);
+            }
+        });
+
+        this.buttonLineBefore.addOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(Component component, Mouse mouse) {
+                showLineBefore();
+            }
+        });
+
+        this.buttonLineAfter.addOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(Component component, Mouse mouse) {
+                showLineAfter();
+            }
+        });
+    }
+
+    public Div getButtonLineBefore() {
+        return buttonLineBefore;
+    }
+
+    public Div getButtonLineAfter() {
+        return buttonLineAfter;
+    }
+
+    public int getNbLinesToDisplay() {
+        return nbLinesToDisplay;
+    }
+
+    public void setNbLinesToDisplay(int nbLinesToDisplay) {
+        this.nbLinesToDisplay = nbLinesToDisplay;
+    }
+
+    public void showLineAfter(){
+        if(lineIndex +1 != text.getLines().size())
+            lineIndex++;
+    }
+
+    public void showLineBefore(){
+        if(lineIndex != 0)
+            lineIndex--;
     }
 
     public void setFont(State state, AttributeFont font){
@@ -68,32 +121,28 @@ public class Paragraph extends Component implements ClipboardOwner {
         fontColor.setAttribute(state, color);
     }
 
-    public void setMaxLines(double maxLines) {
-        this.maxLines = maxLines;
-    }
-
-    public double getMaxLines() {
-        return maxLines;
-    }
-
     public String getText() {
-        return text;
+        return text.toString();
     }
 
     public void setText(String value) {
-        textObj.setText(value);
-        /*ArrayList<String> lines = updateTextLines(value);
-
-        if(!lines.isEmpty()) {
-            String lastText = text;
-            this.lines = lines;
-            this.text = value;
-            onTextChange(lastText, value);
-        }*/
+        lineIndex = 0;
+        text.setText(value);
     }
 
+    @Override
     public Font getFont(){
         return font.getValue();
+    }
+
+    @Override
+    public double getStringWidth(String str) {
+        return getFont().getStringWidth(str, fontSize.getValue().intValue(), fontColor.getValue());
+    }
+
+    @Override
+    public double getStringHeight() {
+        return getFont().getStringHeight(fontSize.getValue().intValue(), fontColor.getValue());
     }
 
     @Override
@@ -103,35 +152,24 @@ public class Paragraph extends Component implements ClipboardOwner {
         fontColor.update(updateId);
         fontSize.update(updateId);
 
-        textObj.update(updateId);
+        beforeTextUpdate();
+        text.update(updateId);
+        afterTextUpdate();
 
-        /*if(widthLastUpdate != getWidth() || fontLastUpdate != font.getValue()){
-            widthLastUpdate = getWidth();
-            fontLastUpdate = font.getValue();
-
-            ArrayList<String> lines = updateTextLines(text);
-
-            if(!lines.isEmpty()) {
-                this.lines = lines;
-            }
-        }*/
+        if(text.isTextUpdated()){
+            while(lineIndex >= text.getLines().size() && lineIndex != 0)
+                lineIndex--;
+        }
     }
 
     @Override
     public void draw(Render render) {
         super.draw(render);
-        double fontHeight = getFont().getStringHeight(fontSize.getValue().intValue(), fontColor.getValue());
+        double fontHeight = getStringHeight();
+        int nbLineToRender = lineIndex+nbLinesToDisplay >= text.getLines().size()?text.getLines().size()-1: lineIndex+nbLinesToDisplay;
 
-        /*for(int i = 0; i < lines.size(); i++)
-            getFont().drawString(lines.get(i), (int) getY() + fontHeight * i, (int) getX(), fontSize.getValue().intValue(), fontColor.getValue());*/
-
-        for(int i = 0; i < textObj.getLines().size(); i++)
-            getFont().drawString(textObj.getLines().get(i), (int) ((int) getY() + fontHeight * i), (int) getX(), fontSize.getValue().intValue(), fontColor.getValue());
-    }
-
-    @Override
-    public void onCopy(){
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(text), this);
+        for(int i = lineIndex; i <= nbLineToRender; i++)
+            getFont().drawString(text.getLines().get(i), (int) ((int) getY() + fontHeight * i + fontHeight * -lineIndex), (int) getX(), fontSize.getValue().intValue(), fontColor.getValue());
     }
 
     @Override
