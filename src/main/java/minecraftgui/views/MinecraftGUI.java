@@ -39,6 +39,11 @@ public class MinecraftGUI extends GuiScreen implements IGuiHandler {
     }
 
     @Override
+    public boolean doesGuiPauseGame() {
+        return false;
+    }
+
+    @Override
     public void onGuiClosed(){
         super.onGuiClosed();
         ((ModInterface) mod).minecraftGUIClosed();
