@@ -146,13 +146,12 @@ public class Mouse implements Updatable{
         mouseX = org.lwjgl.input.Mouse.getX() / screen.getScaleFactor();
         mouseY = screen.getHeight() - org.lwjgl.input.Mouse.getY() / screen.getScaleFactor();
 
-        if(time >= timeLastClick) {
+        if(time >= timeLastClick)
             timeLastClick = Long.MAX_VALUE;
-            click = true;
-        }
 
         if(isLeftPressed() && !isLeftPressedLastUpdate()){
             long timeWithDoubleClick = time+timeDoubleClick;
+            click = true;
 
             if(timeWithDoubleClick >= timeLastClick){
                 timeLastClick = Long.MAX_VALUE;
