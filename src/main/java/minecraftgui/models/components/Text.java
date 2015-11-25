@@ -4,68 +4,88 @@ import minecraftgui.models.Updatable;
 import minecraftgui.models.fonts.Font;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Samuel on 2015-11-14.
  */
 public class Text implements Updatable {
 
-    private final Paragraph paragraph;
+    private final ComponentText componentText;
+    private final Component component;
     private ArrayList<String> lines;
     private ArrayList<ArrayList<Char>> linesChar;
     private final ArrayList<GroupChar> groupChars;
     private Char cursorLocation = null;
-    private boolean updateLines = false;
-    private boolean textChanged = false;
+    private boolean updateText = false;
+    private boolean textUpdated = false;
     private Font fontLastUpdate = null;
     private double widthLastUpdate = 0;
+    private String text = "";
 
-    public Text(Paragraph paragraph) {
-        this.paragraph = paragraph;
+    public Text(ComponentText componentText, Component component) {
+        this.componentText = componentText;
+        this.component = component;
         lines = new ArrayList<>();
         linesChar = new ArrayList<>();
         groupChars = new ArrayList<>();
     }
 
+    @Override
+    public String toString() {
+        return text;
+    }
+
+    public boolean isTextUpdated() {
+        return textUpdated;
+    }
+
+    public int getCursorLine(){
+        return cursorLocation != null?cursorLocation.lineIndex:0;
+    }
+
     public double getCursorX(){
         if(cursorLocation != null)
-            return paragraph.getX()+cursorLocation.cursorX;
+            return cursorLocation.cursorX;
         else
-            return paragraph.getX();
+            return 0;
     }
 
     public double getCursorY(){
         if(cursorLocation != null)
-            return paragraph.getY()+cursorLocation.cursorY;
+            return cursorLocation.cursorY;
         else
-            return paragraph.getY();
+            return 0;
     }
 
     public void setCursorLocation(double x, double y){
-        double lineHeight = paragraph.getFont().getStringHeight(paragraph.fontSize.getValue().intValue(), paragraph.fontColor.getValue());
-        x -= paragraph.getX();
-        y -= paragraph.getY();
+        double lineHeight = componentText.getStringHeight();
         int lineIndex = (int) (y/lineHeight);
 
         if(lineIndex >= 0) {
             ArrayList<Char> charLine;
+            String currentLine = "";
 
             if (lineIndex >= lines.size())
                 charLine = linesChar.get(lines.size() - 1);
             else
                 charLine = linesChar.get(lineIndex);
-            String currentLine = "";
 
             for (Char c : charLine) {
-                currentLine = currentLine+c.getValue();
+                if(c.getIntValue() != 13 && c.getIntValue() != 10) {
+                    currentLine = currentLine + c.getValue();
 
-                if (paragraph.getFont().getStringWidth(currentLine.trim(), paragraph.fontSize.getValue().intValue(), paragraph.fontColor.getValue()) >= x) {
-                    cursorLocation = c;
-                    return;
+                    if (componentText.getStringWidth(currentLine) >= x) {
+                        cursorLocation = c;
+                        return;
+                    }
                 }
             }
 
-            cursorLocation = charLine.get(charLine.size() - 1);
+            if(charLine.size() != 0)
+                cursorLocation = charLine.get(charLine.size() - 1);
+            else
+                cursorLocation = null;
         }
     }
 
@@ -75,7 +95,7 @@ public class Text implements Updatable {
     }
 
     public void moveCursorDown(){
-        double lineHeight = paragraph.getFont().getStringHeight(paragraph.fontSize.getValue().intValue(), paragraph.fontColor.getValue());
+        double lineHeight = componentText.getStringHeight();
 
         if(cursorLocation != null)
             setCursorLocation(getCursorX(), getCursorY()+lineHeight+5);
@@ -90,16 +110,17 @@ public class Text implements Updatable {
         if(cursorLocation != null && cursorLocation.after != null)
             cursorLocation = cursorLocation.after;
         else if(cursorLocation == null)
-            if(linesChar.get(0) != null && linesChar.get(0).get(0) != null)
+            if(groupChars.size() != 0 && linesChar.get(0).size() != 0 && linesChar.get(0) != null && linesChar.get(0).get(0) != null)
                 cursorLocation = linesChar.get(0).get(0);
     }
 
-    public ArrayList<String> getLines() {
+    public List<String> getLines() {
         return lines;
     }
 
     public void setText(String text){
         ArrayList<String> words = split(text);
+        groupChars.clear();
 
         for(String word : words) {
             if(word.charAt(0) > 32) {
@@ -129,7 +150,7 @@ public class Text implements Updatable {
             }
         }
 
-        textChanged = true;
+        updateText = true;
     }
 
     public void deleteNextChar(){
@@ -141,8 +162,24 @@ public class Text implements Updatable {
                 if (c.groupChar.size() == 0)
                     groupChars.remove(c);
 
-                textChanged = true;
-                updateLines = true;
+                updateText = true;
+            }
+        }
+        else if(groupChars.size() != 0){
+            for(int i = 0; i < linesChar.size(); i++) {
+                if (linesChar.get(i).size() != 0 && linesChar.get(i) != null && linesChar.get(i).get(0) != null) {
+                    Char c = linesChar.get(i).get(0);
+
+                    if (c != null) {
+                        c.groupChar.remove(c);
+
+                        if (c.groupChar.size() == 0)
+                            groupChars.remove(c);
+
+                        updateText = true;
+                        return;
+                    }
+                }
             }
         }
     }
@@ -156,8 +193,7 @@ public class Text implements Updatable {
                 groupChars.remove(c);
 
             cursorLocation = c.before;
-            textChanged = true;
-            updateLines = true;
+            updateText = true;
         }
     }
 
@@ -168,29 +204,29 @@ public class Text implements Updatable {
             if(input > 32) {
                 if (currentGroup.wordGroup) {
                     Char c = new Char(input, currentGroup);
+                    c.lineIndex = currentGroup.get(currentGroup.indexOf(cursorLocation)).lineIndex;
 
                     currentGroup.add(currentGroup.indexOf(cursorLocation) + 1, c);
                     cursorLocation = c;
-                    textChanged = true;
-                    updateLines = true;
+                    updateText = true;
                 } else if (currentGroup.index + 1 != groupChars.size() && groupChars.get(currentGroup.index + 1).wordGroup) {
                     GroupChar nextGroup = groupChars.get(currentGroup.index + 1);
                     Char c = new Char(input, nextGroup);
+                    c.lineIndex = currentGroup.get(0).lineIndex;
 
                     nextGroup.add(0, c);
                     cursorLocation = c;
-                    textChanged = true;
-                    updateLines = true;
+                    updateText = true;
                 }
                 else{
                     GroupChar groupChar = new GroupChar();
                     groupChars.add(currentGroup.index+1, groupChar);
                     Char c = new Char(input, groupChar);
+                    c.lineIndex = currentGroup.get(currentGroup.size()-1).lineIndex;
 
                     groupChar.add(c);
                     cursorLocation = c;
-                    textChanged = true;
-                    updateLines = true;
+                    updateText = true;
                 }
             }
             else{
@@ -213,22 +249,22 @@ public class Text implements Updatable {
                         groupCharCharAdded.wordGroup = false;
                         groupChars.add(currentGroup.index+1, groupCharCharAdded);
                         Char c = new Char(input, groupCharCharAdded);
+                        c.lineIndex = currentGroup.get(currentGroup.size()-1).lineIndex;
 
                         groupCharCharAdded.add(c);
                         cursorLocation = c;
-                        textChanged = true;
-                        updateLines = true;
+                        updateText = true;
                     }
                     else {
                         GroupChar groupChar = new GroupChar();
                         groupChar.wordGroup = false;
                         groupChars.add(currentGroup.index+1, groupChar);
                         Char c = new Char(input, groupChar);
+                        c.lineIndex = currentGroup.get(currentGroup.size()-1).lineIndex;
 
                         groupChar.add(c);
                         cursorLocation = c;
-                        textChanged = true;
-                        updateLines = true;
+                        updateText = true;
                     }
                 }
                 else{
@@ -236,11 +272,11 @@ public class Text implements Updatable {
                     groupChar.wordGroup = false;
                     groupChars.add(currentGroup.index+1, groupChar);
                     Char c = new Char(input, groupChar);
+                    c.lineIndex = currentGroup.get(currentGroup.size()-1).lineIndex;
 
                     groupChar.add(c);
                     cursorLocation = c;
-                    textChanged = true;
-                    updateLines = true;
+                    updateText = true;
                 }
             }
         }
@@ -252,8 +288,7 @@ public class Text implements Updatable {
 
                 groupChar.add(0, c);
                 cursorLocation = c;
-                textChanged = true;
-                updateLines = true;
+                updateText = true;
             }
             else{
                 groupChar = new GroupChar();
@@ -263,8 +298,7 @@ public class Text implements Updatable {
 
                 groupChar.add(c);
                 cursorLocation = c;
-                textChanged = true;
-                updateLines = true;
+                updateText = true;
             }
         }
         else
@@ -273,36 +307,42 @@ public class Text implements Updatable {
 
     private void updateGroupCharsWidth(){
         for(GroupChar groupChar : groupChars)
-            groupChar.updateWidth();
+            groupChar.update();
     }
 
     @Override
     public void update(long updateId) {
+        textUpdated = false;
+
         if(lines.size() == 0)
             lines.add("");
 
-        if(widthLastUpdate != paragraph.getWidth() || textChanged){
-            widthLastUpdate = paragraph.getWidth();
+        if(widthLastUpdate != component.getWidth() || updateText){
+            widthLastUpdate = component.getWidth();
 
-            updateLines = true;
+            updateText = true;
         }
 
-        if(fontLastUpdate != paragraph.font.getValue() || textChanged){
-            fontLastUpdate = paragraph.font.getValue();
+        if(fontLastUpdate != componentText.getFont() || updateText){
+            fontLastUpdate = componentText.getFont();
             updateGroupCharsWidth();
 
-            updateLines = true;
+            updateText = true;
         }
 
         for(GroupChar groupChar : groupChars)
             groupChar.update(updateId);
 
-        if(updateLines){
+        if(updateText){
             lines.clear();
             linesChar.clear();
             ArrayList<Char> chars = new ArrayList<>();
 
             updateLines();
+            text = "";
+
+            for(String line : lines)
+                text += line;
 
             for(ArrayList<Char> charsLine : linesChar)
                 chars.addAll(charsLine);
@@ -321,136 +361,82 @@ public class Text implements Updatable {
                     c.after = chars.get(i+1);
             }
 
-            textChanged = false;
-            updateLines = false;
+            updateText = false;
+            textUpdated = true;
         }
     }
 
     private void updateLines(){
-        double lineHeight = paragraph.getFont().getStringHeight(paragraph.fontSize.getValue().intValue(), paragraph.fontColor.getValue());
+        double lineHeight = componentText.getStringHeight();
         String currentLine = "";
+        int lindeIndex = 0;
         ArrayList<Char> currentCharLine = new ArrayList<>();
 
         for(int g = 0; g < groupChars.size(); g++) {
             GroupChar groupChar = groupChars.get(g);
             groupChar.index = g;
 
-            if(paragraph.getWidth() < groupChar.getWidth() || groupChar.size() == 1){
+            if(component.getWidth() < groupChar.getWidth() || groupChar.size() == 1){
                 for (int i = 0; i < groupChar.size(); i++) {
                     if(groupChar.get(i).getIntValue() == 10 || groupChar.get(i).getIntValue() == 13){
                         linesChar.add(currentCharLine);
                         lines.add(currentLine);
+                        lindeIndex++;
                         currentLine = "";
                         currentCharLine = new ArrayList<>();
                         currentCharLine.add(groupChar.get(i));
                         groupChar.get(i).cursorY = lines.size()*lineHeight;
                         groupChar.get(i).cursorX = 0;
+                        groupChar.get(i).lineIndex = lindeIndex;
                     }
-                    else if(paragraph.getFont().getStringWidth(currentLine+groupChar.get(i).getValue(), paragraph.fontSize.getValue().intValue(), paragraph.fontColor.getValue()) <= paragraph.getWidth()){
+                    else if(componentText.getStringWidth(currentLine + groupChar.get(i).getValue()) <= component.getWidth()){
                         currentLine += groupChar.get(i).getValue();
                         currentCharLine.add(groupChar.get(i));
                         groupChar.get(i).cursorY = lines.size()*lineHeight;
-                        groupChar.get(i).cursorX = paragraph.getFont().getStringWidth(currentLine, paragraph.fontSize.getValue().intValue(), paragraph.fontColor.getValue());
+                        groupChar.get(i).cursorX = componentText.getStringWidth(currentLine);
+                        groupChar.get(i).lineIndex = lindeIndex;
                     }
                     else{
                         linesChar.add(currentCharLine);
                         lines.add(currentLine);
+                        lindeIndex++;
                         currentLine = groupChar.get(i).getValue();
                         currentCharLine = new ArrayList<>();
                         currentCharLine.add(groupChar.get(i));
                         groupChar.get(i).cursorY = lines.size()*lineHeight;
-                        groupChar.get(i).cursorX = paragraph.getFont().getStringWidth(currentLine, paragraph.fontSize.getValue().intValue(), paragraph.fontColor.getValue());
+                        groupChar.get(i).cursorX = componentText.getStringWidth(currentLine);
+                        groupChar.get(i).lineIndex = lindeIndex;
                     }
                 }
             }
-            else if(paragraph.getFont().getStringWidth(currentLine, paragraph.fontSize.getValue().intValue(), paragraph.fontColor.getValue())+groupChar.getWidth() <= paragraph.getWidth()){
+            else if(componentText.getStringWidth(currentLine)+groupChar.getWidth() <= component.getWidth()){
                 for (Char c : groupChar) {
                     currentLine += c.getValue();
                     currentCharLine.add(c);
                     c.cursorY = lines.size()*lineHeight;
-                    c.cursorX = paragraph.getFont().getStringWidth(currentLine, paragraph.fontSize.getValue().intValue(), paragraph.fontColor.getValue());
+                    c.cursorX = componentText.getStringWidth(currentLine);
+                    c.lineIndex = lindeIndex;
                 }
             }
             else{
                 lines.add(currentLine);
+                linesChar.add(currentCharLine);
+                lindeIndex++;
+                currentCharLine = new ArrayList<>();
                 currentLine = "";
 
                 for (Char c : groupChar) {
                     currentLine += c.getValue();
                     currentCharLine.add(c);
                     c.cursorY = lines.size()*lineHeight;
-                    c.cursorX = paragraph.getFont().getStringWidth(currentLine, paragraph.fontSize.getValue().intValue(), paragraph.fontColor.getValue());
+                    c.cursorX = componentText.getStringWidth(currentLine);
+                    c.lineIndex = lindeIndex;
                 }
             }
         }
 
         linesChar.add(currentCharLine);
         lines.add(currentLine);
-    }
-
-    private class GroupChar extends ArrayList<Char> implements Updatable{
-
-        private boolean wordGroup = true;
-        private int index;
-        private int sizeLastWidth = 0;
-        private double width = 0;
-        private String line;
-
-        private double getWidth(){
-            return width;
-        }
-
-        @Override
-        public void update(long updateId) {
-            if(size() != sizeLastWidth){
-                sizeLastWidth = size();
-
-                updateWidth();
-            }
-        }
-
-        public void updateWidth(){
-            line = "";
-
-            updateLines = true;
-
-            for(Char c : this)
-                line += c.getValue();
-
-            width = paragraph.getFont().getStringWidth(line, paragraph.fontSize.getValue().intValue(), paragraph.fontColor.getValue());
-        }
-
-    }
-
-    private class Char {
-
-        private GroupChar groupChar;
-        private double cursorX;
-        private double cursorY;
-        private Char before;
-        private Char after;
-        private final String value;
-
-        private Char(char value, GroupChar groupChar) {
-            this.value = String.valueOf(value);
-            this.groupChar = groupChar;
-        }
-
-        public Char getBefore() {
-            return before;
-        }
-
-        public Char getAfter() {
-            return after;
-        }
-
-        public int getIntValue() {
-            return (int) value.charAt(0);
-        }
-
-        public String getValue() {
-            return value;
-        }
     }
 
     private ArrayList<String> split(String text){
@@ -480,6 +466,62 @@ public class Text implements Updatable {
         }
 
         return words;
+    }
+
+    private class GroupChar extends ArrayList<Char> implements Updatable{
+
+        private boolean wordGroup = true;
+        private int index;
+        private int sizeLastWidth = 0;
+        private double width = 0;
+        private String line;
+
+        private double getWidth(){
+            return width;
+        }
+
+        @Override
+        public void update(long updateId) {
+            if(size() != sizeLastWidth){
+                sizeLastWidth = size();
+
+                update();
+            }
+        }
+
+        public void update(){
+            line = "";
+
+            for(Char c : this)
+                line += c.getValue();
+
+            width = componentText.getStringWidth(line);
+        }
+
+    }
+
+    private class Char {
+
+        private GroupChar groupChar;
+        private double cursorX;
+        private double cursorY;
+        private int lineIndex;
+        private Char before;
+        private Char after;
+        private final String value;
+
+        private Char(char value, GroupChar groupChar) {
+            this.value = String.valueOf(value);
+            this.groupChar = groupChar;
+        }
+
+        public int getIntValue() {
+            return (int) value.charAt(0);
+        }
+
+        public String getValue() {
+            return value;
+        }
     }
 
 }
