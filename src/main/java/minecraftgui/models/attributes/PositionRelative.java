@@ -18,21 +18,17 @@
 
 package minecraftgui.models.attributes;
 
-import minecraftgui.models.components.Component;
-
 /**
  * Created by Samuel on 2015-11-03.
  */
 public abstract class PositionRelative extends Attribute<Double> {
 
-    protected final Component component;
     protected Attribute<Double> relativeToAttributes[];
     protected double percentage = 1;
     protected double relative = 0;
     protected double valueRelativeAttribute;
 
-    public PositionRelative(Component component, double relative, Attribute<Double> relativeToAttributes[]) {
-        this.component = component;
+    public PositionRelative(double relative, Attribute<Double> relativeToAttributes[]) {
         this.relativeToAttributes = relativeToAttributes;
         this.relative = relative;
     }
@@ -49,14 +45,16 @@ public abstract class PositionRelative extends Attribute<Double> {
     public void update(long updateId) {
         valueRelativeAttribute = 0;
 
-        for(Attribute<Double> relativeToAttribute: relativeToAttributes)
+        for(Attribute<Double> relativeToAttribute: relativeToAttributes) {
+            relativeToAttribute.update(updateId);
             valueRelativeAttribute += relativeToAttribute.getValue();
+        }
     }
 
     public static class YAxis extends PositionRelative {
 
-        public YAxis(Component component, double relative, Attribute<Double>... relativeToAttributes) {
-            super(component, relative, relativeToAttributes);
+        public YAxis(double relative, Attribute<Double>... relativeToAttributes) {
+            super(relative, relativeToAttributes);
         }
 
         @Override
@@ -69,8 +67,8 @@ public abstract class PositionRelative extends Attribute<Double> {
 
     public static class XAxis extends PositionRelative {
 
-        public XAxis(Component component, double relative, Attribute<Double>... relativeToAttributes) {
-            super(component, relative, relativeToAttributes);
+        public XAxis(double relative, Attribute<Double>... relativeToAttributes) {
+            super(relative, relativeToAttributes);
         }
 
         @Override
