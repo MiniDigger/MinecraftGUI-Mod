@@ -17,12 +17,21 @@ public class Line implements Updatable {
     private boolean updateText = false;
     private Font fontLastUpdate = null;
     private double widthLastUpdate = 0;
+    private double xRelative = 0;
     private String text = "";
+    private String lastTextVersion = "";
+    private String visibleText = "";
+    private Char firstCharVisible = null;
+    private Char lastCharVisible = null;
 
     public Line(ComponentText componentText, Component component) {
         this.componentText = componentText;
         this.component = component;
         lineChar = new ArrayList<>();
+    }
+
+    public String getVisibleText(){
+        return visibleText;
     }
 
     @Override
@@ -32,22 +41,17 @@ public class Line implements Updatable {
 
     public double getCursorX(){
         if(cursorLocation != null)
-            return component.getX()+cursorLocation.cursorX;
+            return cursorLocation.cursorX - xRelative;
         else
-            return component.getX();
+            return 0;
     }
 
     public double getCursorY(){
-        if(cursorLocation != null)
-            return component.getY()+cursorLocation.cursorY;
-        else
-            return component.getY();
+        return 0;
     }
 
     public void setCursorLocation(double x, double y){
         double lineHeight = componentText.getStringHeight();
-        x -= component.getX();
-        y -= component.getY();
         int lineIndex = (int) (y/lineHeight);
 
         if(lineIndex == 0) {
@@ -56,7 +60,7 @@ public class Line implements Updatable {
             for (Char c : lineChar) {
                 currentLine = currentLine+c.getValue();
 
-                if (componentText.getStringWidth(currentLine) >= x) {
+                if (componentText.getStringWidth(currentLine) >= x+xRelative) {
                     cursorLocation = c;
                     return;
                 }
@@ -67,29 +71,41 @@ public class Line implements Updatable {
     }
 
     public void moveCursorLeft(){
-        if(cursorLocation != null)
+        if(cursorLocation != null) {
             cursorLocation = cursorLocation.before;
+            updateVisibleText();
+        }
     }
 
     public void moveCursorRight(){
-        if(cursorLocation != null && cursorLocation.after != null)
+        if(cursorLocation != null && cursorLocation.after != null) {
             cursorLocation = cursorLocation.after;
-        else if(cursorLocation == null)
-            if(lineChar.size() != 0 && lineChar.get(0) != null)
+            updateVisibleText();
+        }
+        else if(cursorLocation == null) {
+            if (lineChar.size() != 0 && lineChar.get(0) != null) {
                 cursorLocation = lineChar.get(0);
+                updateVisibleText();
+            }
+        }
     }
 
     public void setText(String text){
         ArrayList<String> words = split(text);
+        lineChar.clear();
 
         for(String word : words) {
             for (char c : word.toCharArray()) {
                 Char ch = new Char(c);
-                cursorLocation = ch;
 
                 lineChar.add(ch);
             }
         }
+
+        if(lineChar.size() == 1)
+            cursorLocation = lineChar.get(0);
+        else
+            cursorLocation = null;
 
         updateText = true;
     }
@@ -123,7 +139,9 @@ public class Line implements Updatable {
 
     public void addInput(char input){
         if(input != 10 && input != 13) {
-            if (cursorLocation != null) {
+            if (text.length() == 0)
+                setText(String.valueOf(input));
+            else if (cursorLocation != null) {
                 Char c = new Char(input);
 
                 lineChar.add(lineChar.indexOf(cursorLocation)+1, c);
@@ -154,9 +172,9 @@ public class Line implements Updatable {
         }
 
         if(updateText){
+            lastTextVersion = text;
             text = "";
-
-            updateLines();
+            updateLine();
 
             for(int i = 0; i < lineChar.size(); i++){
                 Char c = lineChar.get(i);
@@ -172,22 +190,157 @@ public class Line implements Updatable {
                     c.after = lineChar.get(i+1);
             }
 
+            updateVisibleText();
             updateText = false;
         }
     }
 
-    private void updateLines(){
+    private void updateVisibleText(){
+        if(text.length() != 0) {
+            if (componentText.getStringWidth(text) <= component.getWidth()) {
+                visibleText = text;
+                firstCharVisible = null;
+                lastCharVisible = lineChar.get(lineChar.size()-1);
+                xRelative = 0;
+            }
+            else if (cursorLocation == null) {
+                firstCharVisible = null;
+
+                for (int i = 0; i < lineChar.size(); i++){
+                    if (componentText.getStringWidth(text.substring(0, i)) > component.getWidth()) {
+                        visibleText = text.substring(0, i - 1);
+                        firstCharVisible = null;
+                        lastCharVisible = lineChar.get(i-2);
+                        xRelative = 0;
+                        return;
+                    }
+                }
+            } else if(firstCharVisible == cursorLocation){
+                int firstIndex = lineChar.indexOf(firstCharVisible);
+
+                if(firstIndex != 0){
+
+                    for (int i = --firstIndex; i <= lineChar.size(); i++){
+                        if (componentText.getStringWidth(text.substring(firstIndex, i)) > component.getWidth()) {
+                            visibleText = text.substring(firstIndex, i - 1);
+                            firstCharVisible = lineChar.get(firstIndex);
+                            lastCharVisible = lineChar.get(i-2);
+                            xRelative = componentText.getStringWidth(text.substring(0, firstIndex));
+                            return;
+                        }
+                    }
+
+                    visibleText = text.substring(firstIndex, text.length());
+                    firstCharVisible = lineChar.get(firstIndex);
+                    lastCharVisible = lineChar.get(lineChar.size()-1);
+                    xRelative = componentText.getStringWidth(text.substring(0, firstIndex));
+                }
+                else{
+                    firstCharVisible = null;
+
+                    for (int i = 0; i < lineChar.size(); i++){
+                        if (componentText.getStringWidth(text.substring(0, i)) > component.getWidth()) {
+                            visibleText = text.substring(0, i - 1);
+                            firstCharVisible = null;
+                            lastCharVisible = lineChar.get(i-2);
+                            xRelative = 0;
+                            return;
+                        }
+                    }
+                }
+            }
+            else  if(lastCharVisible == cursorLocation){
+                int lastIndex = lineChar.indexOf(lastCharVisible);
+
+                if(lastIndex+1 != lineChar.size()) {
+                    ++lastIndex;
+
+                    for (int i = lastIndex; i >= 0; i--) {
+                        if (componentText.getStringWidth(text.substring(i, lastIndex + 1)) > component.getWidth()) {
+                            visibleText = text.substring(i+1, lastIndex + 1);
+                            firstCharVisible = lineChar.get(i + 1);
+                            lastCharVisible = lineChar.get(lastIndex);
+                            xRelative = componentText.getStringWidth(text.substring(0, i + 1));
+                            return;
+                        }
+
+                        visibleText = text.substring(0, lastIndex + 1);
+                        firstCharVisible = lineChar.get(0);
+                        lastCharVisible = lineChar.get(lastIndex);
+                        xRelative = 0;
+                    }
+                }
+            }
+            else if(lastTextVersion.length() < text.length()){
+                int lastIndex = lineChar.indexOf(lastCharVisible);
+
+                if(lineChar.indexOf(cursorLocation)+1 == lineChar.size())
+                    lastIndex++;
+
+                for (int i = lastIndex; i >= 0; i--) {
+                    if (componentText.getStringWidth(text.substring(i, lastIndex + 1)) > component.getWidth()) {
+                        visibleText = text.substring(i+1, lastIndex + 1);
+                        firstCharVisible = lineChar.get(i + 1);
+                        lastCharVisible = lineChar.get(lastIndex);
+                        xRelative = componentText.getStringWidth(text.substring(0, i + 1));
+                        return;
+                    }
+
+                    visibleText = text.substring(0, lastIndex + 1);
+                    firstCharVisible = lineChar.get(0);
+                    lastCharVisible = lineChar.get(lastIndex);
+                    xRelative = 0;
+                }
+            }
+            else if(lastTextVersion.length() > text.length()){
+                int firstIndex = lineChar.indexOf(firstCharVisible);
+
+                if(firstIndex >= 1){
+                    for (int i = firstIndex; i <= lineChar.size(); i++){
+                        if (componentText.getStringWidth(text.substring(firstIndex, i)) > component.getWidth()) {
+                            visibleText = text.substring(firstIndex, i - 1);
+                            firstCharVisible = lineChar.get(firstIndex);
+                            lastCharVisible = lineChar.get(i-2);
+                            xRelative = componentText.getStringWidth(text.substring(0, firstIndex));
+                            return;
+                        }
+                    }
+
+                    visibleText = text.substring(firstIndex, text.length());
+                    firstCharVisible = lineChar.get(firstIndex);
+                    lastCharVisible = lineChar.get(lineChar.size()-1);
+                    xRelative = componentText.getStringWidth(text.substring(0, firstIndex));
+                }
+                else{
+                    firstCharVisible = null;
+
+                    for (int i = 0; i < lineChar.size(); i++){
+                        if (componentText.getStringWidth(text.substring(0, i)) > component.getWidth()) {
+                            visibleText = text.substring(0, i - 1);
+                            firstCharVisible = null;
+                            lastCharVisible = lineChar.get(i-2);
+                            xRelative = 0;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+        else
+            visibleText = "";
+    }
+
+    private void updateLine(){
         for(int i = 0; i < lineChar.size(); i++) {
             Char c = lineChar.get(i);
 
-            text += c.getValue();
-            c.cursorX = componentText.getStringWidth(text);
-            c.cursorY = 0;
+            this.text += c.getValue();
+            c.cursorX = componentText.getStringWidth(text.substring(0, i+1));
         }
     }
 
     private ArrayList<String> split(String text){
-        ArrayList<String> words = new ArrayList<String>();
+        ArrayList<String> words = new ArrayList<>();
         String word = "";
 
         for(int i = 0; i < text.length(); i++){
@@ -212,7 +365,6 @@ public class Line implements Updatable {
     private class Char {
 
         private double cursorX;
-        private double cursorY;
         private Char before;
         private Char after;
         private final String value;
