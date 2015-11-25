@@ -272,24 +272,51 @@ public class Line implements Updatable {
                 }
             }
             else if(lastTextVersion.length() < text.length()){
-                int lastIndex = lineChar.indexOf(lastCharVisible);
+                int indexFirst = lineChar.indexOf(firstCharVisible);
+                int indexCursor = lineChar.indexOf(cursorLocation);
+                int distanceBetweenFirstAndCusor = indexFirst - indexCursor;
 
-                if(lineChar.indexOf(cursorLocation)+1 == lineChar.size())
-                    lastIndex++;
+                if(distanceBetweenFirstAndCusor == 1 || distanceBetweenFirstAndCusor == -1){
+                    if(distanceBetweenFirstAndCusor > 0)
+                        --indexFirst;
+                    if( indexFirst == -1)
+                        indexFirst = 0;
 
-                for (int i = lastIndex; i >= 0; i--) {
-                    if (componentText.getStringWidth(text.substring(i, lastIndex + 1)) > component.getWidth()) {
-                        visibleText = text.substring(i+1, lastIndex + 1);
-                        firstCharVisible = lineChar.get(i + 1);
-                        lastCharVisible = lineChar.get(lastIndex);
-                        xRelative = componentText.getStringWidth(text.substring(0, i + 1));
-                        return;
+                    for (int i = indexFirst; i <= lineChar.size(); i++){
+                        if (componentText.getStringWidth(text.substring(indexFirst, i)) > component.getWidth()) {
+                            visibleText = text.substring(indexFirst, i - 1);
+                            firstCharVisible = lineChar.get(indexFirst);
+                            lastCharVisible = lineChar.get(i-2);
+                            xRelative = componentText.getStringWidth(text.substring(0, indexFirst));
+                            return;
+                        }
                     }
 
-                    visibleText = text.substring(0, lastIndex + 1);
-                    firstCharVisible = lineChar.get(0);
-                    lastCharVisible = lineChar.get(lastIndex);
-                    xRelative = 0;
+                    visibleText = text.substring(indexFirst, text.length());
+                    firstCharVisible = lineChar.get(indexFirst);
+                    lastCharVisible = lineChar.get(lineChar.size()-1);
+                    xRelative = componentText.getStringWidth(text.substring(0, indexFirst));
+                }
+                else {
+                    int lastIndex = lineChar.indexOf(lastCharVisible);
+
+                    if (lineChar.indexOf(cursorLocation) + 1 == lineChar.size())
+                        lastIndex++;
+
+                    for (int i = lastIndex; i >= 0; i--) {
+                        if (componentText.getStringWidth(text.substring(i, lastIndex + 1)) > component.getWidth()) {
+                            visibleText = text.substring(i + 1, lastIndex + 1);
+                            firstCharVisible = lineChar.get(i + 1);
+                            lastCharVisible = lineChar.get(lastIndex);
+                            xRelative = componentText.getStringWidth(text.substring(0, i + 1));
+                            return;
+                        }
+
+                        visibleText = text.substring(0, lastIndex + 1);
+                        firstCharVisible = lineChar.get(0);
+                        lastCharVisible = lineChar.get(lastIndex);
+                        xRelative = 0;
+                    }
                 }
             }
             else if(lastTextVersion.length() > text.length()){
