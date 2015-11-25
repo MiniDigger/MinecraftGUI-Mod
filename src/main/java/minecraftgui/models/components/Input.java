@@ -19,171 +19,184 @@
 package minecraftgui.models.components;
 
 import minecraftgui.controllers.KeyBoard;
+import minecraftgui.controllers.Mouse;
 import minecraftgui.controllers.Render;
+import minecraftgui.models.attributes.*;
+import minecraftgui.models.components.listeners.*;
+import minecraftgui.models.fonts.Font;
 import minecraftgui.models.shapes.Rectangle;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.datatransfer.*;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 /**
  * Created by Samuel on 2015-11-07.
  */
-public class Input extends Paragraph {
+public class Input extends Component implements ClipboardOwner, ComponentText {
 
     private static final long textCursorVisibleTime = 1000;
     private long lastInputOrKeyPressed = System.currentTimeMillis();
-    private int cursorDistanceWithTheEnd = 0;
-    private int cursorLine = -1;
-    private int cursorXIndex = -1;
+    private AttributeGroupDouble fontSize;
+    private AttributeGroupColor fontColor;
+    private AttributeGroupFont font;
+    private Line line;
 
     public Input(String id, Component parent, Class<? extends Rectangle> shape) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         super(id, parent, shape);
-        lines.add("");
+        fontSize = new AttributeGroupDouble(this);
+        fontColor = new AttributeGroupColor(this);
+        font = new AttributeGroupFont(this);
+        line = new Line(this, this);
+
+        this.addOnKeyPressedListener(new OnKeyPressedListener() {
+            @Override
+            public void onKeyPressed(Component component, KeyBoard keyBoard) {
+                lastInputOrKeyPressed = System.currentTimeMillis();
+
+                if(keyBoard.getKeyListener(Keyboard.KEY_LEFT).isPressed())
+                    line.moveCursorLeft();
+                if(keyBoard.getKeyListener(Keyboard.KEY_RIGHT).isPressed())
+                    line.moveCursorRight();
+                if(keyBoard.getKeyListener(Keyboard.KEY_DELETE).isPressed())
+                    line.deleteNextChar();
+            }
+        });
+
+        this.addOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(Component component, Mouse mouse) {
+                lastInputOrKeyPressed = System.currentTimeMillis();
+
+                if (mouse.getX() >= getX() && mouse.getX() <= getX() + getWidth() && mouse.getY() >= getY() && mouse.getY() <= getY() + getHeight())
+                    line.setCursorLocation(mouse.getX() - getX(), 1);
+                else
+                    line.setCursorLocation(mouse.getX() - getX(), 1);
+            }
+        });
+
+        this.addOnInputListener(new OnInputListener() {
+            @Override
+            public void onInput(Component component, char input) {
+                lastInputOrKeyPressed = System.currentTimeMillis();
+
+                switch (input) {
+                    case 8:
+                        line.deleteChar();
+                        break;
+                    case 9:
+                        line.addInput((char) 32);
+                        line.addInput((char) 32);
+                        line.addInput((char) 32);
+                        line.addInput((char) 32);
+                        break;
+                    case 13:
+                        line.addInput(input);
+                        break;
+                    default:
+                        if (input >= 32)
+                            line.addInput(input);
+                        break;
+                }
+            }
+        });
+
+        this.addOnPasteListener(new OnPasteListener() {
+            @Override
+            public void onPaste(Component component) {
+                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                Transferable contents = clipboard.getContents(null);
+                boolean hasTransferableText = (contents != null) && contents.isDataFlavorSupported(DataFlavor.stringFlavor);
+                String result = "";
+
+                if (hasTransferableText) {
+                    try {
+                        result = (String) contents.getTransferData(DataFlavor.stringFlavor);
+                    } catch (UnsupportedFlavorException | IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+                setText(getText() + result);
+            }
+        });
+
+        this.addOnCopyListener(new OnCopyListener() {
+            @Override
+            public void onCopy(Component component) {
+                ClipboardOwner clipboardOwner = (ClipboardOwner) component;
+
+                Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(line.toString()), clipboardOwner);
+            }
+        });
+    }
+
+    public String getText() {
+        return line.toString();
+    }
+
+    public void setText(String value) {
+        line.setText(value);
     }
 
     @Override
-    public void onTextChange(String lastText, String newText){
-        if(cursorDistanceWithTheEnd != 0 && lastText.length() < newText.length())
-            moveCursorLeft();
+    public void update(long updateId) {
+        super.update(updateId);
+        font.update(updateId);
+        fontColor.update(updateId);
+        fontSize.update(updateId);
 
-        updateCursor();
-    }
-
-    @Override
-    public void setFocus(boolean focus){
-        super.setFocus(focus);
-
-        cursorDistanceWithTheEnd = 0;
-        updateCursor();
-    }
-
-    @Override
-    public void onKeyPressed(KeyBoard keyBoard){
-        super.onKeyPressed(keyBoard);
-        lastInputOrKeyPressed = System.currentTimeMillis();
-
-        if(keyBoard.getKeyListener(Keyboard.KEY_LEFT).isPressed())
-            moveCursorLeft();
-        if(keyBoard.getKeyListener(Keyboard.KEY_UP).isPressed())
-            moveCursorUp();
-        if(keyBoard.getKeyListener(Keyboard.KEY_DOWN).isPressed())
-            moveCursorDown();
-        if(keyBoard.getKeyListener(Keyboard.KEY_RIGHT).isPressed())
-            moveCursorRight();
-        if(keyBoard.getKeyListener(Keyboard.KEY_DELETE).isPressed())
-            textObj.deleteNextChar();
-    }
-
-    private void moveCursorDown(){
-        textObj.moveCursorDown();
-    }
-
-    private void moveCursorUp() {
-        textObj.moveCursorUp();
-    }
-
-    private void moveCursorRight(){
-        textObj.moveCursorRight();
-    }
-
-    private void moveCursorLeft(){
-        textObj.moveCursorLeft();
-    }
-
-    private void updateCursor(){
-        int i = lines.size();
-        int length = 0;
-
-        do{
-            i--;
-            length += lines.get(i).length();
-        }while (length < cursorDistanceWithTheEnd);
-
-        cursorLine = i;
-        cursorXIndex = length - cursorDistanceWithTheEnd;
+        line.update(updateId);
     }
 
     @Override
     public void draw(Render render) {
         super.draw(render);
 
-        //Le fois deux c'est pour qu'il puisse etre plus grand que le temps, donc n'est plus visible
+        getFont().drawString(line.getVisibleText(), (int) getY(), (int) getX(), fontSize.getValue().intValue(), fontColor.getValue());
+
         if(keyBoard != null){
-            if(lines.size() > 0){
-                long time = System.currentTimeMillis();
+            long time = System.currentTimeMillis();
 
-                if(lastInputOrKeyPressed+textCursorVisibleTime >= time || time % textCursorVisibleTime*2 <= textCursorVisibleTime) {
-                    double height = getFont().getStringHeight(fontSize.getValue().intValue(), fontColor.getValue());
+            //Le fois deux c'est pour qu'il puisse etre plus grand que le temps, donc n'est plus visible
+            if(lastInputOrKeyPressed+textCursorVisibleTime >= time || time % textCursorVisibleTime*2 <= textCursorVisibleTime) {
+                double height = getFont().getStringHeight(fontSize.getValue().intValue(), fontColor.getValue());
 
-                    render.fillRectangle(textObj.getCursorX(), textObj.getCursorY(), .5, height, Color.BLACK);
-                }
+                render.fillRectangle(getX()+line.getCursorX(), getY()+line.getCursorY(), .5, height, Color.WHITE);
             }
         }
+    }
+
+    public void setFont(State state, AttributeFont font){
+        this.font.setAttribute(state, font);
+    }
+
+    public void setFontSize(State state, AttributeDouble size){
+        fontSize.setAttribute(state, size);
+    }
+
+    public void setFontColor(State state, AttributeColor color){
+        fontColor.setAttribute(state, color);
     }
 
     @Override
-    public void onPaste(){
-        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        Transferable contents = clipboard.getContents(null);
-        boolean hasTransferableText = (contents != null) && contents.isDataFlavorSupported(DataFlavor.stringFlavor);
-        String result = "";
-
-        if (hasTransferableText) {
-            try {
-                result = (String)contents.getTransferData(DataFlavor.stringFlavor);
-            }
-            catch (UnsupportedFlavorException | IOException ex){
-                ex.printStackTrace();
-            }
-        }
-
-        setText(getText() + result);
+    public Font getFont(){
+        return font.getValue();
     }
 
     @Override
-    public void onInput(char input){
-        super.onInput(input);
-        lastInputOrKeyPressed = System.currentTimeMillis();
-        String text;
-
-        switch(input){
-            case 8:
-                textObj.deleteChar();
-                if(getText().length() != 0){
-                    /*text = this.text.substring(0, this.text.length()-cursorDistanceWithTheEnd-1)+this.text.substring(this.text.length()-cursorDistanceWithTheEnd);
-
-                    setText(text);*/
-                }
-                break;
-            case 9:
-                textObj.addInput((char) 32);
-                textObj.addInput((char) 32);
-                textObj.addInput((char) 32);
-                textObj.addInput((char) 32);
-                /*text = this.text.substring(0, this.text.length()-cursorDistanceWithTheEnd)+"    "+this.text.substring(this.text.length()-cursorDistanceWithTheEnd);
-
-                setText(text);*/
-                break;
-            case 13:
-                textObj.addInput(input);
-                /*text = this.text.substring(0, this.text.length()-cursorDistanceWithTheEnd)+input+this.text.substring(this.text.length()-cursorDistanceWithTheEnd);
-
-                setText(text);*/
-                break;
-            default:
-                if(input >= 32) {
-                    textObj.addInput(input);
-                    /*text = this.text.substring(0, this.text.length()-cursorDistanceWithTheEnd)+input+this.text.substring(this.text.length()-cursorDistanceWithTheEnd);
-
-                    setText(text);*/
-                }
-                break;
-        }
+    public double getStringWidth(String str) {
+        return getFont().getStringWidth(str, fontSize.getValue().intValue(), fontColor.getValue());
     }
+
+    @Override
+    public double getStringHeight() {
+        return getFont().getStringHeight(fontSize.getValue().intValue(), fontColor.getValue());
+    }
+
+    @Override
+    public void lostOwnership(Clipboard clipboard, Transferable contents) {}
+
 }
