@@ -19,6 +19,7 @@
 package minecraftgui.models.attributes;
 
 import minecraftgui.models.components.Component;
+import minecraftgui.models.components.State;
 import minecraftgui.models.fonts.Font;
 
 /**
@@ -32,7 +33,9 @@ public class AttributeGroupFont extends AttributeGroup<Font> {
 
     @Override
     public Font getValue() {
-        return (Font) super.getValue();
+        Font font = (Font) super.getValue();
+
+        return font == null?getAttribute(State.NORMAL).getValue():font;
     }
 
 }
