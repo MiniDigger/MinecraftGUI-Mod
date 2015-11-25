@@ -26,6 +26,7 @@ import minecraftgui.models.attributes.Attribute;
 import minecraftgui.models.attributes.AttributeGroupCursor;
 import minecraftgui.models.attributes.AttributeGroupDouble;
 import minecraftgui.models.attributes.PositionRelative;
+import minecraftgui.models.components.listeners.*;
 import minecraftgui.models.shapes.Shape;
 
 import java.lang.reflect.InvocationTargetException;
@@ -39,6 +40,17 @@ public abstract class Component implements Updatable, Drawable {
     private final String id;
     private final Component parent;
     private final CopyOnWriteArrayList<Component> children;
+    private final CopyOnWriteArrayList<OnClickListener> onClickListeners;
+    private final CopyOnWriteArrayList<OnDoubleClickListener> onDoubleClickListeners;
+    private final CopyOnWriteArrayList<OnMouseOverListener> onMouseOverClickListeners;
+    private final CopyOnWriteArrayList<OnMouseButtonDownListener> onMouseButtonDownListeners;
+    private final CopyOnWriteArrayList<OnMouseButtonUpListener> onMouseButtonUpListeners;
+    private final CopyOnWriteArrayList<OnKeyPressedListener> onKeyPressedListeners;
+    private final CopyOnWriteArrayList<OnInputListener> onInputListeners;
+    private final CopyOnWriteArrayList<OnBlurListener> onBlurListeners;
+    private final CopyOnWriteArrayList<OnFocusListener> onFocusListeners;
+    private final CopyOnWriteArrayList<OnPasteListener> onPasteListeners;
+    private final CopyOnWriteArrayList<OnCopyListener> onCopyListeners;
     protected Shape shape;
     protected KeyBoard keyBoard = null;
     private Mouse mouse = null;
@@ -51,48 +63,127 @@ public abstract class Component implements Updatable, Drawable {
     private double x = 0;
     private double y = 0;
 
-    /*
-    //Bouger un component
-    @Override
-    public void onMouseButtonDown(Mouse.Button button, Mouse mouse){
-        PositionRelative y = (PositionRelative) getyRelative(State.NORMAL);
-        PositionRelative x = (PositionRelative) getxRelative(State.NORMAL);
-
-        y.setRelative(y.getRelative() - (mouse.getYLastUpdate() - mouse.getY()));
-        x.setRelative(x.getRelative() - (mouse.getXLastUpdate() - mouse.getX()));
+    private final void onMouseOver(){
+        for(OnMouseOverListener mouseEvent : onMouseOverClickListeners)
+            mouseEvent.onMouseOver(this, mouse);
     }
-     */
-
-    protected void onMouseOver(){}
-    protected void onMouseButtonDown(Mouse.Button button, Mouse mouse){}
-    protected void onMouseButtonUp(Mouse.Button button, Mouse mouse){}
-    protected void onFocus(){}
-    protected void onBlur(){}
-    protected void onClick(){}
-    protected void onDoubleClick(){}
-
-    protected void onInput(char input){
-        switch(input){
-            case 3: onCopy(); break;
-            case 22: onPaste(); break;
-        }
+    private final void onMouseButtonDown(Mouse mouse, Mouse.Button button){
+        for(OnMouseButtonDownListener mouseEvent : onMouseButtonDownListeners)
+            mouseEvent.onMouseButtonDown(this, mouse, button);
     }
 
-    protected void onKeyPressed(KeyBoard keyBoard){}
-    protected void onCopy(){}
-    protected void onPaste(){}
+    private final void onMouseButtonUp(Mouse mouse, Mouse.Button button){
+        for(OnMouseButtonUpListener mouseEvent : onMouseButtonUpListeners)
+            mouseEvent.onMouseButtonUp(this, mouse, button);
+    }
+
+    private final void onFocus(){
+        for(OnFocusListener stateChange : onFocusListeners)
+            stateChange.onFocus(this);
+    }
+
+    private final void onBlur(){
+        for(OnBlurListener stateChange : onBlurListeners)
+            stateChange.onBlur(this);
+    }
+
+    private final void onClick(){
+        for(OnClickListener mouseEvent : onClickListeners)
+            mouseEvent.onClick(this, mouse);
+    }
+
+    private final void onDoubleClick(){
+        for(OnDoubleClickListener mouseEvent : onDoubleClickListeners)
+            mouseEvent.onDoubleClick(this);
+    }
+
+    private final void onInput(char input){
+        for(OnInputListener keyBoardEvent : onInputListeners)
+            keyBoardEvent.onInput(this, input);
+    }
+
+    private final void onKeyPressed(KeyBoard keyBoard){
+        for(OnKeyPressedListener keyBoardEvent : onKeyPressedListeners)
+            keyBoardEvent.onKeyPressed(this, keyBoard);
+    }
+
+    private final void onCopy(){
+        for(OnCopyListener onCopyListener : onCopyListeners)
+            onCopyListener.onCopy(this);
+    }
+
+    private final void onPaste(){
+        for(OnPasteListener onPasteListener : onPasteListeners)
+            onPasteListener.onPaste(this);
+    }
 
     public Component(String id, Component parent, Class<? extends Shape> shape) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         this.id = id;
         this.parent = parent;
         this.children = new CopyOnWriteArrayList<>();
+        this.onClickListeners = new CopyOnWriteArrayList<>();
+        this.onDoubleClickListeners = new CopyOnWriteArrayList<>();
+        this.onMouseButtonDownListeners = new CopyOnWriteArrayList<>();
+        this.onMouseButtonUpListeners = new CopyOnWriteArrayList<>();
+        this.onMouseOverClickListeners = new CopyOnWriteArrayList<>();
+        this.onKeyPressedListeners = new CopyOnWriteArrayList<>();
+        this.onInputListeners = new CopyOnWriteArrayList<>();
+        this.onBlurListeners = new CopyOnWriteArrayList<>();
+        this.onFocusListeners = new CopyOnWriteArrayList<>();
+        this.onPasteListeners = new CopyOnWriteArrayList<>();
+        this.onCopyListeners = new CopyOnWriteArrayList<>();
         this.xRelative = new AttributeGroupDouble(this);
         this.yRelative = new AttributeGroupDouble(this);
         this.cursor = new AttributeGroupCursor(this);
         this.shape = shape.getDeclaredConstructor(Component.class).newInstance(this);
+        this.xRelative.setAttribute(State.NORMAL, new PositionRelative.XAxis(0));
+        this.yRelative.setAttribute(State.NORMAL, new PositionRelative.YAxis(0));
 
         if(parent != null)
             parent.children.add(this);
+    }
+
+    public void addOnClickListener(OnClickListener listener){
+        onClickListeners.add(listener);
+    }
+
+    public void addOnDoubleClickListener(OnDoubleClickListener listener){
+        onDoubleClickListeners.add(listener);
+    }
+
+    public void addOnMouseButtonDownListener(OnMouseButtonDownListener listener){
+        onMouseButtonDownListeners.add(listener);
+    }
+
+    public void addOnMouseButtonUpListener(OnMouseButtonUpListener listener){
+        onMouseButtonUpListeners.add(listener);
+    }
+
+    public void addOnMouseOverClickListener(OnMouseOverListener listener){
+        onMouseOverClickListeners.add(listener);
+    }
+
+    public void addOnKeyPressedListener(OnKeyPressedListener listener){
+        onKeyPressedListeners.add(listener);
+    }
+
+    public void addOnInputListener(OnInputListener listener){
+        onInputListeners.add(listener);
+    }
+
+    public void addOnBlurListener(OnBlurListener listener){
+        onBlurListeners.add(listener);
+    }
+
+    public void addOnFocusListener(OnFocusListener listener){
+        onFocusListeners.add(listener);
+    }
+
+    public void addOnCopyListener(OnCopyListener listener){
+        onCopyListeners.add(listener);
+    }
+    public void addOnPasteListener(OnPasteListener listener){
+        onPasteListeners.add(listener);
     }
 
     public Component getParent() {
@@ -215,30 +306,35 @@ public abstract class Component implements Updatable, Drawable {
         if(mouse != null) {
             if (mouse.isClick())
                 onClick();
-            else if (mouse.isDoubleClick())
+            if (mouse.isDoubleClick())
                 onDoubleClick();
 
             if (mouse.isLeftPressed())
-                onMouseButtonDown(Mouse.Button.LEFT, mouse);
+                onMouseButtonDown(mouse, Mouse.Button.LEFT);
             else if (mouse.isLeftPressedLastUpdate())
-                onMouseButtonUp(Mouse.Button.LEFT, mouse);
+                onMouseButtonUp(mouse, Mouse.Button.LEFT);
 
             if (mouse.isRightPressed())
-                onMouseButtonDown(Mouse.Button.RIGHT, mouse);
+                onMouseButtonDown(mouse, Mouse.Button.RIGHT);
             else if (mouse.isRightPressedLastUpdate())
-                onMouseButtonUp(Mouse.Button.RIGHT, mouse);
+                onMouseButtonUp(mouse, Mouse.Button.RIGHT);
 
             if (mouse.isMiddlePressed())
-                onMouseButtonDown(Mouse.Button.MIDDLE, mouse);
+                onMouseButtonDown(mouse, Mouse.Button.MIDDLE);
             else if (mouse.isMiddlePressedLastUpdate())
-                onMouseButtonUp(Mouse.Button.MIDDLE, mouse);
+                onMouseButtonUp(mouse, Mouse.Button.MIDDLE);
         }
     }
 
     private void updateKeyBoard(){
         if(keyBoard != null){
-            if(keyBoard.getInput() != 0)
-                onInput(keyBoard.getInput());
+            if(keyBoard.getInput() != 0){
+                switch(keyBoard.getInput()){
+                    case 3: onCopy(); break;
+                    case 22: onPaste(); break;
+                    default: onInput(keyBoard.getInput()); break;
+                }
+            }
 
             if(keyBoard.isKeyPressed())
                 onKeyPressed(keyBoard);
