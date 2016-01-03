@@ -6,10 +6,10 @@ Description: Unexpected error
 
 java.lang.StringIndexOutOfBoundsException: String index out of range: 9
 	at java.lang.String.substring(String.java:1907)
-	at minecraftgui.models.components.Input.draw(Input.java:138)
-	at minecraftgui.controllers.MainController.draw(MainController.java:225)
-	at minecraftgui.controllers.MainController.draw(MainController.java:221)
-	at minecraftgui.views.ModInterface.update(ModInterface.java:70)
+	at Input.draw(Input.java:138)
+	at MainController.draw(MainController.java:225)
+	at MainController.draw(MainController.java:221)
+	at ModInterface.update(ModInterface.java:70)
 	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_6_ModInterface_update_Text.invoke(.dynamic)
 	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:55)
 	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:138)
@@ -40,10 +40,10 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Stacktrace:
 	at java.lang.String.substring(String.java:1907)
-	at minecraftgui.models.components.Input.draw(Input.java:138)
-	at minecraftgui.controllers.MainController.draw(MainController.java:225)
-	at minecraftgui.controllers.MainController.draw(MainController.java:221)
-	at minecraftgui.views.ModInterface.update(ModInterface.java:70)
+	at Input.draw(Input.java:138)
+	at MainController.draw(MainController.java:225)
+	at MainController.draw(MainController.java:221)
+	at ModInterface.update(ModInterface.java:70)
 	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_6_ModInterface_update_Text.invoke(.dynamic)
 	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:55)
 	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:138)

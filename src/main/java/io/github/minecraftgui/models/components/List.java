@@ -1,0 +1,134 @@
+package io.github.minecraftgui.models.components;
+
+import io.github.minecraftgui.controllers.Mouse;
+import io.github.minecraftgui.models.listeners.OnClickListener;
+import io.github.minecraftgui.models.shapes.Border;
+import io.github.minecraftgui.models.shapes.Padding;
+import io.github.minecraftgui.models.shapes.Rectangle;
+
+import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+/**
+ * Created by Samuel on 2015-11-29.
+ */
+public class List extends Component {
+
+    private final Component buttonListAfter;
+    private final Component buttonListBefore;
+    private final ArrayList<CopyOnWriteArrayList<Component>> listsDisplayed;
+    private int nbComponentPerList = Integer.MAX_VALUE;
+    private CopyOnWriteArrayList<Component> currentListDisplayed = null;
+
+    public List(String id, Class<? extends Rectangle> shape, Component buttonListBefore, Component  buttonListAfter) {
+        super(id, shape);
+        listsDisplayed = new ArrayList<>();
+        listsDisplayed.add(new CopyOnWriteArrayList<Component>());
+        currentListDisplayed = listsDisplayed.get(0);
+        this.buttonListAfter = buttonListAfter;
+        this.buttonListBefore = buttonListBefore;
+
+        this.buttonListAfter.parent = this;
+        this.buttonListAfter.addOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(Component component, Mouse mouse) {
+                int index = listsDisplayed.indexOf(currentListDisplayed);
+
+                if (listsDisplayed.size() > index + 1)
+                    currentListDisplayed = listsDisplayed.get(index + 1);
+            }
+        });
+
+        this.buttonListBefore.parent = this;
+        this.buttonListBefore.addOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(Component component, Mouse mouse) {
+                int index = listsDisplayed.indexOf(currentListDisplayed);
+
+                if (index != 0)
+                    currentListDisplayed = listsDisplayed.get(index - 1);
+            }
+        });
+
+        updateListsDisplayed();
+    }
+
+    public void updateLists(){
+        updateListsDisplayed();
+    }
+
+    public Component getButtonListAfter() {
+        return buttonListAfter;
+    }
+
+    public Component getButtonListBefore() {
+        return buttonListBefore;
+    }
+
+    @Override
+    public CopyOnWriteArrayList<Component> getChildren() {
+        return currentListDisplayed;
+    }
+
+    public void setNbComponentPerList(int nbComponentPerList) {
+        this.nbComponentPerList = nbComponentPerList;
+    }
+
+    @Override
+    public void add(Component component){
+        super.add(component);
+    }
+
+    @Override
+    protected void remove(Component component){
+        if(component != buttonListAfter && component != buttonListBefore )
+            super.remove(component);
+    }
+
+    private void updateListsDisplayed(){
+        int index = listsDisplayed.indexOf(currentListDisplayed);
+        listsDisplayed.clear();
+        CopyOnWriteArrayList<Component> currentList = new CopyOnWriteArrayList();
+
+        for(Component component : children){
+            if(currentList.size() == nbComponentPerList){
+                listsDisplayed.add(currentList);
+
+                currentList.add(buttonListBefore);
+                currentList.add(buttonListAfter);
+
+                currentList = new CopyOnWriteArrayList<>();
+            }
+
+            component.getPositionY().getRelativeToAttributes().clear();
+
+            if(currentList.size() == 0){
+                component.getPositionY().getRelativeToAttributes().add(component.getShape().getAttributePadding(Padding.TOP));
+                component.getPositionY().getRelativeToAttributes().add(component.getShape().getAttributeBorder(Border.TOP));
+            }
+            else{
+                Component lastChild = currentList.get(currentList.size()-1);
+
+                component.getPositionY().getRelativeToAttributes().addAll(lastChild.getPositionY().getRelativeToAttributes());
+                component.getPositionY().getRelativeToAttributes().add(lastChild.getShape().getAttributePadding(Padding.BOTTOM));
+                component.getPositionY().getRelativeToAttributes().add(lastChild.getShape().getAttributeBorder(Border.BOTTOM));
+                component.getPositionY().getRelativeToAttributes().add(lastChild.getAttributeHeight());
+                component.getPositionY().getRelativeToAttributes().add(component.getShape().getAttributePadding(Padding.TOP));
+                component.getPositionY().getRelativeToAttributes().add(component.getShape().getAttributeBorder(Border.TOP));
+            }
+
+            currentList.add(component);
+        }
+
+        listsDisplayed.add(currentList);
+
+        currentList.add(buttonListBefore);
+        currentList.add(buttonListAfter);
+
+        while(index >= listsDisplayed.size() && index != 0)
+            index--;
+
+        currentListDisplayed = listsDisplayed.get(index);
+    }
+
+}
