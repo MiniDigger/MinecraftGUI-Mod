@@ -1,30 +1,37 @@
-[12:27:49] [main/INFO]: Logging in with username & password
-[12:27:52] [Client thread/INFO]: Setting user: djxy
-[12:27:54] [Client thread/INFO]: LWJGL Version: 2.9.1
-[12:27:57] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:MinecraftGUI
-[12:27:58] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[12:27:58] [Thread-9/INFO]: Initializing LWJGL OpenAL
-[12:27:58] [Thread-9/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[12:27:58] [Thread-9/INFO]: OpenAL initialized.
-[12:27:58] [Sound Library Loader/INFO]: Sound engine started
-[12:28:00] [Client thread/INFO]: Created: 512x512 textures-atlas
-[12:28:01] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:MinecraftGUI
-[12:28:01] [Client thread/INFO]: SoundSystem shutting down...
-[12:28:01] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
-[12:28:01] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[12:28:01] [Thread-11/INFO]: Initializing LWJGL OpenAL
-[12:28:01] [Thread-11/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[12:28:01] [Thread-11/INFO]: OpenAL initialized.
-[12:28:01] [Sound Library Loader/INFO]: Sound engine started
-[12:28:02] [Client thread/INFO]: Created: 512x512 textures-atlas
-[12:28:04] [Client thread/ERROR]: Can't ping 127.0.0.1: Internal Exception: io.netty.handler.codec.DecoderException: com.google.gson.JsonSyntaxException: Expected status to be a JsonObject, was "Ser...g."
-[12:28:04] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
-[12:28:05] [Client thread/INFO]: [CHAT] djxy joined the game
-[12:29:41] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
-[12:29:43] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
-[12:29:44] [Client thread/INFO]: [CHAT] djxy joined the game
-[12:31:10] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
-[12:31:13] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
-[12:31:13] [Client thread/INFO]: [CHAT] djxy joined the game
-[12:33:48] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
-[12:33:48] [Client thread/INFO]: [CHAT] djxy joined the game
+[15:37:03] [main/INFO]: Logging in with username & password
+[15:37:06] [Client thread/INFO]: Setting user: djxy
+[15:37:08] [Client thread/INFO]: LWJGL Version: 2.9.1
+[15:37:12] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:MinecraftGUI
+[15:37:12] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[15:37:12] [Thread-9/INFO]: Initializing LWJGL OpenAL
+[15:37:12] [Thread-9/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[15:37:12] [Thread-9/INFO]: OpenAL initialized.
+[15:37:13] [Sound Library Loader/INFO]: Sound engine started
+[15:37:16] [Client thread/INFO]: Created: 512x512 textures-atlas
+[15:37:17] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:MinecraftGUI
+[15:37:17] [Client thread/INFO]: SoundSystem shutting down...
+[15:37:17] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[15:37:17] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[15:37:17] [Thread-11/INFO]: Initializing LWJGL OpenAL
+[15:37:17] [Thread-11/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[15:37:17] [Thread-11/INFO]: OpenAL initialized.
+[15:37:18] [Sound Library Loader/INFO]: Sound engine started
+[15:37:18] [Client thread/INFO]: Created: 512x512 textures-atlas
+[15:37:27] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
+[15:37:28] [Client thread/INFO]: [CHAT] djxy joined the game
+[15:39:56] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
+[15:39:56] [Client thread/INFO]: [CHAT] djxy joined the game
+[15:40:57] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
+[15:40:58] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
+[15:40:59] [Client thread/INFO]: [CHAT] djxy joined the game
+[15:42:33] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
+[15:42:33] [Client thread/INFO]: [CHAT] djxy joined the game
+[15:43:31] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
+[15:43:32] [Client thread/INFO]: [CHAT] djxy joined the game
+[15:46:18] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
+[15:46:19] [Client thread/INFO]: [CHAT] djxy joined the game
+[15:47:09] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
+[15:47:10] [Client thread/INFO]: [CHAT] djxy joined the game
+[15:49:12] [Client thread/INFO]: Stopping!
+[15:49:12] [Client thread/INFO]: SoundSystem shutting down...
+[15:49:12] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

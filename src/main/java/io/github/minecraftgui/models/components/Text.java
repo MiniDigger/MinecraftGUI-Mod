@@ -12,8 +12,6 @@ import java.util.ArrayList;
  */
 public class Text implements Updatable, Drawable {
 
-    private static final long textCursorVisibleTime = 1000;
-
     public enum TextAlignement {LEFT, CENTER, RIGHT};
 
     private final ComponentText componentText;
