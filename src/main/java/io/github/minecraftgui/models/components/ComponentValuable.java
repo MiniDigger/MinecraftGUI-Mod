@@ -1,6 +1,5 @@
 package io.github.minecraftgui.models.components;
 
-import io.github.minecraftgui.models.listeners.OnInputListener;
 import io.github.minecraftgui.models.listeners.OnValueChangeListener;
 import io.github.minecraftgui.models.shapes.Shape;
 

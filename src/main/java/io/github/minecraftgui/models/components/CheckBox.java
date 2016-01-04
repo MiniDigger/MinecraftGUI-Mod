@@ -21,13 +21,7 @@ public class CheckBox extends ComponentValuable<Boolean> {
         this.addOnClickListener(new OnClickListener() {
             @Override
             public void onClick(Component component, Mouse mouse) {
-                CheckBox checkBox = (CheckBox) component;
-                value = !value;
-
-                if (value)
-                    component.shape = checkBox.shapeOnValueTrue;
-                else
-                    component.shape = checkBox.shapeOnValueFalse;
+                setChecked(!value);
             }
         });
     }

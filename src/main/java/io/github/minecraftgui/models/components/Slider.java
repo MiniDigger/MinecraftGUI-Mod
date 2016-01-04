@@ -85,10 +85,12 @@ public abstract class Slider extends ComponentValuable<Double> {
 
         @Override
         public void setBarPercentage(double percentage){
-            super.setBarPercentage(percentage);
-            Position x = button.getPositionX();
+            if(this.getBarPercentage() != percentage) {
+                super.setBarPercentage(percentage);
+                Position x = button.getPositionX();
 
-            ((AttributeVariableDouble)x.getRelative(State.NORMAL)).setAttribute(new AttributeDouble(this.getWidth() * getBarPercentage()));
+                ((AttributeVariableDouble) x.getRelative(State.NORMAL)).setAttribute(new AttributeDouble(this.getWidth() * getBarPercentage()));
+            }
         }
 
         @Override
@@ -130,10 +132,12 @@ public abstract class Slider extends ComponentValuable<Double> {
 
         @Override
         public void setBarPercentage(double percentage){
-            super.setBarPercentage(percentage);
-            Position y = button.getPositionY();
+            if(this.getBarPercentage() != percentage) {
+                super.setBarPercentage(percentage);
+                Position y = button.getPositionY();
 
-            y.getRelative(State.NORMAL).setValue(button.getParent().getHeight() * getBarPercentage());
+                y.getRelative(State.NORMAL).setValue(button.getParent().getHeight() * getBarPercentage());
+            }
         }
 
         @Override
