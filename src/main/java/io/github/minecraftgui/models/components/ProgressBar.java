@@ -68,8 +68,10 @@ public abstract class ProgressBar extends ComponentValuable<Double> {
 
         @Override
         public void setBarPercentage(double percentage){
-            super.setBarPercentage(percentage);
-            progressShape.getWidth(State.NORMAL).setPercentage(barPercentage);
+            if(getBarPercentage() != percentage){
+                super.setBarPercentage(percentage);
+                progressShape.getWidth(State.NORMAL).setPercentage(barPercentage);
+            }
         }
     }
 
@@ -81,8 +83,10 @@ public abstract class ProgressBar extends ComponentValuable<Double> {
 
         @Override
         public void setBarPercentage(double percentage){
-            super.setBarPercentage(percentage);
-            progressShape.getHeight(State.NORMAL).setPercentage(barPercentage);
+            if(getBarPercentage() != percentage) {
+                super.setBarPercentage(percentage);
+                progressShape.getHeight(State.NORMAL).setPercentage(barPercentage);
+            }
         }
 
     }
