@@ -74,7 +74,7 @@ public abstract class PacketComponentEvent extends PacketOut {
         @Override
         public JSONObject toJSON() {
             JSONObject jsonObject = super.toJSON();
-            jsonObject.put(NetworkInterface.INPUT, input);
+            jsonObject.put(NetworkInterface.INPUT, input+"");
 
             return jsonObject;
         }

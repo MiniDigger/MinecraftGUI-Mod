@@ -5,6 +5,7 @@ import io.github.minecraftgui.controllers.Mouse;
 import io.github.minecraftgui.models.attributes.*;
 import io.github.minecraftgui.models.components.*;
 import io.github.minecraftgui.models.components.Component;
+import io.github.minecraftgui.models.components.List;
 import io.github.minecraftgui.models.components.TextArea;
 import io.github.minecraftgui.models.network.NetworkInterface;
 import io.github.minecraftgui.models.shapes.PolygonColor;
@@ -431,14 +432,8 @@ public abstract class PacketSetAttribute extends PacketIn {
         public Value(JSONObject jsonObject, MainController mainController, NetworkInterface networkInterface) {
             super(jsonObject, mainController, networkInterface);
 
-            if(component instanceof CheckBox)
-                ((CheckBox) component).setValue(attribute.getBoolean(NetworkInterface.VALUE));
-            else if(component instanceof ComponentText)
-                ((ComponentText) component).setValue(attribute.getString(NetworkInterface.VALUE));
-            else if(component instanceof ProgressBar)
-                ((ProgressBar) component).setValue(attribute.getDouble(NetworkInterface.VALUE));
-            else if(component instanceof Slider)
-                ((Slider) component).setValue(attribute.getDouble(NetworkInterface.VALUE));
+            if(component instanceof ComponentValuable)
+                ((ComponentValuable) component).setValue(attribute.get(NetworkInterface.VALUE));
         }
     }
 
@@ -461,6 +456,38 @@ public abstract class PacketSetAttribute extends PacketIn {
 
                 polygonColor.setPositions(positions);
             }
+        }
+    }
+
+    public static class TextNbLine extends PacketSetAttribute{
+
+        public TextNbLine(JSONObject jsonObject, MainController mainController, NetworkInterface networkInterface) {
+            super(jsonObject, mainController, networkInterface);
+
+            if(component instanceof TextArea)
+                ((TextArea) component).setNbLinesToDisplay(attribute.getInt(NetworkInterface.VALUE));
+            else if(component instanceof Paragraph)
+                ((Paragraph) component).setNbLinesToDisplay(attribute.getInt(NetworkInterface.VALUE));
+        }
+    }
+
+    public static class ListNbComponent extends PacketSetAttribute{
+
+        public ListNbComponent(JSONObject jsonObject, MainController mainController, NetworkInterface networkInterface) {
+            super(jsonObject, mainController, networkInterface);
+
+            if(component instanceof List)
+                ((List) component).setNbComponentPerList(attribute.getInt(NetworkInterface.VALUE));
+        }
+    }
+
+    public static class UpdateList extends PacketSetAttribute{
+
+        public UpdateList(JSONObject jsonObject, MainController mainController, NetworkInterface networkInterface) {
+            super(jsonObject, mainController, networkInterface);
+
+            if(component instanceof List)
+                ((List) component).updateLists();
         }
     }
 

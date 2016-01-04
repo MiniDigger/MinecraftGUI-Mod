@@ -75,24 +75,26 @@ public class UnicodeFont extends Font {
     }
 
     public void generate(int size, Color color){
-        org.newdawn.slick.UnicodeFont unicodeFonts[] = new org.newdawn.slick.UnicodeFont[5];
+        if(fonts.get(size + "-" + color.getRGB()) == null) {
+            org.newdawn.slick.UnicodeFont unicodeFonts[] = new org.newdawn.slick.UnicodeFont[5];
 
-        for(int i = 1; i < 5; i++) {
-            org.newdawn.slick.UnicodeFont unicodeFont = new org.newdawn.slick.UnicodeFont(font, size * i, false, false);
+            for (int i = 1; i < 5; i++) {
+                org.newdawn.slick.UnicodeFont unicodeFont = new org.newdawn.slick.UnicodeFont(font, size * i, false, false);
 
-            unicodeFont.addAsciiGlyphs();
-            unicodeFont.getEffects().add(new ColorEffect(color));
-            unicodeFont.addGlyphs(200, 400);
-            try {
-                unicodeFont.loadGlyphs();
-            } catch (SlickException e) {
-                e.printStackTrace();
+                unicodeFont.addAsciiGlyphs();
+                unicodeFont.getEffects().add(new ColorEffect(color));
+                unicodeFont.addGlyphs(200, 400);
+                try {
+                    unicodeFont.loadGlyphs();
+                } catch (SlickException e) {
+                    e.printStackTrace();
+                }
+
+                unicodeFonts[i] = unicodeFont;
             }
 
-            unicodeFonts[i] = unicodeFont;
+            fonts.put(size + "-" + color.getRGB(), unicodeFonts);
         }
-
-        fonts.put(size+"-"+color.getRGB(), unicodeFonts);
     }
 
 }

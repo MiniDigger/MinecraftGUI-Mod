@@ -165,7 +165,7 @@ public class Mouse implements Updatable{
 
     private org.lwjgl.input.Cursor loadCursor(String name, int xHotSpot, int yHotSpot){
         try {
-            BufferedImage bufferedImage = ImageIO.read(new FileInputStream("mods/MinecraftGUI/" + name));
+            BufferedImage bufferedImage = ImageIO.read( new FileInputStream(MainController.PATH + name));
             IntBuffer ib = BufferUtils.createIntBuffer(bufferedImage.getWidth() * bufferedImage.getHeight());
             int i = 0;
 

@@ -6,6 +6,8 @@ import io.github.minecraftgui.models.components.Root;
 import io.github.minecraftgui.models.components.State;
 import io.github.minecraftgui.models.components.Visibility;
 import io.github.minecraftgui.models.listeners.OnRemoveListener;
+import io.github.minecraftgui.models.repositories.FontRepository;
+import io.github.minecraftgui.models.repositories.ImageRepository;
 
 import java.util.HashMap;
 
@@ -188,6 +190,7 @@ public class UserInterface {
 
     public void removeComponent(String componentId){
         components.get(componentId).remove();
+        System.out.println(components.size());
     }
 
     public void update(){

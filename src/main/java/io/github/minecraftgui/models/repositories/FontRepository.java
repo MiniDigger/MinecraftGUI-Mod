@@ -16,18 +16,20 @@
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.minecraftgui.controllers;
+package io.github.minecraftgui.models.repositories;
 
+import io.github.minecraftgui.controllers.MainController;
+import io.github.minecraftgui.controllers.Screen;
 import io.github.minecraftgui.models.fonts.Font;
 import io.github.minecraftgui.models.fonts.MinecraftNormalFont;
 import io.github.minecraftgui.models.fonts.MinecraftShadowFont;
 import io.github.minecraftgui.models.fonts.UnicodeFont;
+import scala.actors.threadpool.Arrays;
 
 import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.zip.ZipEntry;
@@ -36,13 +38,14 @@ import java.util.zip.ZipInputStream;
 /**
  * Created by Samuel on 2015-11-04.
  */
-public class FontRepository {
+public class FontRepository extends FileRepository {
 
     private final HashMap<String, Font> fonts = new HashMap<String, Font>();
     private final ArrayList<FontData> fontDatas;
     private final MainController controller;
 
     public FontRepository(MainController controller) {
+        super(new ArrayList<String>(Arrays.asList(new String[]{"application/zip"})));
         this.controller = controller;
         this.fontDatas = new ArrayList<>();
         addFont("minecraft normal", new MinecraftNormalFont());
@@ -78,40 +81,45 @@ public class FontRepository {
     }
 
     public void downloadFont(final String fontUrl){
-        new Thread(new Runnable() {
+        if(!urlLoaded.contains(fontUrl)) {
+            new Thread(new Runnable() {
 
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL(fontUrl);
-                    InputStream is = url.openStream();
+                @Override
+                public void run() {
+                    try {
+                        InputStream is = getFile(fontUrl);
+                        ZipInputStream zis = new ZipInputStream(is);
 
-                    ZipInputStream zis = new ZipInputStream(is);
+                        ZipEntry entry;
 
-                    ZipEntry entry;
+                        while ((entry = zis.getNextEntry()) != null) {
+                            String fileName = entry.getName().toLowerCase();
 
-                    while((entry = zis.getNextEntry()) != null){
-                        String fileName = entry.getName().toLowerCase();
+                            if (fileName.endsWith(".ttf") || fileName.endsWith(".otf")) {
+                                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                                int i;
 
-                        if (fileName.endsWith(".ttf") || fileName.endsWith(".otf")) {
-                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                            int i;
+                                while ((i = zis.read()) != -1)
+                                    baos.write(i);
 
-                            while((i = zis.read()) != -1)
-                                baos.write(i);
-
-                            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-                            java.awt.Font font = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new ByteArrayInputStream(baos.toByteArray()));
-                            ge.registerFont(font);
+                                GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                                java.awt.Font font = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new ByteArrayInputStream(baos.toByteArray()));
+                                ge.registerFont(font);
+                            }
                         }
+                        is.close();
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
                     }
-                    is.close();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
+
+                    urlLoaded.add(fontUrl);
+                    controller.fontDownloadFinished();
                 }
-                controller.fontDownloadFinished();
-            }
-        }).start();
+            }).start();
+        }
+        else
+            controller.fontDownloadFinished();
     }
 
     private class FontData{

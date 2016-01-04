@@ -76,13 +76,16 @@ public class List extends Component {
 
     @Override
     public void add(Component component){
-        super.add(component);
+        if(buttonListAfter != component && buttonListBefore != component)
+            super.add(component);
     }
 
     @Override
     protected void remove(Component component){
-        if(component != buttonListAfter && component != buttonListBefore )
+        if(component != buttonListAfter && component != buttonListBefore ) {
             super.remove(component);
+            updateLists();
+        }
     }
 
     private void updateListsDisplayed(){

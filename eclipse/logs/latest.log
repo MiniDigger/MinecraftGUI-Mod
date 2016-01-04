@@ -1,24 +1,31 @@
-[20:39:03] [main/INFO]: Logging in with username & password
-[20:39:06] [Client thread/INFO]: Setting user: djxy
-[20:39:07] [Client thread/INFO]: LWJGL Version: 2.9.1
-[20:39:10] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:MinecraftGUI
-[20:39:11] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[20:39:11] [Thread-9/INFO]: Initializing LWJGL OpenAL
-[20:39:11] [Thread-9/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[20:39:11] [Thread-9/INFO]: OpenAL initialized.
-[20:39:11] [Sound Library Loader/INFO]: Sound engine started
-[20:39:13] [Client thread/INFO]: Created: 512x512 textures-atlas
-[20:39:13] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:MinecraftGUI
-[20:39:13] [Client thread/INFO]: SoundSystem shutting down...
-[20:39:14] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
-[20:39:14] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[20:39:14] [Thread-11/INFO]: Initializing LWJGL OpenAL
-[20:39:14] [Thread-11/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[20:39:14] [Thread-11/INFO]: OpenAL initialized.
-[20:39:14] [Sound Library Loader/INFO]: Sound engine started
-[20:39:15] [Client thread/INFO]: Created: 512x512 textures-atlas
-[20:39:18] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
-[20:39:19] [Client thread/INFO]: [CHAT] djxy joined the game
-[20:47:48] [Client thread/INFO]: Stopping!
-[20:47:48] [Client thread/INFO]: SoundSystem shutting down...
-[20:47:48] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[22:05:01] [main/INFO]: Logging in with username & password
+[22:05:04] [Client thread/INFO]: Setting user: djxy
+[22:05:06] [Client thread/INFO]: LWJGL Version: 2.9.1
+[22:05:09] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:MinecraftGUI
+[22:05:10] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[22:05:10] [Thread-9/INFO]: Initializing LWJGL OpenAL
+[22:05:10] [Thread-9/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[22:05:10] [Thread-9/INFO]: OpenAL initialized.
+[22:05:10] [Sound Library Loader/INFO]: Sound engine started
+[22:05:12] [Client thread/INFO]: Created: 512x512 textures-atlas
+[22:05:13] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:MinecraftGUI
+[22:05:13] [Client thread/INFO]: SoundSystem shutting down...
+[22:05:13] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[22:05:13] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[22:05:13] [Thread-11/INFO]: Initializing LWJGL OpenAL
+[22:05:13] [Thread-11/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[22:05:13] [Thread-11/INFO]: OpenAL initialized.
+[22:05:13] [Sound Library Loader/INFO]: Sound engine started
+[22:05:14] [Client thread/INFO]: Created: 512x512 textures-atlas
+[22:05:16] [Client thread/ERROR]: Can't ping 127.0.0.1: Internal Exception: io.netty.handler.codec.DecoderException: com.google.gson.JsonSyntaxException: Expected status to be a JsonObject, was "Ser...g."
+[22:05:17] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
+[22:05:18] [Client thread/INFO]: [CHAT] djxy joined the game
+[22:05:56] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
+[22:05:56] [Client thread/INFO]: [CHAT] djxy joined the game
+[22:07:32] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
+[22:07:33] [Client thread/INFO]: [CHAT] djxy joined the game
+[22:08:30] [Client thread/INFO]: Connecting to 127.0.0.1, 25565
+[22:08:31] [Client thread/INFO]: [CHAT] djxy joined the game
+[22:09:37] [Client thread/INFO]: Stopping!
+[22:09:37] [Client thread/INFO]: SoundSystem shutting down...
+[22:09:37] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

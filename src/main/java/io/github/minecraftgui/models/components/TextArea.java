@@ -134,6 +134,12 @@ public class TextArea extends ComponentEditableText implements ClipboardOwner {
         });
     }
 
+    @Override
+    public void add(Component component){
+        if(buttonLineAfter != component && buttonLineBefore != component)
+            super.add(component);
+    }
+
     public void setAlignment(Text.TextAlignement alignment){
         text.setAlignement(alignment);
     }

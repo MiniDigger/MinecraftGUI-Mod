@@ -175,8 +175,6 @@ public abstract class Component implements Updatable, Drawable {
     }
 
     public void add(final Component component){
-        component.remove();
-
         this.addOnRemoveListener(new OnRemoveListener() {
             @Override
             public void onRemove(Component comp) {
@@ -189,11 +187,10 @@ public abstract class Component implements Updatable, Drawable {
 
     public void remove(){
         if(this.parent != null) {
+            parent.remove(this);
+
             for(OnRemoveListener listener : onRemoveListeners)
                 listener.onRemove(this);
-
-            parent.remove(this);
-            parent = null;
         }
     }
 
@@ -262,56 +259,56 @@ public abstract class Component implements Updatable, Drawable {
             onMouseOver();
     }
 
-    private final void onMouseOver(){
+    private void onMouseOver(){
         for(OnMouseOverListener mouseEvent : onMouseOverClickListeners)
             mouseEvent.onMouseOver(this, mouse);
     }
-    private final void onMouseButtonDown(Mouse mouse, Mouse.Button button){
+    private void onMouseButtonDown(Mouse mouse, Mouse.Button button){
         for(OnMouseButtonDownListener mouseEvent : onMouseButtonDownListeners)
             mouseEvent.onMouseButtonDown(this, mouse, button);
     }
 
-    private final void onMouseButtonUp(Mouse mouse, Mouse.Button button){
+    private void onMouseButtonUp(Mouse mouse, Mouse.Button button){
         for(OnMouseButtonUpListener mouseEvent : onMouseButtonUpListeners)
             mouseEvent.onMouseButtonUp(this, mouse, button);
     }
 
-    private final void onFocus(){
+    private void onFocus(){
         for(OnFocusListener stateChange : onFocusListeners)
             stateChange.onFocus(this);
     }
 
-    private final void onBlur(){
+    private void onBlur(){
         for(OnBlurListener stateChange : onBlurListeners)
             stateChange.onBlur(this);
     }
 
-    private final void onClick(){
+    private void onClick(){
         for(OnClickListener mouseEvent : onClickListeners)
             mouseEvent.onClick(this, mouse);
     }
 
-    private final void onDoubleClick(){
+    private void onDoubleClick(){
         for(OnDoubleClickListener mouseEvent : onDoubleClickListeners)
             mouseEvent.onDoubleClick(this);
     }
 
-    private final void onInput(char input){
+    private void onInput(char input){
         for(OnInputListener keyBoardEvent : onInputListeners)
             keyBoardEvent.onInput(this, input);
     }
 
-    private final void onKeyPressed(KeyBoard keyBoard){
+    private void onKeyPressed(KeyBoard keyBoard){
         for(OnKeyPressedListener keyBoardEvent : onKeyPressedListeners)
             keyBoardEvent.onKeyPressed(this, keyBoard);
     }
 
-    private final void onCopy(){
+    private void onCopy(){
         for(OnCopyListener onCopyListener : onCopyListeners)
             onCopyListener.onCopy(this);
     }
 
-    private final void onPaste(){
+    private void onPaste(){
         for(OnPasteListener onPasteListener : onPasteListeners)
             onPasteListener.onPaste(this);
     }

@@ -1,27 +1,28 @@
-package io.github.minecraftgui.controllers;
+package io.github.minecraftgui.models.repositories;
 
+import io.github.minecraftgui.controllers.MainController;
 import io.github.minecraftgui.models.images.*;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
+import scala.actors.threadpool.Arrays;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by Samuel on 2015-12-11.
  */
-public class ImageRepository {
+public class ImageRepository extends FileRepository{
 
     private final HashMap<String, Image> images;
     private final ArrayList<ImageData> imagesData;
     private final MainController mainController;
 
     public ImageRepository(MainController mainController) {
+        super(new ArrayList<String>(Arrays.asList(new String[]{"image/gif","image/jpeg","image/png"})));
         this.mainController = mainController;
         images = new HashMap<>();
         imagesData = new ArrayList<>();
@@ -73,76 +74,62 @@ public class ImageRepository {
     }
 
     public void downloadImage(final String imageUrl, final String name){
-        new Thread(new Runnable() {
+        if(!urlLoaded.contains(imageUrl)) {
+            new Thread(new Runnable() {
 
-            @Override
-            public void run() {
-                DataInputStream dis = null;
-                String extension = name.substring(name.lastIndexOf(".")+1);
+                @Override
+                public void run() {
+                    String extension = name.substring(name.lastIndexOf(".") + 1);
 
-                try {
-                    URL url = new URL(imageUrl);
-                    InputStream is;
+                    try {
+                        InputStream is = getFile(imageUrl);
 
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    is = con.getInputStream();
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-                    dis = new DataInputStream(is);
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        int b;
 
-                    int b;
-                    int bytes = 0;
+                        while ((b = is.read()) != -1)
+                            baos.write(b);
 
-                    while ((b = dis.read()) != -1) {
-                        bytes++;
-
-                        if(bytes > 3145728)//3mb
-                            throw new Exception();
-
-                        baos.write(b);
-                    }
-
-                    dis.close();
-
-                    if(extension.equalsIgnoreCase("jpg") || extension.equalsIgnoreCase("png")){
-                        ImageData imageData = new ImageData(extension, name);
-                        imageData.frames.add(new ImageData.Frame(0, baos.toByteArray()));
-
-                        imagesData.add(imageData);
-                    }
-                    else if(extension.equalsIgnoreCase("gif")) {
-                        try {
+                        if (extension.equalsIgnoreCase("jpg") || extension.equalsIgnoreCase("png")) {
                             ImageData imageData = new ImageData(extension, name);
-                            GifDecoder.GifImage gifImage = GifDecoder.read(baos.toByteArray());
-
-                            for(b = 0; b < gifImage.getFrameCount(); b++){
-                                BufferedImage bufferedImage = gifImage.getFrame(b);
-
-                                ByteArrayOutputStream baosImage = new ByteArrayOutputStream();
-                                ImageIO.write(bufferedImage, "GIF", baosImage);
-
-                                imageData.frames.add(new ImageData.Frame(gifImage.getDelay(b) * 10, baosImage.toByteArray()));
-
-                                baosImage.close();
-                            }
+                            imageData.frames.add(new ImageData.Frame(0, baos.toByteArray()));
 
                             imagesData.add(imageData);
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
+                        } else if (extension.equalsIgnoreCase("gif")) {
+                            try {
+                                ImageData imageData = new ImageData(extension, name);
+                                GifDecoder.GifImage gifImage = GifDecoder.read(baos.toByteArray());
+
+                                for (b = 0; b < gifImage.getFrameCount(); b++) {
+                                    BufferedImage bufferedImage = gifImage.getFrame(b);
+
+                                    ByteArrayOutputStream baosImage = new ByteArrayOutputStream();
+                                    ImageIO.write(bufferedImage, "GIF", baosImage);
+
+                                    imageData.frames.add(new ImageData.Frame(gifImage.getDelay(b) * 10, baosImage.toByteArray()));
+
+                                    baosImage.close();
+                                }
+
+                                imagesData.add(imageData);
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
                         }
+
+                        baos.close();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
                     }
 
-                    baos.close();
-                } catch (Exception ex) {
-                    try {
-                        dis.close();
-                    } catch (IOException e) {}
-                    ex.printStackTrace();
+                    urlLoaded.add(imageUrl);
+                    mainController.imageDownloadFinished();
                 }
-
-                mainController.imageDownloadFinished();
-            }
-        }).start();
+            }).start();
+        }
+        else
+            mainController.imageDownloadFinished();
     }
 
     private static class ImageData{

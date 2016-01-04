@@ -19,6 +19,7 @@ public interface NetworkInterface {
     int PACKET_INTERFACE_INITIATED = 4;
     int PACKET_CREATE_COMPONENT = 5;
     int PACKET_DELETE_COMPONENT = 6;
+    int PACKET_ADD_EVENT = 7;
 
     int PACKET_EVENT_ON_CLICK = 100;
     int PACKET_EVENT_ON_DOUBLE_CLICK = 102;
@@ -64,6 +65,9 @@ public interface NetworkInterface {
     int PACKET_SET_VALUE = 1030;
     int PACKET_SET_TEXT_ALIGNMEMT = 1031;
     int PACKET_SET_POSITIONS = 1032;
+    int PACKET_SET_LIST_NB_COMPONENT = 1033;
+    int PACKET_SET_TEXT_NB_LINE = 1034;
+    int PACKET_UPDATE_LIST = 1035;
 
     String CONTENT = "content";
     String PACKET_ID = "packetId";

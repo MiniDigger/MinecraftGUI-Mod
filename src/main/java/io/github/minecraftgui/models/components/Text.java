@@ -47,7 +47,8 @@ public class Text implements Updatable, Drawable {
     }
 
     public void setNbLinesToDisplay(int nbLinesToDisplay) {
-        this.nbLinesToDisplay = nbLinesToDisplay;
+        if(nbLinesToDisplay != 0)
+            this.nbLinesToDisplay = nbLinesToDisplay-1;
     }
 
     @Override

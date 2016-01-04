@@ -72,6 +72,12 @@ public class Paragraph extends ComponentText implements ClipboardOwner  {
         });
     }
 
+    @Override
+    public void add(Component component){
+        if(buttonLineAfter != component && buttonLineBefore != component)
+            super.add(component);
+    }
+
     public Component getButtonLineBefore() {
         return buttonLineBefore;
     }

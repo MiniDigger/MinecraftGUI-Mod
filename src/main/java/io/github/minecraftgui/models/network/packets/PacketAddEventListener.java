@@ -14,7 +14,7 @@ import org.json.JSONObject;
  */
 public class PacketAddEventListener extends PacketIn {
 
-    public PacketAddEventListener(JSONObject jsonObject, final NetworkInterface networkInterface, MainController mainController) {
+    public PacketAddEventListener(JSONObject jsonObject, MainController mainController, final NetworkInterface networkInterface) {
         super(jsonObject, mainController, networkInterface);
         String componentId = jsonObject.getString(NetworkInterface.COMPONENT_ID);
         String event = jsonObject.getString(NetworkInterface.EVENT);
@@ -66,8 +66,10 @@ public class PacketAddEventListener extends PacketIn {
                     component.addOnKeyPressedListener(new OnKeyPressedListener() {
                         @Override
                         public void onKeyPressed(Component component, KeyBoard keyBoard) {
-                            for(int keyCode : keyBoard.getKeyListeners())
-                                networkInterface.sendPacket(new PacketComponentEvent.OnKeyPressed(component.getId(), keyCode));
+                            for(int keyCode : keyBoard.getKeyListeners()) {
+                                if(keyBoard.getKeyListener(keyCode).isPressed())
+                                    networkInterface.sendPacket(new PacketComponentEvent.OnKeyPressed(component.getId(), keyCode));
+                            }
                         }
                     });
                     break;

@@ -24,6 +24,8 @@ import io.github.minecraftgui.models.network.NetworkInterface;
 import io.github.minecraftgui.models.network.packets.PacketClientInitiated;
 import io.github.minecraftgui.models.network.packets.PacketGuiEvent;
 import io.github.minecraftgui.models.network.packets.PacketInterfaceInitiated;
+import io.github.minecraftgui.models.repositories.FontRepository;
+import io.github.minecraftgui.models.repositories.ImageRepository;
 import io.github.minecraftgui.views.ModInterface;
 
 import java.awt.*;
@@ -32,6 +34,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainController {
+
+    public static final String PATH = "mods/MinecraftGUI/";
 
     private final Screen screen;
     private final Render render;
@@ -123,11 +127,11 @@ public class MainController {
             userInterface.removeComponent(componentId);
     }
 
-    protected void fontDownloadFinished(){
+    public void fontDownloadFinished(){
         fontsDownload--;
     }
 
-    protected void imageDownloadFinished(){
+    public void imageDownloadFinished(){
         imagesDownload--;
     }
 
