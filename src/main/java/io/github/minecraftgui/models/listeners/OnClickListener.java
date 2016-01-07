@@ -6,8 +6,8 @@ import io.github.minecraftgui.models.components.Component;
 /**
  * Created by Samuel on 2015-11-21.
  */
-public abstract class OnClickListener {
+public interface OnClickListener {
 
-    public abstract void onClick(Component component, Mouse mouse);
+    void onClick(Component component, Mouse mouse);
 
 }
