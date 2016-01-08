@@ -78,6 +78,10 @@ public class Paragraph extends ComponentText implements ClipboardOwner  {
             super.add(component);
     }
 
+    public Text getTextField(){
+        return text;
+    }
+
     public Component getButtonLineBefore() {
         return buttonLineBefore;
     }

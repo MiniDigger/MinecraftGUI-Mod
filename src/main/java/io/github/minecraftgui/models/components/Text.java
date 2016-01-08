@@ -2,6 +2,7 @@ package io.github.minecraftgui.models.components;
 
 import io.github.minecraftgui.controllers.Render;
 import io.github.minecraftgui.models.Updatable;
+import io.github.minecraftgui.models.attributes.AttributeDouble;
 import io.github.minecraftgui.models.fonts.Font;
 
 import java.awt.*;
@@ -28,12 +29,18 @@ public class Text implements Updatable, Drawable {
     private int lineIndex = 0;//La première ligne qui va être affiché
     private int nbLinesToDisplay = Integer.MAX_VALUE;//La première ligne qui va être affiché
     private TextAlignement alignement = TextAlignement.LEFT;
+    private final AttributeDouble textHeight;
 
     public Text(ComponentText componentText) {
         this.componentText = componentText;
         lines = new ArrayList<>();
         linesChar = new ArrayList<>();
         groupChars = new ArrayList<>();
+        this.textHeight = new AttributeDouble(0.0);
+    }
+
+    public AttributeDouble getTextHeight() {
+        return textHeight;
     }
 
     public void setAlignement(TextAlignement alignement) {
@@ -438,6 +445,8 @@ public class Text implements Updatable, Drawable {
                 lineIndex--;
 
             updateVisibleLines();
+
+            textHeight.setValue(visibleLines.size()*componentText.getStringHeight());
 
             updateText = false;
             textUpdated = true;

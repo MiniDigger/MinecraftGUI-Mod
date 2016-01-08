@@ -134,6 +134,10 @@ public class TextArea extends ComponentEditableText implements ClipboardOwner {
         });
     }
 
+    public Text getTextField(){
+        return text;
+    }
+
     @Override
     public void add(Component component){
         if(buttonLineAfter != component && buttonLineBefore != component)
