@@ -39,6 +39,14 @@ public class Root extends Component {
     }
 
     @Override
+    public void setState(State state) {
+    }
+
+    @Override
+    public void setFocus(boolean isFocus) {
+    }
+
+    @Override
     public double getX(){
         return 0;
     }
