@@ -17,8 +17,8 @@ public class List extends Component {
     private final Component buttonListAfter;
     private final Component buttonListBefore;
     private final ArrayList<CopyOnWriteArrayList<Component>> listsDisplayed;
-    private int nbComponentPerList = Integer.MAX_VALUE;
     private CopyOnWriteArrayList<Component> currentListDisplayed = null;
+    private double heightLastUpdate = 0;
 
     public List(String id, Class<? extends Rectangle> shape, Component buttonListBefore, Component  buttonListAfter) {
         super(id, shape);
@@ -70,10 +70,6 @@ public class List extends Component {
         return currentListDisplayed;
     }
 
-    public void setNbComponentPerList(int nbComponentPerList) {
-        this.nbComponentPerList = nbComponentPerList;
-    }
-
     @Override
     public void add(Component component){
         if(buttonListAfter != component && buttonListBefore != component)
@@ -84,24 +80,42 @@ public class List extends Component {
     protected void remove(Component component){
         if(component != buttonListAfter && component != buttonListBefore ) {
             super.remove(component);
-            updateLists();
+            updateListsDisplayed();
         }
     }
 
+    @Override
+    public void update(long updateId) {
+        super.update(updateId);
+
+        if(heightLastUpdate != this.getHeight())
+            updateListsDisplayed();
+
+        heightLastUpdate = this.getHeight();
+    }
+
     private void updateListsDisplayed(){
-        int index = listsDisplayed.indexOf(currentListDisplayed);
-        listsDisplayed.clear();
         CopyOnWriteArrayList<Component> currentList = new CopyOnWriteArrayList();
+        int index = listsDisplayed.indexOf(currentListDisplayed);
+        double height = getHeight();
+        double currentHeight = 0;
+
+        listsDisplayed.clear();
 
         for(Component component : children){
-            if(currentList.size() == nbComponentPerList){
+            double componentHeight = component.getHeight()+component.getShape().getPadding(Padding.TOP)+component.getShape().getPadding(Padding.BOTTOM)+component.getShape().getBorder(Border.TOP)+component.getShape().getBorder(Border.BOTTOM);
+
+            if(currentHeight+componentHeight >= height){
                 listsDisplayed.add(currentList);
 
                 currentList.add(buttonListBefore);
                 currentList.add(buttonListAfter);
 
                 currentList = new CopyOnWriteArrayList<>();
+                currentHeight = 0;
             }
+
+            currentHeight += componentHeight;
 
             component.getPositionY().getRelativeToAttributes().clear();
 
