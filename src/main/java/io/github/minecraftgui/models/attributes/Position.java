@@ -30,6 +30,9 @@ public abstract class Position extends Attribute<Double> {
     protected AttributeGroupDouble relative;
     protected Component component;
     protected double valueRelativeAttribute;
+    private long lastUpdateId = 0;
+
+    protected abstract double updateValue();
 
     public Position(Component component, Attribute<Double> relativeToAttributes[]) {
         super(0.0);
@@ -53,12 +56,16 @@ public abstract class Position extends Attribute<Double> {
 
     @Override
     public void update(long updateId) {
-        relative.update(updateId);
-        valueRelativeAttribute = 0;
+        if(updateId != lastUpdateId) {
+            relative.update(updateId);
+            valueRelativeAttribute = 0;
 
-        for(Attribute<Double> relativeToAttribute: relativeToAttributes) {
-            relativeToAttribute.update(updateId);
-            valueRelativeAttribute += relativeToAttribute.getValue();
+            for (Attribute<Double> relativeToAttribute : relativeToAttributes) {
+                relativeToAttribute.update(updateId);
+                valueRelativeAttribute += relativeToAttribute.getValue();
+            }
+            lastUpdateId = updateId;
+            this.value = updateValue();
         }
     }
 
@@ -69,10 +76,8 @@ public abstract class Position extends Attribute<Double> {
         }
 
         @Override
-        public void update(long updateId) {
-            super.update(updateId);
-
-            this.value = component.getParent().getY()+component.getShape().getMargin(Margin.TOP)+valueRelativeAttribute + relative.getValue();
+        protected double updateValue() {
+            return this.value = component.getParent().getY()+component.getShape().getMargin(Margin.TOP)+valueRelativeAttribute + relative.getValue();
         }
     }
 
@@ -83,10 +88,8 @@ public abstract class Position extends Attribute<Double> {
         }
 
         @Override
-        public void update(long updateId) {
-            super.update(updateId);
-
-            this.value = component.getParent().getX()+component.getShape().getMargin(Margin.LEFT)+valueRelativeAttribute + relative.getValue();
+        protected double updateValue() {
+            return this.value = component.getParent().getX()+component.getShape().getMargin(Margin.LEFT)+valueRelativeAttribute + relative.getValue();
         }
     }
 

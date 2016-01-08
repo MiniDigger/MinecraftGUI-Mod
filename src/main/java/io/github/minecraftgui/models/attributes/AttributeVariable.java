@@ -3,19 +3,18 @@ package io.github.minecraftgui.models.attributes;
 /**
  * Created by Samuel on 2015-12-13.
  */
-public abstract class AttributeVariable<V> extends Attribute{
+public abstract class AttributeVariable<V> extends Attribute<V>{
 
     private final AttributeGroup<V> attributeGroup;
     private Attribute<V> valueEndTransition;//This attribute is the value the transition will be at the end or the value changed by the percentage.
     private double percentage = 1;
     private double time = 0;//millisecond
-    private long lastUpdateId = Long.MIN_VALUE;
     private long timeStarted = System.currentTimeMillis();
     private V valueAtStartOfAnimation;
     private double timePercentage = 0;
     private double percentageLastUpdate = 0;
     private V valueEndTransitionLastUpdate;
-    private long lastUpdate = Long.MIN_VALUE;
+    private long lastUpdateId = Long.MIN_VALUE;
 
     protected abstract V getValue(V value, double percentage);
     protected abstract V getValue(V valueAtTheEnd, V valueAtStart, double percentage, double timePercentage);
@@ -71,37 +70,40 @@ public abstract class AttributeVariable<V> extends Attribute{
 
     @Override
     public void update(long updateId){
-        if(valueEndTransition != null && (updateId == Long.MIN_VALUE || lastUpdate != updateId)) {
-            lastUpdate = updateId;
-            valueEndTransition.update(updateId);
-            boolean attrChanged = valueEndTransitionLastUpdate == null?true:!valueEndTransitionLastUpdate.equals(valueEndTransition.getValue());
-            boolean percentageChanged = percentage != percentageLastUpdate;
+        if(lastUpdateId != updateId) {
+            if (valueEndTransition != null) {
+                valueEndTransition.update(updateId);
+                boolean attrChanged = valueEndTransitionLastUpdate == null ? true : !valueEndTransitionLastUpdate.equals(valueEndTransition.getValue());
+                boolean percentageChanged = percentage != percentageLastUpdate;
 
-            if (time > 0 || (attrChanged && time > 0) || (percentageChanged && time > 0)) {
-                long currentTime = System.currentTimeMillis();
+                if (time > 0 || (attrChanged && time > 0) || (percentageChanged && time > 0)) {
+                    long currentTime = System.currentTimeMillis();
 
-                if (lastUpdateId + 1 != updateId || attrChanged || percentageChanged) {
-                    timeStarted = currentTime;
-                    valueAtStartOfAnimation = (V) attributeGroup.getValue();
-                    timePercentage = 0;
-                }
-                double lastTimePercentage = timePercentage;
+                    if (lastUpdateId + 1 != updateId || attrChanged || percentageChanged) {
+                        timeStarted = currentTime;
+                        valueAtStartOfAnimation = attributeGroup.getValue();
+                        timePercentage = 0;
+                    }
+                    double lastTimePercentage = timePercentage;
 
-                timePercentage = (currentTime - timeStarted) / time;
+                    valueAtStartOfAnimation = valueAtStartOfAnimation == null?attributeGroup.getDefaultValue():valueAtStartOfAnimation;
+                    timePercentage = (currentTime - timeStarted) / time;
 
-                if (lastTimePercentage != 1) {
-                    timePercentage = timePercentage > 1 ? 1 : timePercentage;
-                    this.value = getValue(valueEndTransition.getValue(), valueAtStartOfAnimation, percentage, timePercentage);
-                }
+                    if (lastTimePercentage != 1) {
+                        timePercentage = timePercentage > 1 ? 1 : timePercentage;
+                        this.value = getValue(valueEndTransition.getValue(), valueAtStartOfAnimation, percentage, timePercentage);
+                    }
 
-                lastUpdateId = updateId;
-            } else if (percentageChanged || attrChanged)
-                this.value = getValue(valueEndTransition.getValue(), percentage);
+                } else if (percentageChanged || attrChanged)
+                    this.value = getValue(valueEndTransition.getValue(), percentage);
 
-            if(percentageChanged)
-                percentageLastUpdate = percentage;
+                if (percentageChanged)
+                    percentageLastUpdate = percentage;
 
-            valueEndTransitionLastUpdate = valueEndTransition.getValue();
+                valueEndTransitionLastUpdate = valueEndTransition.getValue();
+            }
+
+            lastUpdateId = updateId;
         }
     }
 

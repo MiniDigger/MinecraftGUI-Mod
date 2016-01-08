@@ -42,6 +42,6 @@ public class AttributeGroupDouble extends AttributeGroup<Double> {
 
     @Override
     public Double getValue() {
-        return (Double) super.getValue();
+        return super.getValue();
     }
 }

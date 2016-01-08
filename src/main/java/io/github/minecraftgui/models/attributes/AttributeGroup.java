@@ -31,6 +31,7 @@ public class AttributeGroup<V> extends Attribute {
     protected final HashMap<State, Attribute<V>> attributes;
     private final V defaultValue;
     protected Component component;
+    private long lastUpdateId = 0;
 
     public AttributeGroup(V defaultValue, Component component) {
         super(defaultValue);
@@ -47,6 +48,15 @@ public class AttributeGroup<V> extends Attribute {
         this.value = defaultValue;
     }
 
+    public V getDefaultValue() {
+        return defaultValue;
+    }
+
+    @Override
+    public V getValue() {
+        return (V) super.getValue();
+    }
+
     public Component getComponent() {
         return component;
     }
@@ -61,14 +71,16 @@ public class AttributeGroup<V> extends Attribute {
 
     @Override
     public void update(long updateId) {
-        State state = getState();
+        if(updateId != lastUpdateId) {
+            lastUpdateId = updateId;
+            State state = getState();
 
-        if(state != null) {
-            attributes.get(state).update(updateId);
-            value = attributes.get(state).getValue();
+            if (state != null) {
+                attributes.get(state).update(updateId);
+                value = attributes.get(state).getValue();
+            } else
+                value = defaultValue;
         }
-        else
-            value = defaultValue;
     }
 
     private State getState(){
@@ -78,7 +90,7 @@ public class AttributeGroup<V> extends Attribute {
             return State.ACTIVE;
         if((state == State.HOVER  || state == State.ACTIVE) && attributes.get(State.HOVER).getValue() != null)
             return State.HOVER;
-        if((component.isFocus() && (state == State.HOVER  || state == State.ACTIVE || state == State.NORMAL)) && attributes.get(State.FOCUS).getValue() != null)
+        if(component.isFocus() && attributes.get(State.FOCUS).getValue() != null)
             return State.FOCUS;
         else if(attributes.get(State.NORMAL).getValue() != null)
             return State.NORMAL;
