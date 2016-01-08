@@ -45,7 +45,7 @@ public class FontRepository extends FileRepository {
     private final MainController controller;
 
     public FontRepository(MainController controller) {
-        super(new ArrayList<String>(Arrays.asList(new String[]{"application/zip"})));
+        super(new ArrayList<String>(Arrays.asList(new String[]{"application/zip", "application/x-zip"})));
         this.controller = controller;
         this.fontDatas = new ArrayList<>();
         addFont("minecraft normal", new MinecraftNormalFont());

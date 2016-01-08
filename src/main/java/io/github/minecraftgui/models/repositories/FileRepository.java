@@ -62,7 +62,7 @@ public class FileRepository {
         URL url = new URL(fileUrl);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-        if(con.getContentLengthLong() <= 3145728 && mimeTypesAllowed.contains(con.getContentType())) {
+        if(con.getContentLengthLong() <= 3145728 && mimeTypesAllowed.contains(con.getContentType().replace("\"", ""))) {
             InputStream is = con.getInputStream();
             ByteArrayOutputStream baos = new ByteArrayOutputStream((int) con.getContentLengthLong());
             int i;
