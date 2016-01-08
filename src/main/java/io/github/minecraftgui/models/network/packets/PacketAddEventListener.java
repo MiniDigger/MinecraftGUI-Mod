@@ -66,8 +66,8 @@ public class PacketAddEventListener extends PacketIn {
                     component.addOnKeyPressedListener(new OnKeyPressedListener() {
                         @Override
                         public void onKeyPressed(Component component, KeyBoard keyBoard) {
-                            for(int keyCode : keyBoard.getKeyListeners()) {
-                                if(keyBoard.getKeyListener(keyCode).isPressed())
+                            for (int keyCode : keyBoard.getKeyListeners()) {
+                                if (keyBoard.getKeyListener(keyCode).isPressed())
                                     networkInterface.sendPacket(new PacketComponentEvent.OnKeyPressed(component.getId(), keyCode));
                             }
                         }
@@ -78,6 +78,22 @@ public class PacketAddEventListener extends PacketIn {
                         @Override
                         public void onRemove(Component component) {
                             networkInterface.sendPacket(new PacketComponentEvent.OnRemove(component.getId()));
+                        }
+                    });
+                    break;
+                case NetworkInterface.ON_MOUSE_ENTER_LISTENER:
+                    component.addOnMouseEnterListener(new OnMouseEnterListener() {
+                        @Override
+                        public void onMouseEnter(Component component) {
+                            networkInterface.sendPacket(new PacketComponentEvent.OnMouseEnter(component.getId()));
+                        }
+                    });
+                    break;
+                case NetworkInterface.ON_MOUSE_LEAVE_LISTENER:
+                    component.addOnMouseLeaveListener(new OnMouseLeaveListener() {
+                        @Override
+                        public void onMouseLeave(Component component) {
+                            networkInterface.sendPacket(new PacketComponentEvent.OnMouseLeave(component.getId()));
                         }
                     });
                     break;

@@ -72,7 +72,6 @@ public class PacketHandler implements IMessageHandler<PacketHandler.Packet, IMes
                 case PACKET_SET_VALUE: new PacketSetAttribute.Value(content, mainController, this); break;
                 case PACKET_SET_TEXT_ALIGNMEMT: new PacketSetAttribute.TextAlignment(content, mainController, this); break;
                 case PACKET_SET_POSITIONS: new PacketSetAttribute.Positions(content, mainController, this); break;
-                case PACKET_SET_LIST_NB_COMPONENT: new PacketSetAttribute.ListNbComponent(content, mainController, this); break;
                 case PACKET_SET_TEXT_NB_LINE: new PacketSetAttribute.TextNbLine(content, mainController, this); break;
                 case PACKET_UPDATE_LIST: new PacketSetAttribute.UpdateList(content, mainController, this); break;
             }
@@ -97,11 +96,12 @@ public class PacketHandler implements IMessageHandler<PacketHandler.Packet, IMes
             else if(packetClass == PacketComponentEvent.OnBlur.class) simpleNetworkWrapper.sendToServer(new Packet(generateJSONHeader(PACKET_EVENT_ON_BLUR, packet.toJSON())));
             else if(packetClass == PacketComponentEvent.OnFocus.class) simpleNetworkWrapper.sendToServer(new Packet(generateJSONHeader(PACKET_EVENT_ON_FOCUS, packet.toJSON())));
             else if(packetClass == PacketComponentEvent.OnRemove.class) simpleNetworkWrapper.sendToServer(new Packet(generateJSONHeader(PACKET_EVENT_ON_REMOVE, packet.toJSON())));
+            else if(packetClass == PacketComponentEvent.OnMouseEnter.class) simpleNetworkWrapper.sendToServer(new Packet(generateJSONHeader(PACKET_EVENT_ON_MOUSE_ENTER, packet.toJSON())));
+            else if(packetClass == PacketComponentEvent.OnMouseLeave.class) simpleNetworkWrapper.sendToServer(new Packet(generateJSONHeader(PACKET_EVENT_ON_MOUSE_LEAVE, packet.toJSON())));
             else if(packetClass == PacketGuiEvent.OnClose.class) simpleNetworkWrapper.sendToServer(new Packet(generateJSONHeader(PACKET_EVENT_ON_GUI_CLOSE, packet.toJSON())));
             else if(packetClass == PacketGuiEvent.OnOpen.class) simpleNetworkWrapper.sendToServer(new Packet(generateJSONHeader(PACKET_EVENT_ON_GUI_OPEN, packet.toJSON())));
             else if(packetClass == PacketClientInitiated.class) simpleNetworkWrapper.sendToServer(new Packet(generateJSONHeader(PACKET_CLIENT_INITIATED, packet.toJSON())));
             else if(packetClass == PacketInterfaceInitiated.class) simpleNetworkWrapper.sendToServer(new Packet(generateJSONHeader(PACKET_INTERFACE_INITIATED, packet.toJSON())));
-            else if(packetClass == PacketInitConnection.class) simpleNetworkWrapper.sendToServer(new Packet(generateJSONHeader(PACKET_INIT_CONNECTION, packet.toJSON())));
             else if(packetClass == PacketInitConnection.class) simpleNetworkWrapper.sendToServer(new Packet(generateJSONHeader(PACKET_INIT_CONNECTION, packet.toJSON())));
 
         }catch (Exception e){}

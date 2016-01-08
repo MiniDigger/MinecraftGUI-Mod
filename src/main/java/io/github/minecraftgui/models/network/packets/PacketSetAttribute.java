@@ -52,7 +52,7 @@ public abstract class PacketSetAttribute extends PacketIn {
     }
 
     protected AttributeVariableDouble getAttributeVariableDouble(Shape shape, String attribute, State state){
-        switch (attribute.toUpperCase()){
+        switch (attribute){
             case NetworkInterface.WIDTH: return shape.getAttributeWidth().getAttribute(state);
             case NetworkInterface.HEIGHT: return shape.getAttributeHeight().getAttribute(state);
             case NetworkInterface.BORDER_TOP: return shape.getAttributeBorder(io.github.minecraftgui.models.shapes.Border.TOP).getAttribute(state);
@@ -75,7 +75,7 @@ public abstract class PacketSetAttribute extends PacketIn {
         if(attribute.has(NetworkInterface.COMPONENT_ID) && attribute.has(NetworkInterface.ATTRIBUTE) && attribute.has(NetworkInterface.SHAPE)){
             Component compToLink = mainController.getComponent(attribute.getString(NetworkInterface.COMPONENT_ID));
 
-            attributeVariableDouble.setAttribute(getAttributeGroupDouble(getShape(compToLink, attribute.getString(NetworkInterface.SHAPE)), attribute.getString(NetworkInterface.ATTRIBUTE)));
+            attributeVariableDouble.setAttribute(getAttributeDouble(getShape(compToLink, attribute.getString(NetworkInterface.SHAPE)), attribute.getString(NetworkInterface.ATTRIBUTE)));
             attributeVariableDouble.setPercentage(attribute.getDouble(NetworkInterface.PERCENTAGE));
             attributeVariableDouble.setTime(attribute.getLong(NetworkInterface.TIME));
         }
@@ -86,8 +86,8 @@ public abstract class PacketSetAttribute extends PacketIn {
         }
     }
 
-    protected AttributeGroupDouble getAttributeGroupDouble(Shape shape, String attribute){
-        switch (attribute.toUpperCase()){
+    protected Attribute<Double> getAttributeDouble(Shape shape, String attribute){
+        switch (attribute){
             case NetworkInterface.WIDTH: return shape.getAttributeWidth();
             case NetworkInterface.HEIGHT: return shape.getAttributeHeight();
             case NetworkInterface.BORDER_TOP: return shape.getAttributeBorder(io.github.minecraftgui.models.shapes.Border.TOP);
@@ -102,6 +102,11 @@ public abstract class PacketSetAttribute extends PacketIn {
             case NetworkInterface.MARGIN_LEFT: return shape.getAttributeMargin(io.github.minecraftgui.models.shapes.Margin.LEFT);
             case NetworkInterface.MARGIN_RIGHT: return shape.getAttributeMargin(io.github.minecraftgui.models.shapes.Margin.RIGHT);
             case NetworkInterface.MARGIN_BOTTOM: return shape.getAttributeMargin(io.github.minecraftgui.models.shapes.Margin.BOTTOM);
+            case NetworkInterface.TEXT:
+                if(component instanceof Paragraph)
+                    return ((Paragraph) component).getTextField().getTextHeight();
+                if(component instanceof TextArea)
+                    return ((TextArea) component).getTextField().getTextHeight();
             default: return null;
         }
     }
@@ -468,16 +473,6 @@ public abstract class PacketSetAttribute extends PacketIn {
                 ((TextArea) component).setNbLinesToDisplay(attribute.getInt(NetworkInterface.VALUE));
             else if(component instanceof Paragraph)
                 ((Paragraph) component).setNbLinesToDisplay(attribute.getInt(NetworkInterface.VALUE));
-        }
-    }
-
-    public static class ListNbComponent extends PacketSetAttribute{
-
-        public ListNbComponent(JSONObject jsonObject, MainController mainController, NetworkInterface networkInterface) {
-            super(jsonObject, mainController, networkInterface);
-
-            if(component instanceof List)
-                ((List) component).setNbComponentPerList(attribute.getInt(NetworkInterface.VALUE));
         }
     }
 

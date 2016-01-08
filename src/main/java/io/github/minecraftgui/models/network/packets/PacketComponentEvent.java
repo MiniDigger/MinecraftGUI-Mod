@@ -62,6 +62,22 @@ public abstract class PacketComponentEvent extends PacketOut {
 
     }
 
+    public static class OnMouseEnter extends PacketComponentEvent {
+
+        public OnMouseEnter(String componentId) {
+            super(componentId);
+        }
+
+    }
+
+    public static class OnMouseLeave extends PacketComponentEvent {
+
+        public OnMouseLeave(String componentId) {
+            super(componentId);
+        }
+
+    }
+
     public static class OnInput extends PacketComponentEvent {
 
         private final char input;

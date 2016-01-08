@@ -31,6 +31,8 @@ public interface NetworkInterface {
     int PACKET_EVENT_ON_REMOVE = 108;
     int PACKET_EVENT_ON_GUI_OPEN = 109;
     int PACKET_EVENT_ON_GUI_CLOSE = 110;
+    int PACKET_EVENT_ON_MOUSE_ENTER = 111;
+    int PACKET_EVENT_ON_MOUSE_LEAVE = 112;
 
     int PACKET_SET_ATTRIBUTE_BACKGROUND_COLOR = 1000;
     int PACKET_SET_ATTRIBUTE_WIDTH = 1001;
@@ -65,7 +67,6 @@ public interface NetworkInterface {
     int PACKET_SET_VALUE = 1030;
     int PACKET_SET_TEXT_ALIGNMEMT = 1031;
     int PACKET_SET_POSITIONS = 1032;
-    int PACKET_SET_LIST_NB_COMPONENT = 1033;
     int PACKET_SET_TEXT_NB_LINE = 1034;
     int PACKET_UPDATE_LIST = 1035;
 
@@ -81,6 +82,8 @@ public interface NetworkInterface {
     String ON_KEY_PRESSED_LISTENER = "onKeyPressedListener";
     String ON_REMOVE_LISTENER = "onRemoveListener";
     String ON_VALUE_CHANGE_LISTENER = "onValueChangeListener";
+    String ON_MOUSE_ENTER_LISTENER = "onMouseEnterListener";
+    String ON_MOUSE_LEAVE_LISTENER = "onMouseLeaveListener";
 
     String X = "x";
     String Y = "y";
@@ -128,6 +131,7 @@ public interface NetworkInterface {
     String SHAPE_ON_VALUE_TRUE = "shapeOnValueTrue";
     String SHAPE_ON_VALUE_FALSE = "shapeOnValueFalse";
     String SHAPE_ON_PROGRESS = "shapeOnProgress";
+    String TEXT = "text";
     String WIDTH = "WIDTH";
     String HEIGHT = "HEIGHT";
     String BORDER_TOP = "BORDER_TOP";
