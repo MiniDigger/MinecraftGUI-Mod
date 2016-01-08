@@ -40,7 +40,8 @@ public abstract class Component implements Updatable, Drawable {
     protected CopyOnWriteArrayList<Component> children;
     private final CopyOnWriteArrayList<OnClickListener> onClickListeners;
     private final CopyOnWriteArrayList<OnDoubleClickListener> onDoubleClickListeners;
-    private final CopyOnWriteArrayList<OnMouseOverListener> onMouseOverClickListeners;
+    private final CopyOnWriteArrayList<OnMouseEnterListener> onMouseEnterListeners;
+    private final CopyOnWriteArrayList<OnMouseLeaveListener> onMouseLeaveListeners;
     private final CopyOnWriteArrayList<OnMouseButtonDownListener> onMouseButtonDownListeners;
     private final CopyOnWriteArrayList<OnMouseButtonUpListener> onMouseButtonUpListeners;
     private final CopyOnWriteArrayList<OnKeyPressedListener> onKeyPressedListeners;
@@ -59,6 +60,7 @@ public abstract class Component implements Updatable, Drawable {
     private AttributeGroupCursor cursor;
     private Visibility visibility =  Visibility.VISIBLE;
     private State state = State.NORMAL;
+    private boolean mouseOverLastUpdate;
 
     public Component(String id, Class<? extends Shape> shape) {
         this.id = id;
@@ -67,7 +69,8 @@ public abstract class Component implements Updatable, Drawable {
         this.onDoubleClickListeners = new CopyOnWriteArrayList<>();
         this.onMouseButtonDownListeners = new CopyOnWriteArrayList<>();
         this.onMouseButtonUpListeners = new CopyOnWriteArrayList<>();
-        this.onMouseOverClickListeners = new CopyOnWriteArrayList<>();
+        this.onMouseEnterListeners = new CopyOnWriteArrayList<>();
+        this.onMouseLeaveListeners = new CopyOnWriteArrayList<>();
         this.onKeyPressedListeners = new CopyOnWriteArrayList<>();
         this.onInputListeners = new CopyOnWriteArrayList<>();
         this.onBlurListeners = new CopyOnWriteArrayList<>();
@@ -105,8 +108,12 @@ public abstract class Component implements Updatable, Drawable {
         onMouseButtonUpListeners.add(listener);
     }
 
-    public void addOnMouseOverClickListener(OnMouseOverListener listener){
-        onMouseOverClickListeners.add(listener);
+    public void addOnMouseEnterListener(OnMouseEnterListener listener){
+        onMouseEnterListeners.add(listener);
+    }
+
+    public void addOnMouseLeaveListener(OnMouseLeaveListener listener){
+        onMouseLeaveListeners.add(listener);
     }
 
     public void addOnKeyPressedListener(OnKeyPressedListener listener){
@@ -254,15 +261,30 @@ public abstract class Component implements Updatable, Drawable {
         shape.update(updateId);
         updateKeyBoard();
         updateMouse();
-
-        if(state == State.HOVER)
-            onMouseOver();
+        updateMouseOver();
     }
 
-    private void onMouseOver(){
-        for(OnMouseOverListener mouseEvent : onMouseOverClickListeners)
-            mouseEvent.onMouseOver(this, mouse);
+    private void updateMouseOver(){
+        boolean mouseOver = state == State.HOVER || state == State.ACTIVE;
+
+        if(mouseOver && !mouseOverLastUpdate)
+            onMouseEnter();
+        else if(!mouseOver && mouseOverLastUpdate)
+            onMouseLeave();
+
+        mouseOverLastUpdate = mouseOver;
     }
+
+    private void onMouseLeave(){
+        for(OnMouseLeaveListener mouseEvent : onMouseLeaveListeners)
+            mouseEvent.onMouseLeave(this);
+    }
+
+    private void onMouseEnter(){
+        for(OnMouseEnterListener mouseEvent : onMouseEnterListeners)
+            mouseEvent.onMouseEnter(this);
+    }
+
     private void onMouseButtonDown(Mouse mouse, Mouse.Button button){
         for(OnMouseButtonDownListener mouseEvent : onMouseButtonDownListeners)
             mouseEvent.onMouseButtonDown(this, mouse, button);
