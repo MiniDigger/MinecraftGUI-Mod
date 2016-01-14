@@ -46,7 +46,11 @@ public abstract class Position extends Attribute<Double> {
         return relative.getValue();
     }
 
-    public Attribute<Double> getRelative(State state) {
+    public AttributeGroupDouble getAttributeRelative(){
+        return relative;
+    }
+
+    public AttributeVariableDouble getRelative(State state) {
         return this.relative.getAttribute(state);
     }
 

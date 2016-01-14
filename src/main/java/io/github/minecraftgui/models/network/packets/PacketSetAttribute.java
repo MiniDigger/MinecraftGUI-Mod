@@ -53,6 +53,8 @@ public abstract class PacketSetAttribute extends PacketIn {
 
     protected AttributeVariableDouble getAttributeVariableDouble(Shape shape, String attribute, State state){
         switch (attribute){
+            case NetworkInterface.RELATIVE_X: return component.getPositionX().getAttributeRelative().getAttribute(state);
+            case NetworkInterface.RELATIVE_Y: return component.getPositionY().getAttributeRelative().getAttribute(state);
             case NetworkInterface.WIDTH: return shape.getAttributeWidth().getAttribute(state);
             case NetworkInterface.HEIGHT: return shape.getAttributeHeight().getAttribute(state);
             case NetworkInterface.BORDER_TOP: return shape.getAttributeBorder(io.github.minecraftgui.models.shapes.Border.TOP).getAttribute(state);
@@ -88,6 +90,8 @@ public abstract class PacketSetAttribute extends PacketIn {
 
     protected Attribute<Double> getAttributeDouble(Shape shape, String attribute){
         switch (attribute){
+            case NetworkInterface.RELATIVE_X: return component.getPositionX().getAttributeRelative();
+            case NetworkInterface.RELATIVE_Y: return component.getPositionY().getAttributeRelative();
             case NetworkInterface.WIDTH: return shape.getAttributeWidth();
             case NetworkInterface.HEIGHT: return shape.getAttributeHeight();
             case NetworkInterface.BORDER_TOP: return shape.getAttributeBorder(io.github.minecraftgui.models.shapes.Border.TOP);
@@ -374,20 +378,18 @@ public abstract class PacketSetAttribute extends PacketIn {
 
     }
 
-    public static class YRelative extends PacketSetAttribute {
+    public static class YRelative extends PacketSetAttributeDouble {
 
         public YRelative(JSONObject jsonObject, MainController mainController, NetworkInterface networkInterface) {
-            super(jsonObject, mainController, networkInterface);
-            ((AttributeVariableDouble)component.getPositionY().getRelative(state)).setAttribute(new AttributeDouble(attribute.getDouble(NetworkInterface.VALUE)));
+            super(jsonObject, mainController, networkInterface, NetworkInterface.RELATIVE_Y);
         }
 
     }
 
-    public static class XRelative extends PacketSetAttribute {
+    public static class XRelative extends PacketSetAttributeDouble {
 
         public XRelative(JSONObject jsonObject, MainController mainController, NetworkInterface networkInterface) {
-            super(jsonObject, mainController, networkInterface);
-            ((AttributeVariableDouble) component.getPositionX().getRelative(state)).setAttribute(new AttributeDouble(attribute.getDouble(NetworkInterface.VALUE)));
+            super(jsonObject, mainController, networkInterface, NetworkInterface.RELATIVE_X);
         }
 
     }
