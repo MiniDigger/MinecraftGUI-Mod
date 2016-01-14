@@ -39,7 +39,9 @@ public class RectangleImage extends Rectangle {
 
     @Override
     public void draw(Render render) {
-        if(((Image) background.getValue()).getTexture() != null) {
+        AttributeGroupImage groupImage = (AttributeGroupImage) background;
+
+        if(groupImage.getValue() != null && groupImage.getValue().getTexture() != null) {
             borderTopPositions[0][0] = component.getX() - getPadding(Padding.LEFT) - getBorder(Border.LEFT);
             borderTopPositions[0][1] = component.getY() - getPadding(Padding.TOP) - getBorder(Border.TOP);
             borderTopPositions[1][0] = component.getX() - getPadding(Padding.LEFT);
