@@ -40,6 +40,7 @@ public class Input extends ComponentEditableText implements ClipboardOwner {
     private AttributeGroupColor fontColor;
     private AttributeGroupFont font;
     private Line line;
+    private boolean canUpdateText;
 
     public Input(String id, Class<? extends io.github.minecraftgui.models.shapes.Rectangle> shape) {
         super(id, shape);
@@ -147,41 +148,35 @@ public class Input extends ComponentEditableText implements ClipboardOwner {
     @Override
     public void update(long updateId) {
         super.update(updateId);
-        font.update(updateId);
-        fontColor.update(updateId);
-        fontSize.update(updateId);
+        canUpdateText = getFont() != null && getStringHeight() != null;
 
-        line.update(updateId);
+        if(canUpdateText) {
+            font.update(updateId);
+            fontColor.update(updateId);
+            fontSize.update(updateId);
+
+            line.update(updateId);
+        }
     }
 
     @Override
     public void draw(Render render) {
         super.draw(render);
 
-        this.line.draw(render);
+        if(canUpdateText) {
+            this.line.draw(render);
 
-        if(keyBoard != null){
-            long time = System.currentTimeMillis();
+            if (keyBoard != null) {
+                long time = System.currentTimeMillis();
 
-            //Le fois deux c'est pour qu'il puisse etre plus grand que le temps, donc n'est plus visible
-            if(lastInputOrKeyPressed+textCursorVisibleTime >= time || time % textCursorVisibleTime*2 <= textCursorVisibleTime) {
-                double height = getFont().getStringHeight(fontSize.getValue().intValue(), fontColor.getValue());
+                //Le fois deux c'est pour qu'il puisse etre plus grand que le temps, donc n'est plus visible
+                if (lastInputOrKeyPressed + textCursorVisibleTime >= time || time % textCursorVisibleTime * 2 <= textCursorVisibleTime) {
+                    double height = getFont().getStringHeight(fontSize.getValue().intValue(), fontColor.getValue());
 
-                render.fillRectangle(getX()+line.getCursorX(), getY()+line.getCursorY(), .5, height, Color.WHITE);
+                    render.fillRectangle(getX() + line.getCursorX(), getY() + line.getCursorY(), .5, height, Color.WHITE);
+                }
             }
         }
-    }
-
-    public void setFont(State state, io.github.minecraftgui.models.fonts.Font font){
-        this.font.getAttribute(state).setValue(font);
-    }
-
-    public void setFontSize(State state, int size){
-        fontSize.getAttribute(state).setAttribute(new AttributeDouble((double) size));
-    }
-
-    public void setFontColor(State state, Color color){
-        fontColor.getAttribute(state).setAttribute(new AttributeColor(color));
     }
 
     @Override
