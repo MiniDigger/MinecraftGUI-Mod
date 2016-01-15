@@ -23,10 +23,15 @@ public class Line implements Updatable, Drawable {
     private String visibleText = "";
     private Char firstCharVisible = null;
     private Char lastCharVisible = null;
+    private boolean isTextUpdated = false;
 
     public Line(ComponentText componentText) {
         this.componentText = componentText;
         lineChar = new ArrayList<>();
+    }
+
+    public boolean isTextUpdated() {
+        return isTextUpdated;
     }
 
     public String getVisibleText(){
@@ -158,6 +163,8 @@ public class Line implements Updatable, Drawable {
 
     @Override
     public void update(long updateId) {
+        isTextUpdated = false;
+
         if(widthLastUpdate != componentText.getWidth() || updateText){
             widthLastUpdate = componentText.getWidth();
 
@@ -191,6 +198,7 @@ public class Line implements Updatable, Drawable {
 
             updateVisibleText();
             updateText = false;
+            isTextUpdated = true;
         }
     }
 

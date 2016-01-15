@@ -21,7 +21,6 @@ package io.github.minecraftgui.models.components;
 import io.github.minecraftgui.controllers.KeyBoard;
 import io.github.minecraftgui.controllers.Mouse;
 import io.github.minecraftgui.controllers.Render;
-import io.github.minecraftgui.models.attributes.*;
 import io.github.minecraftgui.models.listeners.*;
 import org.lwjgl.input.Keyboard;
 
@@ -36,17 +35,11 @@ public class Input extends ComponentEditableText implements ClipboardOwner {
 
     private static final long textCursorVisibleTime = 1000;
     private long lastInputOrKeyPressed = System.currentTimeMillis();
-    private AttributeGroupDouble fontSize;
-    private AttributeGroupColor fontColor;
-    private AttributeGroupFont font;
     private Line line;
     private boolean canUpdateText;
 
     public Input(String id, Class<? extends io.github.minecraftgui.models.shapes.Rectangle> shape) {
         super(id, shape);
-        fontSize = new AttributeGroupDouble(this);
-        fontColor = new AttributeGroupColor(this);
-        font = new AttributeGroupFont(this);
         line = new Line(this);
 
         this.addOnKeyPressedListener(new OnKeyPressedListener() {
@@ -151,11 +144,10 @@ public class Input extends ComponentEditableText implements ClipboardOwner {
         canUpdateText = getFont() != null && getStringHeight() != null;
 
         if(canUpdateText) {
-            font.update(updateId);
-            fontColor.update(updateId);
-            fontSize.update(updateId);
-
             line.update(updateId);
+
+            if(line.isTextUpdated())
+                valueChanged();
         }
     }
 
@@ -164,17 +156,14 @@ public class Input extends ComponentEditableText implements ClipboardOwner {
         super.draw(render);
 
         if(canUpdateText) {
-            this.line.draw(render);
+            line.draw(render);
 
             if (keyBoard != null) {
                 long time = System.currentTimeMillis();
 
                 //Le fois deux c'est pour qu'il puisse etre plus grand que le temps, donc n'est plus visible
-                if (lastInputOrKeyPressed + textCursorVisibleTime >= time || time % textCursorVisibleTime * 2 <= textCursorVisibleTime) {
-                    double height = getFont().getStringHeight(fontSize.getValue().intValue(), fontColor.getValue());
-
-                    render.fillRectangle(getX() + line.getCursorX(), getY() + line.getCursorY(), .5, height, Color.WHITE);
-                }
+                if (lastInputOrKeyPressed + textCursorVisibleTime >= time || time % textCursorVisibleTime * 2 <= textCursorVisibleTime)
+                    render.fillRectangle(getX() + line.getCursorX(), getY() + line.getCursorY(), .5, getStringHeight(), textCursorColor.getValue());
             }
         }
     }

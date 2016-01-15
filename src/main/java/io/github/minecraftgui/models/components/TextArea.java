@@ -187,16 +187,12 @@ public class TextArea extends ComponentEditableText implements ClipboardOwner {
         super.draw(render);
 
         if(canUpdateText) {
-            text.draw(render);
-
             if (keyBoard != null) {
                 long time = System.currentTimeMillis();
 
                 //Le fois deux c'est pour qu'il puisse etre plus grand que le temps, donc n'est plus visible
-                if (lastInputOrKeyPressed + textCursorVisibleTime >= time || time % textCursorVisibleTime * 2 <= textCursorVisibleTime) {
-                    double fontHeight = getStringHeight();
-                    render.fillRectangle(getX() + text.getCursorX(), getY() + text.getCursorY() + fontHeight * -text.getLineIndex(), .5, fontHeight, textCursorColor.getValue());
-                }
+                if (lastInputOrKeyPressed + textCursorVisibleTime >= time || time % textCursorVisibleTime * 2 <= textCursorVisibleTime)
+                    render.fillRectangle(getX() + text.getCursorX(), getY() + text.getCursorY() + getStringHeight() * -text.getLineIndex(), .5, getStringHeight(), textCursorColor.getValue());
             }
         }
     }
