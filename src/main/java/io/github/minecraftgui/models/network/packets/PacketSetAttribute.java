@@ -5,7 +5,6 @@ import io.github.minecraftgui.controllers.Mouse;
 import io.github.minecraftgui.models.attributes.*;
 import io.github.minecraftgui.models.components.*;
 import io.github.minecraftgui.models.components.Component;
-import io.github.minecraftgui.models.components.List;
 import io.github.minecraftgui.models.components.TextArea;
 import io.github.minecraftgui.models.network.NetworkInterface;
 import io.github.minecraftgui.models.shapes.PolygonColor;
@@ -475,16 +474,6 @@ public abstract class PacketSetAttribute extends PacketIn {
                 ((TextArea) component).setNbLinesToDisplay(attribute.getInt(NetworkInterface.VALUE));
             else if(component instanceof Paragraph)
                 ((Paragraph) component).setNbLinesToDisplay(attribute.getInt(NetworkInterface.VALUE));
-        }
-    }
-
-    public static class UpdateList extends PacketSetAttribute{
-
-        public UpdateList(JSONObject jsonObject, MainController mainController, NetworkInterface networkInterface) {
-            super(jsonObject, mainController, networkInterface);
-
-            if(component instanceof List)
-                ((List) component).updateLists();
         }
     }
 

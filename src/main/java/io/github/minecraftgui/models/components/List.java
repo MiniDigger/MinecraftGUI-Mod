@@ -19,6 +19,8 @@ public class List extends Component {
     private final ArrayList<CopyOnWriteArrayList<Component>> listsDisplayed;
     private CopyOnWriteArrayList<Component> currentListDisplayed = null;
     private double heightLastUpdate = 0;
+    private long nextUpdateIdToUpdateLists = Long.MIN_VALUE;
+    private long updateId = Long.MIN_VALUE;
 
     public List(String id, Class<? extends Rectangle> shape, Component buttonListBefore, Component  buttonListAfter) {
         super(id, shape);
@@ -54,7 +56,7 @@ public class List extends Component {
     }
 
     public void updateLists(){
-        updateListsDisplayed();
+        nextUpdateIdToUpdateLists = updateId+2;
     }
 
     public Component getButtonListAfter() {
@@ -87,8 +89,9 @@ public class List extends Component {
     @Override
     public void update(long updateId) {
         super.update(updateId);
+        this.updateId = updateId;
 
-        if(heightLastUpdate != this.getHeight())
+        if(heightLastUpdate != this.getHeight() || nextUpdateIdToUpdateLists == updateId)
             updateListsDisplayed();
 
         heightLastUpdate = this.getHeight();

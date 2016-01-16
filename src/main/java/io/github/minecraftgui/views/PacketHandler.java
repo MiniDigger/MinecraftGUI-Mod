@@ -73,7 +73,7 @@ public class PacketHandler implements IMessageHandler<PacketHandler.Packet, IMes
                 case PACKET_SET_TEXT_ALIGNMEMT: new PacketSetAttribute.TextAlignment(content, mainController, this); break;
                 case PACKET_SET_POSITIONS: new PacketSetAttribute.Positions(content, mainController, this); break;
                 case PACKET_SET_TEXT_NB_LINE: new PacketSetAttribute.TextNbLine(content, mainController, this); break;
-                case PACKET_UPDATE_LIST: new PacketSetAttribute.UpdateList(content, mainController, this); break;
+                case PACKET_UPDATE_LIST: new PacketUpdateList(content, mainController, this); break;
             }
 
         }catch(Exception e){
