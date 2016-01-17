@@ -187,6 +187,7 @@ public class TextArea extends ComponentEditableText implements ClipboardOwner {
         super.draw(render);
 
         if(canUpdateText) {
+            text.draw(render);
             if (keyBoard != null) {
                 long time = System.currentTimeMillis();
 
