@@ -29,7 +29,6 @@ public class PacketHandler implements IMessageHandler<PacketHandler.Packet, IMes
     @Override
     public IMessage onMessage(Packet packet, MessageContext ctx) {
         try{
-            System.out.println(packet.jsonObject.toString());
             int id = packet.jsonObject.getInt(PACKET_ID);
             JSONObject content = packet.jsonObject.getJSONObject(CONTENT);
 
