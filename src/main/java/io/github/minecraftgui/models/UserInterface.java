@@ -101,10 +101,12 @@ public class UserInterface {
     }
 
     private void update(Component component){
-        component.update(updateId);
+        if(component.getVisibility() == Visibility.VISIBLE) {
+            component.update(updateId);
 
-        for (Component child : component.getChildren())
-            update(child);
+            for (Component child : component.getChildren())
+                update(child);
+        }
     }
 
     //Le component peut être autant hover ou active
