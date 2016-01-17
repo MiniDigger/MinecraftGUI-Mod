@@ -19,8 +19,6 @@ public class List extends Component {
     private final ArrayList<CopyOnWriteArrayList<Component>> listsDisplayed;
     private CopyOnWriteArrayList<Component> currentListDisplayed = null;
     private double heightLastUpdate = 0;
-    private long nextUpdateIdToUpdateLists = Long.MIN_VALUE;
-    private long updateId = Long.MIN_VALUE;
 
     public List(String id, Class<? extends Rectangle> shape, Component buttonListBefore, Component  buttonListAfter) {
         super(id, shape);
@@ -56,7 +54,7 @@ public class List extends Component {
     }
 
     public void updateLists(){
-        nextUpdateIdToUpdateLists = updateId+2;
+        updateListsDisplayed();
     }
 
     public Component getButtonListAfter() {
@@ -89,15 +87,15 @@ public class List extends Component {
     @Override
     public void update(long updateId) {
         super.update(updateId);
-        this.updateId = updateId;
 
-        if(heightLastUpdate != this.getHeight() || nextUpdateIdToUpdateLists == updateId)
+        if(heightLastUpdate != this.getHeight())
             updateListsDisplayed();
 
         heightLastUpdate = this.getHeight();
     }
 
     private void updateListsDisplayed(){
+        System.out.println("---------------------");
         CopyOnWriteArrayList<Component> currentList = new CopyOnWriteArrayList();
         int index = listsDisplayed.indexOf(currentListDisplayed);
         double height = getHeight();
@@ -106,6 +104,7 @@ public class List extends Component {
         listsDisplayed.clear();
 
         for(Component component : children){
+            component.update(Long.MIN_VALUE);
             double componentHeight = component.getHeight()+component.getShape().getPadding(Padding.TOP)+component.getShape().getPadding(Padding.BOTTOM)+component.getShape().getBorder(Border.TOP)+component.getShape().getBorder(Border.BOTTOM);
 
             if(currentHeight+componentHeight >= height){
