@@ -86,8 +86,9 @@ public class Text implements Updatable, Drawable {
     public void setCursorLocation(double x, double y){
         double lineHeight = componentText.getStringHeight();
         int lineIndex = (int) (y/lineHeight);
+        int firstLineIndex = lines.indexOf(visibleLines.get(0));
 
-        if(lineIndex >= 0) {
+        if(lineIndex >= 0 && lineIndex - firstLineIndex <= nbLinesToDisplay) {
             ArrayList<Char> charLine;
             String currentLine = "";
 
