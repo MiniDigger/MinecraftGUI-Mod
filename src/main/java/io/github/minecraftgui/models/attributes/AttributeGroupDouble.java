@@ -20,6 +20,7 @@ package io.github.minecraftgui.models.attributes;
 
 import io.github.minecraftgui.models.components.Component;
 import io.github.minecraftgui.models.components.State;
+import io.github.minecraftgui.models.shapes.Margin;
 
 /**
  * Created by Samuel on 2015-10-24.
@@ -43,5 +44,31 @@ public class AttributeGroupDouble extends AttributeGroup<Double> {
     @Override
     public Double getValue() {
         return super.getValue();
+    }
+
+    public static class Width extends AttributeGroupDouble{
+
+        public Width(Component component) {
+            super(component);
+        }
+
+        @Override
+        public Double getValue() {
+            return super.getValue()-component.getShape().getAttributeMargin(Margin.LEFT).getValue()-component.getShape().getAttributeMargin(Margin.RIGHT).getValue();
+        }
+
+    }
+
+    public static class Height extends AttributeGroupDouble{
+
+        public Height(Component component) {
+            super(component);
+        }
+
+        @Override
+        public Double getValue() {
+            return super.getValue()-component.getShape().getAttributeMargin(Margin.TOP).getValue()-component.getShape().getAttributeMargin(Margin.BOTTOM).getValue();
+        }
+
     }
 }

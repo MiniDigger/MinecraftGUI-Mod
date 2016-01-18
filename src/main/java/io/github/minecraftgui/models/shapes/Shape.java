@@ -56,8 +56,8 @@ public abstract class Shape implements Updatable, Drawable {
     public Shape(Component component, AttributeGroup background) {
         this.component = component;
         this.background = background;
-        this.width = new AttributeGroupDouble(component);
-        this.height = new AttributeGroupDouble(component);
+        this.width = new AttributeGroupDouble.Width(component);
+        this.height = new AttributeGroupDouble.Height(component);
     }
 
     @Override
@@ -84,11 +84,11 @@ public abstract class Shape implements Updatable, Drawable {
     }
 
     public double getWidth() {
-        return width.getValue() - getMargin(Margin.LEFT) - getMargin(Margin.RIGHT);
+        return width.getValue();
     }
 
     public double getHeight() {
-        return height.getValue() - getMargin(Margin.TOP) - getMargin(Margin.BOTTOM);
+        return height.getValue();
     }
 
     public AttributeGroupDouble getAttributeWidth(){
