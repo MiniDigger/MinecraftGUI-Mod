@@ -11,6 +11,7 @@ import io.github.minecraftgui.models.components.Visibility;
 import io.github.minecraftgui.models.listeners.OnRemoveListener;
 import io.github.minecraftgui.models.repositories.FontRepository;
 import io.github.minecraftgui.models.repositories.ImageRepository;
+import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -173,7 +174,14 @@ public class UserInterface {
 
     //Pour setter le component si il est focus et donner ou enlever acces au clavier et a la souris
     private void setComponentFocusMouseAndKeyBoard(){
-        if((mouse.isLeftPressed() || mouse.isMiddlePressed() || mouse.isRightPressed()) && !(mouse.isMiddlePressedLastUpdate() || mouse.isLeftPressedLastUpdate() || mouse.isRightPressedLastUpdate())){
+        if(keyBoard.getKeyListener(Keyboard.KEY_ESCAPE).isPressed() && keyboardAssigned){
+            componentFocused.setFocus(false);
+            componentFocused.setMouse(null);
+            componentFocused.setKeyBoard(null);
+            keyboardAssigned = false;
+            componentFocused = null;
+        }
+        else if((mouse.isLeftPressed() || mouse.isMiddlePressed() || mouse.isRightPressed()) && !(mouse.isMiddlePressedLastUpdate() || mouse.isLeftPressedLastUpdate() || mouse.isRightPressedLastUpdate())){
             if(componentHoveredByTheMouse != componentFocused){
                 if(componentFocused != null) {
                     componentFocused.setFocus(false);

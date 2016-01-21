@@ -55,6 +55,7 @@ public class KeyBoard implements Updatable {
         addKeyListener(Keyboard.KEY_RMENU);
         addKeyListener(Keyboard.KEY_LCONTROL);
         addKeyListener(Keyboard.KEY_RCONTROL);
+        addKeyListener(Keyboard.KEY_ESCAPE);
     }
 
     public ArrayList<Integer> getKeyListeners(){
