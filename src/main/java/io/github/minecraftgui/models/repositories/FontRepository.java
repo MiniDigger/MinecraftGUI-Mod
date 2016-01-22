@@ -24,13 +24,13 @@ import io.github.minecraftgui.models.fonts.Font;
 import io.github.minecraftgui.models.fonts.MinecraftNormalFont;
 import io.github.minecraftgui.models.fonts.MinecraftShadowFont;
 import io.github.minecraftgui.models.fonts.UnicodeFont;
-import scala.actors.threadpool.Arrays;
 
 import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
