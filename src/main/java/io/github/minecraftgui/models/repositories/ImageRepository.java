@@ -4,12 +4,15 @@ import io.github.minecraftgui.controllers.MainController;
 import io.github.minecraftgui.models.images.*;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
-import scala.actors.threadpool.Arrays;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -22,7 +25,7 @@ public class ImageRepository extends FileRepository{
     private final MainController mainController;
 
     public ImageRepository(MainController mainController) {
-        super(new ArrayList<String>(Arrays.asList(new String[]{"image/gif","image/jpeg","image/png"})));
+        super(new ArrayList<String>(Arrays.asList(new String[]{"image/gif", "image/jpeg", "image/png"})));
         this.mainController = mainController;
         images = new HashMap<>();
         imagesData = new ArrayList<>();
