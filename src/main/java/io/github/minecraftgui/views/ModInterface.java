@@ -36,10 +36,10 @@ import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.lwjgl.input.Keyboard;
 
-@Mod(modid = "MinecraftGUI", version = "2.0")
+@Mod(modid = "MinecraftGui", version = "2.0", acceptedMinecraftVersions = "[1.8, 1.8.9]")
 public class ModInterface  {
 
-    private static final KeyBinding KEY_OPEN_GUI = new KeyBinding("Open GUI to interact with the components.", Keyboard.KEY_N, "Minecraft GUI");
+    private static final KeyBinding KEY_OPEN_GUI = new KeyBinding("Open Gui to interact with the components.", Keyboard.KEY_N, "Minecraft GUI");
 
     private MainController controller;
     private PacketHandler packetHandler;
