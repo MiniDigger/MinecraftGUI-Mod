@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
+  "modid": "MiencraftGui",
+  "name": "Miencraft Gui Client",
+  "description": "This mod gives the possibility to the plugins to create their own gui.",
+  "version": "2.0",
+  "mcversion": "1.8.9",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Djxy"],
+  "credits": "",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
