@@ -37,7 +37,7 @@ public class PacketInitClient extends PacketIn {
             HashMap<Color, ArrayList<Integer>> colors = new HashMap<>();
 
             for(int j = 0; j < colorList.length(); j++){
-                JSONObject colorObj = colorList.getJSONObject(i);
+                JSONObject colorObj = colorList.getJSONObject(j);
                 JSONArray sizeList = colorObj.getJSONArray(NetworkInterface.LIST);
                 Color color = new Color(colorObj.getInt(NetworkInterface.R), colorObj.getInt(NetworkInterface.G), colorObj.getInt(NetworkInterface.B), colorObj.getInt(NetworkInterface.A));
                 ArrayList<Integer> sizes = new ArrayList<>();
