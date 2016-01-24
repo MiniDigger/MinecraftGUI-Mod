@@ -1,31 +1,29 @@
-#Don't use this version. This version is outdated and a new one will be uploaded in december.
-
 ## MinecraftGUI is a gui manager that allow you to create interface to ease the interaction with your plugins.
 
-https://www.youtube.com/watch?v=r3E62Ly7hjI
+Features
+---
+- **Multiple ways to create and customize your interfaces**
+  - Write your interfaces with xml and css.
+  - Simple API for the developers.
+  - Mix java with xml and css.
+- **A lot of things to customize the components**
+  - 12 events to handle every interactions with the player.
+  - 4 states with 33 attributes to customize the components.
+  - Personalize your interfaces for each player with variables and xml tags.
+- **Multiple formats supported**
+  - PNG, JPG and GIF for the images.
+  - TTF and OTF for the fonts.
+- **Interact with the server**
+  - Send commands to the server and customize the values to send.
 
-#### Features
-  - Each graphical component have more than +18 attributes per state with many possibilities.
-  - Draw images. GIF, PNG and JPG supported.
-  - Write text with custom fonts. TTF and OTF supported.
-  - Open website.
-  - Use text fields to interact with your plugin.
-  - Create component dynamically.
-  - Simple API to ease the creation and the interaction with the components.
+  
+For more informations go there: https://github.com/djxy/MinecraftGUI-plugin.
 
-#### Commands
-```
-/gui change - Will allow the plugins to send or not components to you.
-/gui reset - Reset the position of every component.
-/gui reload - Reload your interface.
-```
+Screenshots
+---
 
-#### Build for the plugin version: https://github.com/djxy/MinecraftGUI-Plugin/releases
-#### Build for the mod version: https://github.com/djxy/MinecraftGUI-Mod/releases
+![](http://img15.hostingpics.net/pics/37530920160123122439.png)
 
-#### Currently, I'm searching developers who would like to implement MinecraftGUI on their project. I will help to create and implement everything to ease your work.
+![](http://img15.hostingpics.net/pics/97058220160123122251.png)
 
-#### To Do:
-  - Documentation.
-
-Link to plugin version: https://github.com/djxy/MinecraftGUI-plugin
+![](http://s28.postimg.org/vojy5hbrh/2016_01_23_12_23_16.png)
